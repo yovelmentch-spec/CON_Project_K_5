@@ -1,0 +1,151 @@
+xrun command: xrun -sv -f $K5_XBOX_ENV/tb/k5_xbox_tb_irun.f -UNBUFFERED -delay_trigger +define+XMEM_INTRFC +define+MAX10_FPGA +define+CRNT_XLR=slrx
+TOOL:	xrun(64)	23.09-s013: Started on Jul 01, 2026 at 09:46:24 UTC
+xrun(64): 23.09-s013: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
+Recompiling... reason: file '../hw/xlrs/slrx/conv/conv.sv' is newer than expected.
+	expected: Wed Jul  1 09:05:51 2026
+	actual:   Wed Jul  1 09:45:07 2026
+file: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/conv/conv.sv
+cat > $MY_K5_XLRS/slrx/conv/conv.sv <<'EOF'
+    |
+xmvlog: *E,NCUITEM (/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/conv/conv.sv,1|4): Not a valid compilation unit/global item: 'module/udp instance' [SystemVerilog].
+cat > $MY_K5_XLRS/slrx/conv/conv.sv <<'EOF'
+    |
+xmvlog: *E,EXPLPA (/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/conv/conv.sv,1|4): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+cat > $MY_K5_XLRS/slrx/conv/conv.sv <<'EOF'
+                      |
+xmvlog: *E,EXPLPA (/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/conv/conv.sv,1|22): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+cat > $MY_K5_XLRS/slrx/conv/conv.sv <<'EOF'
+                           |
+xmvlog: *E,EXPLPA (/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/conv/conv.sv,1|27): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+cat > $MY_K5_XLRS/slrx/conv/conv.sv <<'EOF'
+                                |
+xmvlog: *E,ILLHIN (/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/conv/conv.sv,1|32): illegal location for a hierarchical name (conv).
+cat > $MY_K5_XLRS/slrx/conv/conv.sv <<'EOF'
+                                     |
+xmvlog: *E,EXPLPA (/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/conv/conv.sv,1|37): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+cat > $MY_K5_XLRS/slrx/conv/conv.sv <<'EOF'
+                                       |
+xmvlog: *E,BADBSE (/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/conv/conv.sv,1|39): illegal base specification: (E) [2.5][2.5.1(IEEE)].
+//=============================================================================
+|
+xmvlog: *E,BADBSE (/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/conv/conv.sv,2|0): illegal base specification: (/) [2.5][2.5.1(IEEE)].
+//=============================================================================
+  |
+xmvlog: *E,EXPLPA (/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/conv/conv.sv,2|2): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+  slrx_cmd_t slrx_cmd;
+                    |
+xmvlog: *E,ILLPDL (/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/conv/conv.sv,60|20): Mixing of ansi & non-ansi style port declaration is not legal.
+	module worklib.conv:sv
+		errors: 1, warnings: 0
+file: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/pool/pool.sv
+import xbox_def_pkg::*;
+     |
+xmvlog: *E,NCUITEM (/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/pool/pool.sv,1|5): Not a valid compilation unit/global item: 'module/udp instance' [SystemVerilog].
+import xbox_def_pkg::*;
+     |
+xmvlog: *E,EXPLPA (/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/pool/pool.sv,1|5): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+  slrx_cmd_t slrx_cmd ;
+                    |
+xmvlog: *E,ILLPDL (/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/pool/pool.sv,51|20): Mixing of ansi & non-ansi style port declaration is not legal.
+	module worklib.pool:sv
+		errors: 1, warnings: 0
+file: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/linear/linear.sv
+  slrx_cmd_t slrx_cmd;
+                    |
+xmvlog: *E,ILLPDL (/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/linear/linear.sv,55|20): Mixing of ansi & non-ansi style port declaration is not legal.
+	module worklib.linear:sv
+		errors: 1, warnings: 0
+file: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/top/xmem_intrf_mux.sv
+	module worklib.xmem_intf_mux:sv
+		errors: 0, warnings: 0
+file: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/top/slrx.sv
+  slr_xlr_t  active_xlr ;
+                      |
+xmvlog: *E,ILLPDL (/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/top/slrx.sv,34|22): Mixing of ansi & non-ansi style port declaration is not legal.
+	module worklib.slrx:sv
+		errors: 1, warnings: 0
+file: /project/tsmc65/shared/k5_share/kuntz5/src/core/k5_dx_comb.sv
+    output t_commit_cmd  commit_cmd,      // WB / LOAD /STORE / MUL
+                      |
+xmvlog: *E,SVNOTY (/project/tsmc65/shared/k5_share/kuntz5/src/core/k5_dx_comb.sv,17|22): Syntactically this identifier appears to begin a datatype but it does not refer to a visible datatype in the current scope.
+t_instr_type        sel_imm_type;
+                               |
+xmvlog: *E,ILLPDL (/project/tsmc65/shared/k5_share/kuntz5/src/core/k5_dx_comb.sv,61|31): Mixing of ansi & non-ansi style port declaration is not legal.
+t_alu_op            alu_op;
+                         |
+xmvlog: *E,ILLPDL (/project/tsmc65/shared/k5_share/kuntz5/src/core/k5_dx_comb.sv,62|25): Mixing of ansi & non-ansi style port declaration is not legal.
+t_branch_type       br_op;
+                        |
+xmvlog: *E,ILLPDL (/project/tsmc65/shared/k5_share/kuntz5/src/core/k5_dx_comb.sv,63|24): Mixing of ansi & non-ansi style port declaration is not legal.
+t_opcode            opc;
+                      |
+xmvlog: *E,ILLPDL (/project/tsmc65/shared/k5_share/kuntz5/src/core/k5_dx_comb.sv,64|22): Mixing of ansi & non-ansi style port declaration is not legal.
+	module worklib.k5_dx_comb:sv
+		errors: 5, warnings: 0
+file: /project/tsmc65/shared/k5_share/kuntz5/src/core/k5_dx.sv
+    output t_commit_cmd commit_cmd,      // WB / LOAD /STORE / MUL  
+                      |
+xmvlog: *E,SVNOTY (/project/tsmc65/shared/k5_share/kuntz5/src/core/k5_dx.sv,20|22): Syntactically this identifier appears to begin a datatype but it does not refer to a visible datatype in the current scope.
+   t_commit_cmd commit_cmd_ps;    
+                            |
+xmvlog: *E,ILLPDL (/project/tsmc65/shared/k5_share/kuntz5/src/core/k5_dx.sv,58|28): Mixing of ansi & non-ansi style port declaration is not legal.
+	module worklib.k5_dx:sv
+		errors: 2, warnings: 0
+file: /project/tsmc65/shared/k5_share/kuntz5/src/core/k5_core.sv
+t_commit_cmd commit_cmd , commit_cmd_wb ;
+                      |
+xmvlog: *E,ILLPDL (/project/tsmc65/shared/k5_share/kuntz5/src/core/k5_core.sv,151|22): Mixing of ansi & non-ansi style port declaration is not legal.
+t_opcode opc;
+           |
+xmvlog: *E,ILLPDL (/project/tsmc65/shared/k5_share/kuntz5/src/core/k5_core.sv,152|11): Mixing of ansi & non-ansi style port declaration is not legal.
+t_instr_type instr_type; 
+                      |
+xmvlog: *E,ILLPDL (/project/tsmc65/shared/k5_share/kuntz5/src/core/k5_core.sv,153|22): Mixing of ansi & non-ansi style port declaration is not legal.
+	module worklib.k5_core:sv
+		errors: 3, warnings: 0
+file: /project/tsmc65/shared/k5_share/kuntz5/src/mul/rtl/mul_base.sv
+   input  t_alu_op alu_op,
+                 |
+xmvlog: *E,SVNOTY (/project/tsmc65/shared/k5_share/kuntz5/src/mul/rtl/mul_base.sv,10|17): Syntactically this identifier appears to begin a datatype but it does not refer to a visible datatype in the current scope.
+	module worklib.mul_base:sv
+		errors: 1, warnings: 0
+file: /project/tsmc65/shared/k5_share/kuntz5/src/sys/k5_rmem.sv
+	module worklib.k5_rmem:sv
+		errors: 0, warnings: 0
+file: /project/tsmc65/shared/k5_share/kuntz5/src/sys/k5_confmem.sv
+	module worklib.k5_confmem:sv
+		errors: 0, warnings: 0
+file: /project/tsmc65/shared/k5_share/kuntz5/src/sys/k5_pcmem.sv
+	module worklib.k5_pcmem:sv
+		errors: 0, warnings: 0
+file: /project/tsmc65/shared/k5_share/kuntz5/src/sys/k5_sch.sv
+	module worklib.k5_sch:sv
+		errors: 0, warnings: 0
+file: /project/tsmc65/shared/k5_share/kuntz5/src/sys/k5_sys.sv
+	module worklib.k5_sys:sv
+		errors: 0, warnings: 0
+file: /project/tsmc65/shared/k5_share/kuntz5/src/sys/k5_sys_access.sv
+	module worklib.k5_sys_access:sv
+		errors: 0, warnings: 0
+file: /project/tsmc65/shared/k5_share/kuntz5/src/sys/k5_sys_regs_mem_access.sv
+	module worklib.k5_sys_regs_mem_access:sv
+		errors: 0, warnings: 0
+file: /project/tsmc65/shared/k5_share/kuntz5/src/uart_access/k5_uart_access.sv
+	module worklib.k5_uart_access:sv
+		errors: 0, warnings: 0
+file: /project/tsmc65/shared/k5_share/kuntz5/src/tb/k5_uart_tb.sv
+	module worklib.k5_uart_tb:sv
+		errors: 0, warnings: 0
+file: /project/tsmc65/shared/k5_share/kuntz5/src/tb/k5_tracer.sv
+	module worklib.k5_tracer:sv
+		errors: 0, warnings: 0
+file: /project/tsmc65/shared/k5_share/kuntz5/src/tb/k5_tb.sv
+	module worklib.k5_tb:sv
+		errors: 0, warnings: 0
+file: /project/tsmc65/shared/k5_share/k5_xbox/hw/k5_xbox_sys.sv
+	module worklib.k5_xbox_sys:sv
+		errors: 0, warnings: 0
+	Total errors/warnings found outside modules and primitives:
+		errors: 11, warnings: 0
+xrun: *E,VLGERR: An error occurred during parsing.  Review the log file for errors with the code *E and fix those identified problems to proceed.  Exiting with code (status 1).
+TOOL:	xrun(64)	23.09-s013: Exiting on Jul 01, 2026 at 09:46:27 UTC  (total: 00:00:03)

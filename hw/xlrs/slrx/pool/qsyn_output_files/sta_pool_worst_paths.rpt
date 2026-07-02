@@ -1,0 +1,1463 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Thu Jun 11 10:13:53 2026
+Info: Command: quartus_sta -t /data/project/tsmc65/shared/qsyn/util/report_worst.tcl pool
+Info: Quartus(args): pool
+Info (21076): High junction temperature operating condition is not set. Assuming a default value of '85'.
+Info (21076): Low junction temperature operating condition is not set. Assuming a default value of '0'.
+Critical Warning (332012): Synopsys Design Constraints File file not found: '/data/project/tsmc65/shared/qsyn/basic.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name clk clk
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info (332115): Report Timing: Found 20 setup paths (20 violated).  Worst case slack is -6.826
+    Info (332115): -setup
+    Info (332115): -npaths 20
+    Info (332115): -detail full_path
+    Info (332115): -stdout
+Info (332115): Path #1: Setup slack is -6.826 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][3]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[15]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][3]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][3]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][3]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][3]|q
+    Info (332115):      4.432      0.537 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[6]
+    Info (332115):      7.886      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.886      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[9]
+    Info (332115):      8.013      0.127 RF  CELL  pool|Mult1|auto_generated|mac_out2|dataout[9]
+    Info (332115):      8.981      0.968 FF    IC  pool|Add2~4|datab
+    Info (332115):      9.462      0.481 FF  CELL  pool|Add2~4|cout
+    Info (332115):      9.462      0.000 FF    IC  pool|Add2~6|cin
+    Info (332115):      9.521      0.059 FR  CELL  pool|Add2~6|cout
+    Info (332115):      9.521      0.000 RR    IC  pool|Add2~8|cin
+    Info (332115):      9.580      0.059 RF  CELL  pool|Add2~8|cout
+    Info (332115):      9.580      0.000 FF    IC  pool|Add2~10|cin
+    Info (332115):      9.639      0.059 FR  CELL  pool|Add2~10|cout
+    Info (332115):      9.639      0.000 RR    IC  pool|Add2~12|cin
+    Info (332115):      9.698      0.059 RF  CELL  pool|Add2~12|cout
+    Info (332115):      9.698      0.000 FF    IC  pool|Add2~14|cin
+    Info (332115):      9.757      0.059 FR  CELL  pool|Add2~14|cout
+    Info (332115):      9.757      0.000 RR    IC  pool|Add2~16|cin
+    Info (332115):      9.816      0.059 RF  CELL  pool|Add2~16|cout
+    Info (332115):      9.816      0.000 FF    IC  pool|Add2~18|cin
+    Info (332115):      9.875      0.059 FR  CELL  pool|Add2~18|cout
+    Info (332115):      9.875      0.000 RR    IC  pool|Add2~20|cin
+    Info (332115):      9.934      0.059 RF  CELL  pool|Add2~20|cout
+    Info (332115):      9.934      0.000 FF    IC  pool|Add2~22|cin
+    Info (332115):      9.993      0.059 FR  CELL  pool|Add2~22|cout
+    Info (332115):      9.993      0.000 RR    IC  pool|Add2~24|cin
+    Info (332115):     10.052      0.059 RF  CELL  pool|Add2~24|cout
+    Info (332115):     10.052      0.000 FF    IC  pool|Add2~26|cin
+    Info (332115):     10.111      0.059 FR  CELL  pool|Add2~26|cout
+    Info (332115):     10.111      0.000 RR    IC  pool|Add2~28|cin
+    Info (332115):     10.748      0.637 RR  CELL  pool|Add2~28|combout
+    Info (332115):     11.416      0.668 RR    IC  pool|arr_in_row_addr[15]|asdata
+    Info (332115):     11.840      0.424 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[15]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Arrival Time  :    11.840
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.826 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #2: Setup slack is -6.813 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][3]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[14]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][3]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][3]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][3]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][3]|q
+    Info (332115):      4.432      0.537 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[6]
+    Info (332115):      7.886      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.886      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[8]
+    Info (332115):      8.006      0.120 RR  CELL  pool|Mult1|auto_generated|mac_out2|dataout[8]
+    Info (332115):      8.988      0.982 RR    IC  pool|Add2~2|datab
+    Info (332115):      9.512      0.524 RF  CELL  pool|Add2~2|cout
+    Info (332115):      9.512      0.000 FF    IC  pool|Add2~4|cin
+    Info (332115):      9.571      0.059 FR  CELL  pool|Add2~4|cout
+    Info (332115):      9.571      0.000 RR    IC  pool|Add2~6|cin
+    Info (332115):      9.630      0.059 RF  CELL  pool|Add2~6|cout
+    Info (332115):      9.630      0.000 FF    IC  pool|Add2~8|cin
+    Info (332115):      9.689      0.059 FR  CELL  pool|Add2~8|cout
+    Info (332115):      9.689      0.000 RR    IC  pool|Add2~10|cin
+    Info (332115):      9.748      0.059 RF  CELL  pool|Add2~10|cout
+    Info (332115):      9.748      0.000 FF    IC  pool|Add2~12|cin
+    Info (332115):      9.807      0.059 FR  CELL  pool|Add2~12|cout
+    Info (332115):      9.807      0.000 RR    IC  pool|Add2~14|cin
+    Info (332115):      9.866      0.059 RF  CELL  pool|Add2~14|cout
+    Info (332115):      9.866      0.000 FF    IC  pool|Add2~16|cin
+    Info (332115):      9.925      0.059 FR  CELL  pool|Add2~16|cout
+    Info (332115):      9.925      0.000 RR    IC  pool|Add2~18|cin
+    Info (332115):      9.984      0.059 RF  CELL  pool|Add2~18|cout
+    Info (332115):      9.984      0.000 FF    IC  pool|Add2~20|cin
+    Info (332115):     10.043      0.059 FR  CELL  pool|Add2~20|cout
+    Info (332115):     10.043      0.000 RR    IC  pool|Add2~22|cin
+    Info (332115):     10.102      0.059 RF  CELL  pool|Add2~22|cout
+    Info (332115):     10.102      0.000 FF    IC  pool|Add2~24|cin
+    Info (332115):     10.161      0.059 FR  CELL  pool|Add2~24|cout
+    Info (332115):     10.161      0.000 RR    IC  pool|Add2~26|cin
+    Info (332115):     10.798      0.637 RR  CELL  pool|Add2~26|combout
+    Info (332115):     11.403      0.605 RR    IC  pool|arr_in_row_addr[14]|asdata
+    Info (332115):     11.827      0.424 RR  CELL  pool:pool|arr_in_row_addr[14]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[14]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[14]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[14]
+    Info (332115): Data Arrival Time  :    11.827
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.813 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #3: Setup slack is -6.812 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][2]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[15]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][2]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][2]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][2]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][2]|q
+    Info (332115):      4.418      0.523 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[5]
+    Info (332115):      7.872      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.872      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[9]
+    Info (332115):      7.999      0.127 RF  CELL  pool|Mult1|auto_generated|mac_out2|dataout[9]
+    Info (332115):      8.967      0.968 FF    IC  pool|Add2~4|datab
+    Info (332115):      9.448      0.481 FF  CELL  pool|Add2~4|cout
+    Info (332115):      9.448      0.000 FF    IC  pool|Add2~6|cin
+    Info (332115):      9.507      0.059 FR  CELL  pool|Add2~6|cout
+    Info (332115):      9.507      0.000 RR    IC  pool|Add2~8|cin
+    Info (332115):      9.566      0.059 RF  CELL  pool|Add2~8|cout
+    Info (332115):      9.566      0.000 FF    IC  pool|Add2~10|cin
+    Info (332115):      9.625      0.059 FR  CELL  pool|Add2~10|cout
+    Info (332115):      9.625      0.000 RR    IC  pool|Add2~12|cin
+    Info (332115):      9.684      0.059 RF  CELL  pool|Add2~12|cout
+    Info (332115):      9.684      0.000 FF    IC  pool|Add2~14|cin
+    Info (332115):      9.743      0.059 FR  CELL  pool|Add2~14|cout
+    Info (332115):      9.743      0.000 RR    IC  pool|Add2~16|cin
+    Info (332115):      9.802      0.059 RF  CELL  pool|Add2~16|cout
+    Info (332115):      9.802      0.000 FF    IC  pool|Add2~18|cin
+    Info (332115):      9.861      0.059 FR  CELL  pool|Add2~18|cout
+    Info (332115):      9.861      0.000 RR    IC  pool|Add2~20|cin
+    Info (332115):      9.920      0.059 RF  CELL  pool|Add2~20|cout
+    Info (332115):      9.920      0.000 FF    IC  pool|Add2~22|cin
+    Info (332115):      9.979      0.059 FR  CELL  pool|Add2~22|cout
+    Info (332115):      9.979      0.000 RR    IC  pool|Add2~24|cin
+    Info (332115):     10.038      0.059 RF  CELL  pool|Add2~24|cout
+    Info (332115):     10.038      0.000 FF    IC  pool|Add2~26|cin
+    Info (332115):     10.097      0.059 FR  CELL  pool|Add2~26|cout
+    Info (332115):     10.097      0.000 RR    IC  pool|Add2~28|cin
+    Info (332115):     10.734      0.637 RR  CELL  pool|Add2~28|combout
+    Info (332115):     11.402      0.668 RR    IC  pool|arr_in_row_addr[15]|asdata
+    Info (332115):     11.826      0.424 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[15]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Arrival Time  :    11.826
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.812 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #4: Setup slack is -6.810 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][4]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[15]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][4]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][4]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][4]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][4]|q
+    Info (332115):      4.416      0.521 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[7]
+    Info (332115):      7.870      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.870      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[9]
+    Info (332115):      7.997      0.127 RF  CELL  pool|Mult1|auto_generated|mac_out2|dataout[9]
+    Info (332115):      8.965      0.968 FF    IC  pool|Add2~4|datab
+    Info (332115):      9.446      0.481 FF  CELL  pool|Add2~4|cout
+    Info (332115):      9.446      0.000 FF    IC  pool|Add2~6|cin
+    Info (332115):      9.505      0.059 FR  CELL  pool|Add2~6|cout
+    Info (332115):      9.505      0.000 RR    IC  pool|Add2~8|cin
+    Info (332115):      9.564      0.059 RF  CELL  pool|Add2~8|cout
+    Info (332115):      9.564      0.000 FF    IC  pool|Add2~10|cin
+    Info (332115):      9.623      0.059 FR  CELL  pool|Add2~10|cout
+    Info (332115):      9.623      0.000 RR    IC  pool|Add2~12|cin
+    Info (332115):      9.682      0.059 RF  CELL  pool|Add2~12|cout
+    Info (332115):      9.682      0.000 FF    IC  pool|Add2~14|cin
+    Info (332115):      9.741      0.059 FR  CELL  pool|Add2~14|cout
+    Info (332115):      9.741      0.000 RR    IC  pool|Add2~16|cin
+    Info (332115):      9.800      0.059 RF  CELL  pool|Add2~16|cout
+    Info (332115):      9.800      0.000 FF    IC  pool|Add2~18|cin
+    Info (332115):      9.859      0.059 FR  CELL  pool|Add2~18|cout
+    Info (332115):      9.859      0.000 RR    IC  pool|Add2~20|cin
+    Info (332115):      9.918      0.059 RF  CELL  pool|Add2~20|cout
+    Info (332115):      9.918      0.000 FF    IC  pool|Add2~22|cin
+    Info (332115):      9.977      0.059 FR  CELL  pool|Add2~22|cout
+    Info (332115):      9.977      0.000 RR    IC  pool|Add2~24|cin
+    Info (332115):     10.036      0.059 RF  CELL  pool|Add2~24|cout
+    Info (332115):     10.036      0.000 FF    IC  pool|Add2~26|cin
+    Info (332115):     10.095      0.059 FR  CELL  pool|Add2~26|cout
+    Info (332115):     10.095      0.000 RR    IC  pool|Add2~28|cin
+    Info (332115):     10.732      0.637 RR  CELL  pool|Add2~28|combout
+    Info (332115):     11.400      0.668 RR    IC  pool|arr_in_row_addr[15]|asdata
+    Info (332115):     11.824      0.424 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[15]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Arrival Time  :    11.824
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.810 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #5: Setup slack is -6.799 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][2]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[14]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][2]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][2]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][2]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][2]|q
+    Info (332115):      4.418      0.523 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[5]
+    Info (332115):      7.872      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.872      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[8]
+    Info (332115):      7.992      0.120 RR  CELL  pool|Mult1|auto_generated|mac_out2|dataout[8]
+    Info (332115):      8.974      0.982 RR    IC  pool|Add2~2|datab
+    Info (332115):      9.498      0.524 RF  CELL  pool|Add2~2|cout
+    Info (332115):      9.498      0.000 FF    IC  pool|Add2~4|cin
+    Info (332115):      9.557      0.059 FR  CELL  pool|Add2~4|cout
+    Info (332115):      9.557      0.000 RR    IC  pool|Add2~6|cin
+    Info (332115):      9.616      0.059 RF  CELL  pool|Add2~6|cout
+    Info (332115):      9.616      0.000 FF    IC  pool|Add2~8|cin
+    Info (332115):      9.675      0.059 FR  CELL  pool|Add2~8|cout
+    Info (332115):      9.675      0.000 RR    IC  pool|Add2~10|cin
+    Info (332115):      9.734      0.059 RF  CELL  pool|Add2~10|cout
+    Info (332115):      9.734      0.000 FF    IC  pool|Add2~12|cin
+    Info (332115):      9.793      0.059 FR  CELL  pool|Add2~12|cout
+    Info (332115):      9.793      0.000 RR    IC  pool|Add2~14|cin
+    Info (332115):      9.852      0.059 RF  CELL  pool|Add2~14|cout
+    Info (332115):      9.852      0.000 FF    IC  pool|Add2~16|cin
+    Info (332115):      9.911      0.059 FR  CELL  pool|Add2~16|cout
+    Info (332115):      9.911      0.000 RR    IC  pool|Add2~18|cin
+    Info (332115):      9.970      0.059 RF  CELL  pool|Add2~18|cout
+    Info (332115):      9.970      0.000 FF    IC  pool|Add2~20|cin
+    Info (332115):     10.029      0.059 FR  CELL  pool|Add2~20|cout
+    Info (332115):     10.029      0.000 RR    IC  pool|Add2~22|cin
+    Info (332115):     10.088      0.059 RF  CELL  pool|Add2~22|cout
+    Info (332115):     10.088      0.000 FF    IC  pool|Add2~24|cin
+    Info (332115):     10.147      0.059 FR  CELL  pool|Add2~24|cout
+    Info (332115):     10.147      0.000 RR    IC  pool|Add2~26|cin
+    Info (332115):     10.784      0.637 RR  CELL  pool|Add2~26|combout
+    Info (332115):     11.389      0.605 RR    IC  pool|arr_in_row_addr[14]|asdata
+    Info (332115):     11.813      0.424 RR  CELL  pool:pool|arr_in_row_addr[14]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[14]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[14]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[14]
+    Info (332115): Data Arrival Time  :    11.813
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.799 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #6: Setup slack is -6.797 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][4]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[14]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][4]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][4]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][4]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][4]|q
+    Info (332115):      4.416      0.521 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[7]
+    Info (332115):      7.870      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.870      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[8]
+    Info (332115):      7.990      0.120 RR  CELL  pool|Mult1|auto_generated|mac_out2|dataout[8]
+    Info (332115):      8.972      0.982 RR    IC  pool|Add2~2|datab
+    Info (332115):      9.496      0.524 RF  CELL  pool|Add2~2|cout
+    Info (332115):      9.496      0.000 FF    IC  pool|Add2~4|cin
+    Info (332115):      9.555      0.059 FR  CELL  pool|Add2~4|cout
+    Info (332115):      9.555      0.000 RR    IC  pool|Add2~6|cin
+    Info (332115):      9.614      0.059 RF  CELL  pool|Add2~6|cout
+    Info (332115):      9.614      0.000 FF    IC  pool|Add2~8|cin
+    Info (332115):      9.673      0.059 FR  CELL  pool|Add2~8|cout
+    Info (332115):      9.673      0.000 RR    IC  pool|Add2~10|cin
+    Info (332115):      9.732      0.059 RF  CELL  pool|Add2~10|cout
+    Info (332115):      9.732      0.000 FF    IC  pool|Add2~12|cin
+    Info (332115):      9.791      0.059 FR  CELL  pool|Add2~12|cout
+    Info (332115):      9.791      0.000 RR    IC  pool|Add2~14|cin
+    Info (332115):      9.850      0.059 RF  CELL  pool|Add2~14|cout
+    Info (332115):      9.850      0.000 FF    IC  pool|Add2~16|cin
+    Info (332115):      9.909      0.059 FR  CELL  pool|Add2~16|cout
+    Info (332115):      9.909      0.000 RR    IC  pool|Add2~18|cin
+    Info (332115):      9.968      0.059 RF  CELL  pool|Add2~18|cout
+    Info (332115):      9.968      0.000 FF    IC  pool|Add2~20|cin
+    Info (332115):     10.027      0.059 FR  CELL  pool|Add2~20|cout
+    Info (332115):     10.027      0.000 RR    IC  pool|Add2~22|cin
+    Info (332115):     10.086      0.059 RF  CELL  pool|Add2~22|cout
+    Info (332115):     10.086      0.000 FF    IC  pool|Add2~24|cin
+    Info (332115):     10.145      0.059 FR  CELL  pool|Add2~24|cout
+    Info (332115):     10.145      0.000 RR    IC  pool|Add2~26|cin
+    Info (332115):     10.782      0.637 RR  CELL  pool|Add2~26|combout
+    Info (332115):     11.387      0.605 RR    IC  pool|arr_in_row_addr[14]|asdata
+    Info (332115):     11.811      0.424 RR  CELL  pool:pool|arr_in_row_addr[14]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[14]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[14]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[14]
+    Info (332115): Data Arrival Time  :    11.811
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.797 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #7: Setup slack is -6.784 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][3]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[15]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][3]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][3]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][3]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][3]|q
+    Info (332115):      4.432      0.537 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[6]
+    Info (332115):      7.886      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.886      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[8]
+    Info (332115):      8.013      0.127 RF  CELL  pool|Mult1|auto_generated|mac_out2|dataout[8]
+    Info (332115):      8.968      0.955 FF    IC  pool|Add2~2|datab
+    Info (332115):      9.361      0.393 FR  CELL  pool|Add2~2|cout
+    Info (332115):      9.361      0.000 RR    IC  pool|Add2~4|cin
+    Info (332115):      9.420      0.059 RF  CELL  pool|Add2~4|cout
+    Info (332115):      9.420      0.000 FF    IC  pool|Add2~6|cin
+    Info (332115):      9.479      0.059 FR  CELL  pool|Add2~6|cout
+    Info (332115):      9.479      0.000 RR    IC  pool|Add2~8|cin
+    Info (332115):      9.538      0.059 RF  CELL  pool|Add2~8|cout
+    Info (332115):      9.538      0.000 FF    IC  pool|Add2~10|cin
+    Info (332115):      9.597      0.059 FR  CELL  pool|Add2~10|cout
+    Info (332115):      9.597      0.000 RR    IC  pool|Add2~12|cin
+    Info (332115):      9.656      0.059 RF  CELL  pool|Add2~12|cout
+    Info (332115):      9.656      0.000 FF    IC  pool|Add2~14|cin
+    Info (332115):      9.715      0.059 FR  CELL  pool|Add2~14|cout
+    Info (332115):      9.715      0.000 RR    IC  pool|Add2~16|cin
+    Info (332115):      9.774      0.059 RF  CELL  pool|Add2~16|cout
+    Info (332115):      9.774      0.000 FF    IC  pool|Add2~18|cin
+    Info (332115):      9.833      0.059 FR  CELL  pool|Add2~18|cout
+    Info (332115):      9.833      0.000 RR    IC  pool|Add2~20|cin
+    Info (332115):      9.892      0.059 RF  CELL  pool|Add2~20|cout
+    Info (332115):      9.892      0.000 FF    IC  pool|Add2~22|cin
+    Info (332115):      9.951      0.059 FR  CELL  pool|Add2~22|cout
+    Info (332115):      9.951      0.000 RR    IC  pool|Add2~24|cin
+    Info (332115):     10.010      0.059 RF  CELL  pool|Add2~24|cout
+    Info (332115):     10.010      0.000 FF    IC  pool|Add2~26|cin
+    Info (332115):     10.069      0.059 FR  CELL  pool|Add2~26|cout
+    Info (332115):     10.069      0.000 RR    IC  pool|Add2~28|cin
+    Info (332115):     10.706      0.637 RR  CELL  pool|Add2~28|combout
+    Info (332115):     11.374      0.668 RR    IC  pool|arr_in_row_addr[15]|asdata
+    Info (332115):     11.798      0.424 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[15]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Arrival Time  :    11.798
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.784 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #8: Setup slack is -6.776 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][1]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[15]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][1]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][1]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][1]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][1]|q
+    Info (332115):      4.382      0.487 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[4]
+    Info (332115):      7.836      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.836      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[9]
+    Info (332115):      7.963      0.127 RF  CELL  pool|Mult1|auto_generated|mac_out2|dataout[9]
+    Info (332115):      8.931      0.968 FF    IC  pool|Add2~4|datab
+    Info (332115):      9.412      0.481 FF  CELL  pool|Add2~4|cout
+    Info (332115):      9.412      0.000 FF    IC  pool|Add2~6|cin
+    Info (332115):      9.471      0.059 FR  CELL  pool|Add2~6|cout
+    Info (332115):      9.471      0.000 RR    IC  pool|Add2~8|cin
+    Info (332115):      9.530      0.059 RF  CELL  pool|Add2~8|cout
+    Info (332115):      9.530      0.000 FF    IC  pool|Add2~10|cin
+    Info (332115):      9.589      0.059 FR  CELL  pool|Add2~10|cout
+    Info (332115):      9.589      0.000 RR    IC  pool|Add2~12|cin
+    Info (332115):      9.648      0.059 RF  CELL  pool|Add2~12|cout
+    Info (332115):      9.648      0.000 FF    IC  pool|Add2~14|cin
+    Info (332115):      9.707      0.059 FR  CELL  pool|Add2~14|cout
+    Info (332115):      9.707      0.000 RR    IC  pool|Add2~16|cin
+    Info (332115):      9.766      0.059 RF  CELL  pool|Add2~16|cout
+    Info (332115):      9.766      0.000 FF    IC  pool|Add2~18|cin
+    Info (332115):      9.825      0.059 FR  CELL  pool|Add2~18|cout
+    Info (332115):      9.825      0.000 RR    IC  pool|Add2~20|cin
+    Info (332115):      9.884      0.059 RF  CELL  pool|Add2~20|cout
+    Info (332115):      9.884      0.000 FF    IC  pool|Add2~22|cin
+    Info (332115):      9.943      0.059 FR  CELL  pool|Add2~22|cout
+    Info (332115):      9.943      0.000 RR    IC  pool|Add2~24|cin
+    Info (332115):     10.002      0.059 RF  CELL  pool|Add2~24|cout
+    Info (332115):     10.002      0.000 FF    IC  pool|Add2~26|cin
+    Info (332115):     10.061      0.059 FR  CELL  pool|Add2~26|cout
+    Info (332115):     10.061      0.000 RR    IC  pool|Add2~28|cin
+    Info (332115):     10.698      0.637 RR  CELL  pool|Add2~28|combout
+    Info (332115):     11.366      0.668 RR    IC  pool|arr_in_row_addr[15]|asdata
+    Info (332115):     11.790      0.424 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[15]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Arrival Time  :    11.790
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.776 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #9: Setup slack is -6.771 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][5]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[15]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][5]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][5]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][5]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][5]|q
+    Info (332115):      4.377      0.482 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[8]
+    Info (332115):      7.831      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.831      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[9]
+    Info (332115):      7.958      0.127 RF  CELL  pool|Mult1|auto_generated|mac_out2|dataout[9]
+    Info (332115):      8.926      0.968 FF    IC  pool|Add2~4|datab
+    Info (332115):      9.407      0.481 FF  CELL  pool|Add2~4|cout
+    Info (332115):      9.407      0.000 FF    IC  pool|Add2~6|cin
+    Info (332115):      9.466      0.059 FR  CELL  pool|Add2~6|cout
+    Info (332115):      9.466      0.000 RR    IC  pool|Add2~8|cin
+    Info (332115):      9.525      0.059 RF  CELL  pool|Add2~8|cout
+    Info (332115):      9.525      0.000 FF    IC  pool|Add2~10|cin
+    Info (332115):      9.584      0.059 FR  CELL  pool|Add2~10|cout
+    Info (332115):      9.584      0.000 RR    IC  pool|Add2~12|cin
+    Info (332115):      9.643      0.059 RF  CELL  pool|Add2~12|cout
+    Info (332115):      9.643      0.000 FF    IC  pool|Add2~14|cin
+    Info (332115):      9.702      0.059 FR  CELL  pool|Add2~14|cout
+    Info (332115):      9.702      0.000 RR    IC  pool|Add2~16|cin
+    Info (332115):      9.761      0.059 RF  CELL  pool|Add2~16|cout
+    Info (332115):      9.761      0.000 FF    IC  pool|Add2~18|cin
+    Info (332115):      9.820      0.059 FR  CELL  pool|Add2~18|cout
+    Info (332115):      9.820      0.000 RR    IC  pool|Add2~20|cin
+    Info (332115):      9.879      0.059 RF  CELL  pool|Add2~20|cout
+    Info (332115):      9.879      0.000 FF    IC  pool|Add2~22|cin
+    Info (332115):      9.938      0.059 FR  CELL  pool|Add2~22|cout
+    Info (332115):      9.938      0.000 RR    IC  pool|Add2~24|cin
+    Info (332115):      9.997      0.059 RF  CELL  pool|Add2~24|cout
+    Info (332115):      9.997      0.000 FF    IC  pool|Add2~26|cin
+    Info (332115):     10.056      0.059 FR  CELL  pool|Add2~26|cout
+    Info (332115):     10.056      0.000 RR    IC  pool|Add2~28|cin
+    Info (332115):     10.693      0.637 RR  CELL  pool|Add2~28|combout
+    Info (332115):     11.361      0.668 RR    IC  pool|arr_in_row_addr[15]|asdata
+    Info (332115):     11.785      0.424 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[15]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Arrival Time  :    11.785
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.771 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #10: Setup slack is -6.770 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][2]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[15]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][2]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][2]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][2]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][2]|q
+    Info (332115):      4.418      0.523 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[5]
+    Info (332115):      7.872      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.872      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[8]
+    Info (332115):      7.999      0.127 RF  CELL  pool|Mult1|auto_generated|mac_out2|dataout[8]
+    Info (332115):      8.954      0.955 FF    IC  pool|Add2~2|datab
+    Info (332115):      9.347      0.393 FR  CELL  pool|Add2~2|cout
+    Info (332115):      9.347      0.000 RR    IC  pool|Add2~4|cin
+    Info (332115):      9.406      0.059 RF  CELL  pool|Add2~4|cout
+    Info (332115):      9.406      0.000 FF    IC  pool|Add2~6|cin
+    Info (332115):      9.465      0.059 FR  CELL  pool|Add2~6|cout
+    Info (332115):      9.465      0.000 RR    IC  pool|Add2~8|cin
+    Info (332115):      9.524      0.059 RF  CELL  pool|Add2~8|cout
+    Info (332115):      9.524      0.000 FF    IC  pool|Add2~10|cin
+    Info (332115):      9.583      0.059 FR  CELL  pool|Add2~10|cout
+    Info (332115):      9.583      0.000 RR    IC  pool|Add2~12|cin
+    Info (332115):      9.642      0.059 RF  CELL  pool|Add2~12|cout
+    Info (332115):      9.642      0.000 FF    IC  pool|Add2~14|cin
+    Info (332115):      9.701      0.059 FR  CELL  pool|Add2~14|cout
+    Info (332115):      9.701      0.000 RR    IC  pool|Add2~16|cin
+    Info (332115):      9.760      0.059 RF  CELL  pool|Add2~16|cout
+    Info (332115):      9.760      0.000 FF    IC  pool|Add2~18|cin
+    Info (332115):      9.819      0.059 FR  CELL  pool|Add2~18|cout
+    Info (332115):      9.819      0.000 RR    IC  pool|Add2~20|cin
+    Info (332115):      9.878      0.059 RF  CELL  pool|Add2~20|cout
+    Info (332115):      9.878      0.000 FF    IC  pool|Add2~22|cin
+    Info (332115):      9.937      0.059 FR  CELL  pool|Add2~22|cout
+    Info (332115):      9.937      0.000 RR    IC  pool|Add2~24|cin
+    Info (332115):      9.996      0.059 RF  CELL  pool|Add2~24|cout
+    Info (332115):      9.996      0.000 FF    IC  pool|Add2~26|cin
+    Info (332115):     10.055      0.059 FR  CELL  pool|Add2~26|cout
+    Info (332115):     10.055      0.000 RR    IC  pool|Add2~28|cin
+    Info (332115):     10.692      0.637 RR  CELL  pool|Add2~28|combout
+    Info (332115):     11.360      0.668 RR    IC  pool|arr_in_row_addr[15]|asdata
+    Info (332115):     11.784      0.424 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[15]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Arrival Time  :    11.784
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.770 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #11: Setup slack is -6.768 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][4]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[15]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][4]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][4]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][4]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][4]|q
+    Info (332115):      4.416      0.521 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[7]
+    Info (332115):      7.870      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.870      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[8]
+    Info (332115):      7.997      0.127 RF  CELL  pool|Mult1|auto_generated|mac_out2|dataout[8]
+    Info (332115):      8.952      0.955 FF    IC  pool|Add2~2|datab
+    Info (332115):      9.345      0.393 FR  CELL  pool|Add2~2|cout
+    Info (332115):      9.345      0.000 RR    IC  pool|Add2~4|cin
+    Info (332115):      9.404      0.059 RF  CELL  pool|Add2~4|cout
+    Info (332115):      9.404      0.000 FF    IC  pool|Add2~6|cin
+    Info (332115):      9.463      0.059 FR  CELL  pool|Add2~6|cout
+    Info (332115):      9.463      0.000 RR    IC  pool|Add2~8|cin
+    Info (332115):      9.522      0.059 RF  CELL  pool|Add2~8|cout
+    Info (332115):      9.522      0.000 FF    IC  pool|Add2~10|cin
+    Info (332115):      9.581      0.059 FR  CELL  pool|Add2~10|cout
+    Info (332115):      9.581      0.000 RR    IC  pool|Add2~12|cin
+    Info (332115):      9.640      0.059 RF  CELL  pool|Add2~12|cout
+    Info (332115):      9.640      0.000 FF    IC  pool|Add2~14|cin
+    Info (332115):      9.699      0.059 FR  CELL  pool|Add2~14|cout
+    Info (332115):      9.699      0.000 RR    IC  pool|Add2~16|cin
+    Info (332115):      9.758      0.059 RF  CELL  pool|Add2~16|cout
+    Info (332115):      9.758      0.000 FF    IC  pool|Add2~18|cin
+    Info (332115):      9.817      0.059 FR  CELL  pool|Add2~18|cout
+    Info (332115):      9.817      0.000 RR    IC  pool|Add2~20|cin
+    Info (332115):      9.876      0.059 RF  CELL  pool|Add2~20|cout
+    Info (332115):      9.876      0.000 FF    IC  pool|Add2~22|cin
+    Info (332115):      9.935      0.059 FR  CELL  pool|Add2~22|cout
+    Info (332115):      9.935      0.000 RR    IC  pool|Add2~24|cin
+    Info (332115):      9.994      0.059 RF  CELL  pool|Add2~24|cout
+    Info (332115):      9.994      0.000 FF    IC  pool|Add2~26|cin
+    Info (332115):     10.053      0.059 FR  CELL  pool|Add2~26|cout
+    Info (332115):     10.053      0.000 RR    IC  pool|Add2~28|cin
+    Info (332115):     10.690      0.637 RR  CELL  pool|Add2~28|combout
+    Info (332115):     11.358      0.668 RR    IC  pool|arr_in_row_addr[15]|asdata
+    Info (332115):     11.782      0.424 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[15]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Arrival Time  :    11.782
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.768 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #12: Setup slack is -6.764 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][0]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[15]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][0]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][0]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][0]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][0]|q
+    Info (332115):      4.370      0.475 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[3]
+    Info (332115):      7.824      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.824      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[9]
+    Info (332115):      7.951      0.127 RF  CELL  pool|Mult1|auto_generated|mac_out2|dataout[9]
+    Info (332115):      8.919      0.968 FF    IC  pool|Add2~4|datab
+    Info (332115):      9.400      0.481 FF  CELL  pool|Add2~4|cout
+    Info (332115):      9.400      0.000 FF    IC  pool|Add2~6|cin
+    Info (332115):      9.459      0.059 FR  CELL  pool|Add2~6|cout
+    Info (332115):      9.459      0.000 RR    IC  pool|Add2~8|cin
+    Info (332115):      9.518      0.059 RF  CELL  pool|Add2~8|cout
+    Info (332115):      9.518      0.000 FF    IC  pool|Add2~10|cin
+    Info (332115):      9.577      0.059 FR  CELL  pool|Add2~10|cout
+    Info (332115):      9.577      0.000 RR    IC  pool|Add2~12|cin
+    Info (332115):      9.636      0.059 RF  CELL  pool|Add2~12|cout
+    Info (332115):      9.636      0.000 FF    IC  pool|Add2~14|cin
+    Info (332115):      9.695      0.059 FR  CELL  pool|Add2~14|cout
+    Info (332115):      9.695      0.000 RR    IC  pool|Add2~16|cin
+    Info (332115):      9.754      0.059 RF  CELL  pool|Add2~16|cout
+    Info (332115):      9.754      0.000 FF    IC  pool|Add2~18|cin
+    Info (332115):      9.813      0.059 FR  CELL  pool|Add2~18|cout
+    Info (332115):      9.813      0.000 RR    IC  pool|Add2~20|cin
+    Info (332115):      9.872      0.059 RF  CELL  pool|Add2~20|cout
+    Info (332115):      9.872      0.000 FF    IC  pool|Add2~22|cin
+    Info (332115):      9.931      0.059 FR  CELL  pool|Add2~22|cout
+    Info (332115):      9.931      0.000 RR    IC  pool|Add2~24|cin
+    Info (332115):      9.990      0.059 RF  CELL  pool|Add2~24|cout
+    Info (332115):      9.990      0.000 FF    IC  pool|Add2~26|cin
+    Info (332115):     10.049      0.059 FR  CELL  pool|Add2~26|cout
+    Info (332115):     10.049      0.000 RR    IC  pool|Add2~28|cin
+    Info (332115):     10.686      0.637 RR  CELL  pool|Add2~28|combout
+    Info (332115):     11.354      0.668 RR    IC  pool|arr_in_row_addr[15]|asdata
+    Info (332115):     11.778      0.424 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[15]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Arrival Time  :    11.778
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.764 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #13: Setup slack is -6.763 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][1]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[14]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][1]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][1]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][1]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][1]|q
+    Info (332115):      4.382      0.487 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[4]
+    Info (332115):      7.836      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.836      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[8]
+    Info (332115):      7.956      0.120 RR  CELL  pool|Mult1|auto_generated|mac_out2|dataout[8]
+    Info (332115):      8.938      0.982 RR    IC  pool|Add2~2|datab
+    Info (332115):      9.462      0.524 RF  CELL  pool|Add2~2|cout
+    Info (332115):      9.462      0.000 FF    IC  pool|Add2~4|cin
+    Info (332115):      9.521      0.059 FR  CELL  pool|Add2~4|cout
+    Info (332115):      9.521      0.000 RR    IC  pool|Add2~6|cin
+    Info (332115):      9.580      0.059 RF  CELL  pool|Add2~6|cout
+    Info (332115):      9.580      0.000 FF    IC  pool|Add2~8|cin
+    Info (332115):      9.639      0.059 FR  CELL  pool|Add2~8|cout
+    Info (332115):      9.639      0.000 RR    IC  pool|Add2~10|cin
+    Info (332115):      9.698      0.059 RF  CELL  pool|Add2~10|cout
+    Info (332115):      9.698      0.000 FF    IC  pool|Add2~12|cin
+    Info (332115):      9.757      0.059 FR  CELL  pool|Add2~12|cout
+    Info (332115):      9.757      0.000 RR    IC  pool|Add2~14|cin
+    Info (332115):      9.816      0.059 RF  CELL  pool|Add2~14|cout
+    Info (332115):      9.816      0.000 FF    IC  pool|Add2~16|cin
+    Info (332115):      9.875      0.059 FR  CELL  pool|Add2~16|cout
+    Info (332115):      9.875      0.000 RR    IC  pool|Add2~18|cin
+    Info (332115):      9.934      0.059 RF  CELL  pool|Add2~18|cout
+    Info (332115):      9.934      0.000 FF    IC  pool|Add2~20|cin
+    Info (332115):      9.993      0.059 FR  CELL  pool|Add2~20|cout
+    Info (332115):      9.993      0.000 RR    IC  pool|Add2~22|cin
+    Info (332115):     10.052      0.059 RF  CELL  pool|Add2~22|cout
+    Info (332115):     10.052      0.000 FF    IC  pool|Add2~24|cin
+    Info (332115):     10.111      0.059 FR  CELL  pool|Add2~24|cout
+    Info (332115):     10.111      0.000 RR    IC  pool|Add2~26|cin
+    Info (332115):     10.748      0.637 RR  CELL  pool|Add2~26|combout
+    Info (332115):     11.353      0.605 RR    IC  pool|arr_in_row_addr[14]|asdata
+    Info (332115):     11.777      0.424 RR  CELL  pool:pool|arr_in_row_addr[14]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[14]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[14]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[14]
+    Info (332115): Data Arrival Time  :    11.777
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.763 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #14: Setup slack is -6.758 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][5]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[14]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][5]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][5]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][5]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][5]|q
+    Info (332115):      4.377      0.482 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[8]
+    Info (332115):      7.831      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.831      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[8]
+    Info (332115):      7.951      0.120 RR  CELL  pool|Mult1|auto_generated|mac_out2|dataout[8]
+    Info (332115):      8.933      0.982 RR    IC  pool|Add2~2|datab
+    Info (332115):      9.457      0.524 RF  CELL  pool|Add2~2|cout
+    Info (332115):      9.457      0.000 FF    IC  pool|Add2~4|cin
+    Info (332115):      9.516      0.059 FR  CELL  pool|Add2~4|cout
+    Info (332115):      9.516      0.000 RR    IC  pool|Add2~6|cin
+    Info (332115):      9.575      0.059 RF  CELL  pool|Add2~6|cout
+    Info (332115):      9.575      0.000 FF    IC  pool|Add2~8|cin
+    Info (332115):      9.634      0.059 FR  CELL  pool|Add2~8|cout
+    Info (332115):      9.634      0.000 RR    IC  pool|Add2~10|cin
+    Info (332115):      9.693      0.059 RF  CELL  pool|Add2~10|cout
+    Info (332115):      9.693      0.000 FF    IC  pool|Add2~12|cin
+    Info (332115):      9.752      0.059 FR  CELL  pool|Add2~12|cout
+    Info (332115):      9.752      0.000 RR    IC  pool|Add2~14|cin
+    Info (332115):      9.811      0.059 RF  CELL  pool|Add2~14|cout
+    Info (332115):      9.811      0.000 FF    IC  pool|Add2~16|cin
+    Info (332115):      9.870      0.059 FR  CELL  pool|Add2~16|cout
+    Info (332115):      9.870      0.000 RR    IC  pool|Add2~18|cin
+    Info (332115):      9.929      0.059 RF  CELL  pool|Add2~18|cout
+    Info (332115):      9.929      0.000 FF    IC  pool|Add2~20|cin
+    Info (332115):      9.988      0.059 FR  CELL  pool|Add2~20|cout
+    Info (332115):      9.988      0.000 RR    IC  pool|Add2~22|cin
+    Info (332115):     10.047      0.059 RF  CELL  pool|Add2~22|cout
+    Info (332115):     10.047      0.000 FF    IC  pool|Add2~24|cin
+    Info (332115):     10.106      0.059 FR  CELL  pool|Add2~24|cout
+    Info (332115):     10.106      0.000 RR    IC  pool|Add2~26|cin
+    Info (332115):     10.743      0.637 RR  CELL  pool|Add2~26|combout
+    Info (332115):     11.348      0.605 RR    IC  pool|arr_in_row_addr[14]|asdata
+    Info (332115):     11.772      0.424 RR  CELL  pool:pool|arr_in_row_addr[14]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[14]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[14]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[14]
+    Info (332115): Data Arrival Time  :    11.772
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.758 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #15: Setup slack is -6.751 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][0]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[14]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][0]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][0]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][0]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][0]|q
+    Info (332115):      4.370      0.475 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[3]
+    Info (332115):      7.824      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.824      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[8]
+    Info (332115):      7.944      0.120 RR  CELL  pool|Mult1|auto_generated|mac_out2|dataout[8]
+    Info (332115):      8.926      0.982 RR    IC  pool|Add2~2|datab
+    Info (332115):      9.450      0.524 RF  CELL  pool|Add2~2|cout
+    Info (332115):      9.450      0.000 FF    IC  pool|Add2~4|cin
+    Info (332115):      9.509      0.059 FR  CELL  pool|Add2~4|cout
+    Info (332115):      9.509      0.000 RR    IC  pool|Add2~6|cin
+    Info (332115):      9.568      0.059 RF  CELL  pool|Add2~6|cout
+    Info (332115):      9.568      0.000 FF    IC  pool|Add2~8|cin
+    Info (332115):      9.627      0.059 FR  CELL  pool|Add2~8|cout
+    Info (332115):      9.627      0.000 RR    IC  pool|Add2~10|cin
+    Info (332115):      9.686      0.059 RF  CELL  pool|Add2~10|cout
+    Info (332115):      9.686      0.000 FF    IC  pool|Add2~12|cin
+    Info (332115):      9.745      0.059 FR  CELL  pool|Add2~12|cout
+    Info (332115):      9.745      0.000 RR    IC  pool|Add2~14|cin
+    Info (332115):      9.804      0.059 RF  CELL  pool|Add2~14|cout
+    Info (332115):      9.804      0.000 FF    IC  pool|Add2~16|cin
+    Info (332115):      9.863      0.059 FR  CELL  pool|Add2~16|cout
+    Info (332115):      9.863      0.000 RR    IC  pool|Add2~18|cin
+    Info (332115):      9.922      0.059 RF  CELL  pool|Add2~18|cout
+    Info (332115):      9.922      0.000 FF    IC  pool|Add2~20|cin
+    Info (332115):      9.981      0.059 FR  CELL  pool|Add2~20|cout
+    Info (332115):      9.981      0.000 RR    IC  pool|Add2~22|cin
+    Info (332115):     10.040      0.059 RF  CELL  pool|Add2~22|cout
+    Info (332115):     10.040      0.000 FF    IC  pool|Add2~24|cin
+    Info (332115):     10.099      0.059 FR  CELL  pool|Add2~24|cout
+    Info (332115):     10.099      0.000 RR    IC  pool|Add2~26|cin
+    Info (332115):     10.736      0.637 RR  CELL  pool|Add2~26|combout
+    Info (332115):     11.341      0.605 RR    IC  pool|arr_in_row_addr[14]|asdata
+    Info (332115):     11.765      0.424 RR  CELL  pool:pool|arr_in_row_addr[14]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[14]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[14]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[14]
+    Info (332115): Data Arrival Time  :    11.765
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.751 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #16: Setup slack is -6.734 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][1]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[15]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][1]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][1]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][1]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][1]|q
+    Info (332115):      4.382      0.487 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[4]
+    Info (332115):      7.836      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.836      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[8]
+    Info (332115):      7.963      0.127 RF  CELL  pool|Mult1|auto_generated|mac_out2|dataout[8]
+    Info (332115):      8.918      0.955 FF    IC  pool|Add2~2|datab
+    Info (332115):      9.311      0.393 FR  CELL  pool|Add2~2|cout
+    Info (332115):      9.311      0.000 RR    IC  pool|Add2~4|cin
+    Info (332115):      9.370      0.059 RF  CELL  pool|Add2~4|cout
+    Info (332115):      9.370      0.000 FF    IC  pool|Add2~6|cin
+    Info (332115):      9.429      0.059 FR  CELL  pool|Add2~6|cout
+    Info (332115):      9.429      0.000 RR    IC  pool|Add2~8|cin
+    Info (332115):      9.488      0.059 RF  CELL  pool|Add2~8|cout
+    Info (332115):      9.488      0.000 FF    IC  pool|Add2~10|cin
+    Info (332115):      9.547      0.059 FR  CELL  pool|Add2~10|cout
+    Info (332115):      9.547      0.000 RR    IC  pool|Add2~12|cin
+    Info (332115):      9.606      0.059 RF  CELL  pool|Add2~12|cout
+    Info (332115):      9.606      0.000 FF    IC  pool|Add2~14|cin
+    Info (332115):      9.665      0.059 FR  CELL  pool|Add2~14|cout
+    Info (332115):      9.665      0.000 RR    IC  pool|Add2~16|cin
+    Info (332115):      9.724      0.059 RF  CELL  pool|Add2~16|cout
+    Info (332115):      9.724      0.000 FF    IC  pool|Add2~18|cin
+    Info (332115):      9.783      0.059 FR  CELL  pool|Add2~18|cout
+    Info (332115):      9.783      0.000 RR    IC  pool|Add2~20|cin
+    Info (332115):      9.842      0.059 RF  CELL  pool|Add2~20|cout
+    Info (332115):      9.842      0.000 FF    IC  pool|Add2~22|cin
+    Info (332115):      9.901      0.059 FR  CELL  pool|Add2~22|cout
+    Info (332115):      9.901      0.000 RR    IC  pool|Add2~24|cin
+    Info (332115):      9.960      0.059 RF  CELL  pool|Add2~24|cout
+    Info (332115):      9.960      0.000 FF    IC  pool|Add2~26|cin
+    Info (332115):     10.019      0.059 FR  CELL  pool|Add2~26|cout
+    Info (332115):     10.019      0.000 RR    IC  pool|Add2~28|cin
+    Info (332115):     10.656      0.637 RR  CELL  pool|Add2~28|combout
+    Info (332115):     11.324      0.668 RR    IC  pool|arr_in_row_addr[15]|asdata
+    Info (332115):     11.748      0.424 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[15]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Arrival Time  :    11.748
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.734 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #17: Setup slack is -6.729 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][5]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[15]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][5]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][5]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][5]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][5]|q
+    Info (332115):      4.377      0.482 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[8]
+    Info (332115):      7.831      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.831      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[8]
+    Info (332115):      7.958      0.127 RF  CELL  pool|Mult1|auto_generated|mac_out2|dataout[8]
+    Info (332115):      8.913      0.955 FF    IC  pool|Add2~2|datab
+    Info (332115):      9.306      0.393 FR  CELL  pool|Add2~2|cout
+    Info (332115):      9.306      0.000 RR    IC  pool|Add2~4|cin
+    Info (332115):      9.365      0.059 RF  CELL  pool|Add2~4|cout
+    Info (332115):      9.365      0.000 FF    IC  pool|Add2~6|cin
+    Info (332115):      9.424      0.059 FR  CELL  pool|Add2~6|cout
+    Info (332115):      9.424      0.000 RR    IC  pool|Add2~8|cin
+    Info (332115):      9.483      0.059 RF  CELL  pool|Add2~8|cout
+    Info (332115):      9.483      0.000 FF    IC  pool|Add2~10|cin
+    Info (332115):      9.542      0.059 FR  CELL  pool|Add2~10|cout
+    Info (332115):      9.542      0.000 RR    IC  pool|Add2~12|cin
+    Info (332115):      9.601      0.059 RF  CELL  pool|Add2~12|cout
+    Info (332115):      9.601      0.000 FF    IC  pool|Add2~14|cin
+    Info (332115):      9.660      0.059 FR  CELL  pool|Add2~14|cout
+    Info (332115):      9.660      0.000 RR    IC  pool|Add2~16|cin
+    Info (332115):      9.719      0.059 RF  CELL  pool|Add2~16|cout
+    Info (332115):      9.719      0.000 FF    IC  pool|Add2~18|cin
+    Info (332115):      9.778      0.059 FR  CELL  pool|Add2~18|cout
+    Info (332115):      9.778      0.000 RR    IC  pool|Add2~20|cin
+    Info (332115):      9.837      0.059 RF  CELL  pool|Add2~20|cout
+    Info (332115):      9.837      0.000 FF    IC  pool|Add2~22|cin
+    Info (332115):      9.896      0.059 FR  CELL  pool|Add2~22|cout
+    Info (332115):      9.896      0.000 RR    IC  pool|Add2~24|cin
+    Info (332115):      9.955      0.059 RF  CELL  pool|Add2~24|cout
+    Info (332115):      9.955      0.000 FF    IC  pool|Add2~26|cin
+    Info (332115):     10.014      0.059 FR  CELL  pool|Add2~26|cout
+    Info (332115):     10.014      0.000 RR    IC  pool|Add2~28|cin
+    Info (332115):     10.651      0.637 RR  CELL  pool|Add2~28|combout
+    Info (332115):     11.319      0.668 RR    IC  pool|arr_in_row_addr[15]|asdata
+    Info (332115):     11.743      0.424 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[15]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Arrival Time  :    11.743
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.729 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #18: Setup slack is -6.722 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][0]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[15]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][0]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][0]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][0]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][0]|q
+    Info (332115):      4.370      0.475 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[3]
+    Info (332115):      7.824      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.824      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[8]
+    Info (332115):      7.951      0.127 RF  CELL  pool|Mult1|auto_generated|mac_out2|dataout[8]
+    Info (332115):      8.906      0.955 FF    IC  pool|Add2~2|datab
+    Info (332115):      9.299      0.393 FR  CELL  pool|Add2~2|cout
+    Info (332115):      9.299      0.000 RR    IC  pool|Add2~4|cin
+    Info (332115):      9.358      0.059 RF  CELL  pool|Add2~4|cout
+    Info (332115):      9.358      0.000 FF    IC  pool|Add2~6|cin
+    Info (332115):      9.417      0.059 FR  CELL  pool|Add2~6|cout
+    Info (332115):      9.417      0.000 RR    IC  pool|Add2~8|cin
+    Info (332115):      9.476      0.059 RF  CELL  pool|Add2~8|cout
+    Info (332115):      9.476      0.000 FF    IC  pool|Add2~10|cin
+    Info (332115):      9.535      0.059 FR  CELL  pool|Add2~10|cout
+    Info (332115):      9.535      0.000 RR    IC  pool|Add2~12|cin
+    Info (332115):      9.594      0.059 RF  CELL  pool|Add2~12|cout
+    Info (332115):      9.594      0.000 FF    IC  pool|Add2~14|cin
+    Info (332115):      9.653      0.059 FR  CELL  pool|Add2~14|cout
+    Info (332115):      9.653      0.000 RR    IC  pool|Add2~16|cin
+    Info (332115):      9.712      0.059 RF  CELL  pool|Add2~16|cout
+    Info (332115):      9.712      0.000 FF    IC  pool|Add2~18|cin
+    Info (332115):      9.771      0.059 FR  CELL  pool|Add2~18|cout
+    Info (332115):      9.771      0.000 RR    IC  pool|Add2~20|cin
+    Info (332115):      9.830      0.059 RF  CELL  pool|Add2~20|cout
+    Info (332115):      9.830      0.000 FF    IC  pool|Add2~22|cin
+    Info (332115):      9.889      0.059 FR  CELL  pool|Add2~22|cout
+    Info (332115):      9.889      0.000 RR    IC  pool|Add2~24|cin
+    Info (332115):      9.948      0.059 RF  CELL  pool|Add2~24|cout
+    Info (332115):      9.948      0.000 FF    IC  pool|Add2~26|cin
+    Info (332115):     10.007      0.059 FR  CELL  pool|Add2~26|cout
+    Info (332115):     10.007      0.000 RR    IC  pool|Add2~28|cin
+    Info (332115):     10.644      0.637 RR  CELL  pool|Add2~28|combout
+    Info (332115):     11.312      0.668 RR    IC  pool|arr_in_row_addr[15]|asdata
+    Info (332115):     11.736      0.424 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[15]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Arrival Time  :    11.736
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.722 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #19: Setup slack is -6.719 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][3]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[15]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][3]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][3]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][3]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][3]|q
+    Info (332115):      4.432      0.537 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[6]
+    Info (332115):      7.886      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.886      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[11]
+    Info (332115):      8.013      0.127 RF  CELL  pool|Mult1|auto_generated|mac_out2|dataout[11]
+    Info (332115):      8.992      0.979 FF    IC  pool|Add2~8|datab
+    Info (332115):      9.473      0.481 FF  CELL  pool|Add2~8|cout
+    Info (332115):      9.473      0.000 FF    IC  pool|Add2~10|cin
+    Info (332115):      9.532      0.059 FR  CELL  pool|Add2~10|cout
+    Info (332115):      9.532      0.000 RR    IC  pool|Add2~12|cin
+    Info (332115):      9.591      0.059 RF  CELL  pool|Add2~12|cout
+    Info (332115):      9.591      0.000 FF    IC  pool|Add2~14|cin
+    Info (332115):      9.650      0.059 FR  CELL  pool|Add2~14|cout
+    Info (332115):      9.650      0.000 RR    IC  pool|Add2~16|cin
+    Info (332115):      9.709      0.059 RF  CELL  pool|Add2~16|cout
+    Info (332115):      9.709      0.000 FF    IC  pool|Add2~18|cin
+    Info (332115):      9.768      0.059 FR  CELL  pool|Add2~18|cout
+    Info (332115):      9.768      0.000 RR    IC  pool|Add2~20|cin
+    Info (332115):      9.827      0.059 RF  CELL  pool|Add2~20|cout
+    Info (332115):      9.827      0.000 FF    IC  pool|Add2~22|cin
+    Info (332115):      9.886      0.059 FR  CELL  pool|Add2~22|cout
+    Info (332115):      9.886      0.000 RR    IC  pool|Add2~24|cin
+    Info (332115):      9.945      0.059 RF  CELL  pool|Add2~24|cout
+    Info (332115):      9.945      0.000 FF    IC  pool|Add2~26|cin
+    Info (332115):     10.004      0.059 FR  CELL  pool|Add2~26|cout
+    Info (332115):     10.004      0.000 RR    IC  pool|Add2~28|cin
+    Info (332115):     10.641      0.637 RR  CELL  pool|Add2~28|combout
+    Info (332115):     11.309      0.668 RR    IC  pool|arr_in_row_addr[15]|asdata
+    Info (332115):     11.733      0.424 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[15]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Arrival Time  :    11.733
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.719 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #20: Setup slack is -6.705 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : host_regs_s[7][2]
+    Info (332115): To Node      : pool:pool|arr_in_row_addr[15]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      1.681      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.681      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.178      1.497 RR    IC  host_regs_s[7][2]|clk
+    Info (332115):      3.688      0.510 RR  CELL  host_regs_s[7][2]
+    Info (332115):      3.895      0.207     uTco  host_regs_s[7][2]
+    Info (332115):      3.895      0.000 FF  CELL  host_regs_s[7][2]|q
+    Info (332115):      4.418      0.523 FF    IC  pool|Mult1|auto_generated|mac_mult1|dataa[5]
+    Info (332115):      7.872      3.454 FR  CELL  pool|Mult1|auto_generated|mac_mult1|dataout[17]
+    Info (332115):      7.872      0.000 RR    IC  pool|Mult1|auto_generated|mac_out2|dataa[11]
+    Info (332115):      7.999      0.127 RF  CELL  pool|Mult1|auto_generated|mac_out2|dataout[11]
+    Info (332115):      8.978      0.979 FF    IC  pool|Add2~8|datab
+    Info (332115):      9.459      0.481 FF  CELL  pool|Add2~8|cout
+    Info (332115):      9.459      0.000 FF    IC  pool|Add2~10|cin
+    Info (332115):      9.518      0.059 FR  CELL  pool|Add2~10|cout
+    Info (332115):      9.518      0.000 RR    IC  pool|Add2~12|cin
+    Info (332115):      9.577      0.059 RF  CELL  pool|Add2~12|cout
+    Info (332115):      9.577      0.000 FF    IC  pool|Add2~14|cin
+    Info (332115):      9.636      0.059 FR  CELL  pool|Add2~14|cout
+    Info (332115):      9.636      0.000 RR    IC  pool|Add2~16|cin
+    Info (332115):      9.695      0.059 RF  CELL  pool|Add2~16|cout
+    Info (332115):      9.695      0.000 FF    IC  pool|Add2~18|cin
+    Info (332115):      9.754      0.059 FR  CELL  pool|Add2~18|cout
+    Info (332115):      9.754      0.000 RR    IC  pool|Add2~20|cin
+    Info (332115):      9.813      0.059 RF  CELL  pool|Add2~20|cout
+    Info (332115):      9.813      0.000 FF    IC  pool|Add2~22|cin
+    Info (332115):      9.872      0.059 FR  CELL  pool|Add2~22|cout
+    Info (332115):      9.872      0.000 RR    IC  pool|Add2~24|cin
+    Info (332115):      9.931      0.059 RF  CELL  pool|Add2~24|cout
+    Info (332115):      9.931      0.000 FF    IC  pool|Add2~26|cin
+    Info (332115):      9.990      0.059 FR  CELL  pool|Add2~26|cout
+    Info (332115):      9.990      0.000 RR    IC  pool|Add2~28|cin
+    Info (332115):     10.627      0.637 RR  CELL  pool|Add2~28|combout
+    Info (332115):     11.295      0.668 RR    IC  pool|arr_in_row_addr[15]|asdata
+    Info (332115):     11.719      0.424 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.787      0.787 RR  CELL  clk~input|o
+    Info (332115):      2.645      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.645      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.487      1.842 RR    IC  pool|arr_in_row_addr[15]|clk
+    Info (332115):      4.962      0.475 RR  CELL  pool:pool|arr_in_row_addr[15]
+    Info (332115):      5.021      0.059           clock pessimism removed
+    Info (332115):      5.001     -0.020           clock uncertainty
+    Info (332115):      5.014      0.013     uTsu  pool:pool|arr_in_row_addr[15]
+    Info (332115): Data Arrival Time  :    11.719
+    Info (332115): Data Required Time :     5.014
+    Info (332115): Slack              :    -6.705 (VIOLATED)
+    Info (332115): ===================================================================
+Info (23030): Evaluation of Tcl script /data/project/tsmc65/shared/qsyn/util/report_worst.tcl was successful
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 702 megabytes
+    Info: Processing ended: Thu Jun 11 10:13:54 2026
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00

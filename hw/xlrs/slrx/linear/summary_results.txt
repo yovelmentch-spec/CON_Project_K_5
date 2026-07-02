@@ -1,0 +1,24 @@
+Linear accelerator test results:
+
+The linear accelerator was implemented in linear.sv and tested in the K5-XBOX simulation environment.
+
+Functional correctness:
+The accelerated run completed successfully and produced correct results compared to the software/reference execution.
+
+Performance:
+Observed cycle count: 1182,1017(linear 0,linear 1) cycles
+Screenshot of the terminal output is attached below.
+
+FPGA compile summary:
+qsyn_xlr linear -all completed successfully.
+
+Synthesis: successful, 0 errors
+Fit: successful, 0 errors
+STA: successful, 0 errors
+
+Total FPGA Logic Elements: 1,657
+Total FPGA memory registers: 946
+Total FPGA memory bits: 0
+Max FPGA Frequency: 58.98 MHz
+Generated QSYN archive:
+qsyn_linear_mentcy_150626_1006.tgz

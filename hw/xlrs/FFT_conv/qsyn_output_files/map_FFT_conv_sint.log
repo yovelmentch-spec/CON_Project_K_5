@@ -1,0 +1,40 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Mon Jun 15 10:50:06 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FFT_conv_sint -c FFT_conv_sint
+Info (12021): Found 1 design units, including 0 entities, in source file /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_def_pkg.sv
+    Info (12022): Found design unit 1: xbox_def_pkg (SystemVerilog) File: /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_def_pkg.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_intf_read.sv
+    Info (12023): Found entity 1: mem_intf_read File: /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_intf_read.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_intf_write.sv
+    Info (12023): Found entity 1: mem_intf_write File: /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_intf_write.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv
+    Info (12023): Found entity 1: qsyn_dummy_xlr_wrap File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv_sint.sv
+    Info (12023): Found entity 1: FFT_conv File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv_sint.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/div.sv
+    Info (12023): Found entity 1: divu_int File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/div.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv
+    Info (12023): Found entity 1: fft_engine File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 1
+Error (10703): SystemVerilog error at qsyn_dummy_xlr_wrap.sv(60): can't resolve aggregate expression in connection to port 7 on instance "FFT_conv_sint" because the instance has no module binding File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 60
+Error (10703): SystemVerilog error at qsyn_dummy_xlr_wrap.sv(61): can't resolve aggregate expression in connection to port 8 on instance "FFT_conv_sint" because the instance has no module binding File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 61
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 0 warnings
+    Error: Peak virtual memory: 601 megabytes
+    Error: Processing ended: Mon Jun 15 10:50:19 2026
+    Error: Elapsed time: 00:00:13
+    Error: Total CPU time (on all processors): 00:00:14

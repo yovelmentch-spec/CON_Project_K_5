@@ -1,0 +1,25 @@
+xrun command: xrun -sv -f $K5_XBOX_ENV/tb/k5_xbox_tb_irun.f -UNBUFFERED -delay_trigger +define+XMEM_INTRFC +define+MAX10_FPGA +define+CRNT_XLR=slrx
+TOOL:	xrun(64)	23.09-s013: Started on Jul 01, 2026 at 12:22:29 UTC
+xrun(64): 23.09-s013: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
+xmsim: *W,RNMBF: Failed to re-read the args file:  $K5_XBOX_ENV/tb/k5_xbox_tb_irun.f.  This could result in the loss of user defined plus options.
+Loading snapshot worklib.k5_tb:sv .................... Done
+xcelium> source /tools/cadence/XCELIUM/23.09.013/tools/xcelium/files/xmsimrc
+xcelium> run
+
+
+ uart_tb.sv: UART TB INFO: DFLT_BAUDRATE = 115200     , CLK_DIV_CNTR =867       
+User Name is mentcy hashed to unique port number 23596
+Assigned port localhost:23596
+Waiting for server connection
+uart_tb.sv: PY: Hello from Python, got your message: Hello from System-Verilog!
+uart_tb.sv: Remote Python changed UART clk_div_cntr value to     4 (decimal)
+uart_tb.sv: Remote Python changed UART ns_per_bit_actual from 8680.000000 to 50.000000 
+
+
+ 95714555ns uart_tb.sv: Detected remote quit command. Quitting 
+
+
+Simulation complete via $finish(1) at time 95714555 NS + 1
+/project/tsmc65/shared/k5_share/kuntz5/src/tb/k5_uart_tb.sv:305                                     $finish ;
+xcelium> exit
+TOOL:	xrun(64)	23.09-s013: Exiting on Jul 01, 2026 at 12:22:51 UTC  (total: 00:00:22)

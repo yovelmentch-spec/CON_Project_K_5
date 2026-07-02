@@ -17,8 +17,13 @@
 1777825829 /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_intf_write.sv
 1777825829 /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_req_ctrl.sv
 1777825829 /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_sram.sv
-1780823342 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/div.sv
-1781002186 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv
+1781172743 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/top/slrx_def_pkg.sv
+1781172743 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/top/slrx_regs_intrf.sv
+1782908244 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/conv/conv.sv
+1781172741 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/pool/pool.sv
+1782894632 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/linear/linear.sv
+1781172743 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/top/xmem_intrf_mux.sv
+1781172743 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/top/slrx.sv
 1777825828 /project/tsmc65/shared/k5_share/k5_xbox/fpga/xbox_altera_mems/altera_mf.v
 1777825828 /project/tsmc65/shared/k5_share/k5_xbox/fpga/xbox_altera_mems/altera_sp_ram_1024x256_be.v
 1777825650 /project/tsmc65/shared/k5_share/kuntz5/fpga/src/seg7_art/seg7_art_pkg.sv
@@ -53,4 +58,3 @@
 1777825653 /project/tsmc65/shared/k5_share/kuntz5/src/tb/k5_tracer.sv
 1778621342 /project/tsmc65/shared/k5_share/kuntz5/src/tb/k5_tb.sv
 1777825828 /project/tsmc65/shared/k5_share/k5_xbox/hw/k5_xbox_sys.sv
-1781080681 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv_sint.sv

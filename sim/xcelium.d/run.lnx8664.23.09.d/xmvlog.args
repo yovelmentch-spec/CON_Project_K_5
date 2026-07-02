@@ -29,9 +29,15 @@ DLCVAR:NCEXDEP:DSEM2009:DSEMEL:MTDYNUSE
 /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_intf_write.sv
 /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_req_ctrl.sv
 /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_sram.sv
-/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv_sint.sv
-/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/div.sv
-/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv
+-INCDIR
+/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/top
+/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/top/slrx_def_pkg.sv
+/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/top/slrx_regs_intrf.sv
+/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/conv/conv.sv
+/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/pool/pool.sv
+/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/linear/linear.sv
+/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/top/xmem_intrf_mux.sv
+/data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/top/slrx.sv
 /project/tsmc65/shared/k5_share/k5_xbox/fpga/xbox_altera_mems/altera_mf.v
 /project/tsmc65/shared/k5_share/k5_xbox/fpga/xbox_altera_mems/altera_sp_ram_1024x256_be.v
 -DEFINE
@@ -73,7 +79,7 @@ XMEM_INTRFC
 -DEFINE
 MAX10_FPGA
 -DEFINE
-CRNT_XLR=FFT_conv
+CRNT_XLR=slrx
 -CDSLIB
 ./xcelium.d/run.lnx8664.23.09.d/cdsrun.lib
 -HDLVAR

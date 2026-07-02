@@ -1,0 +1,69 @@
+xrun command: xrun -sv -f $K5_XBOX_ENV/tb/k5_xbox_tb_irun.f -UNBUFFERED -delay_trigger +define+XMEM_INTRFC +define+MAX10_FPGA +define+CRNT_XLR=slrx
+TOOL:	xrun(64)	23.09-s013: Started on Jun 30, 2026 at 14:56:21 UTC
+xrun(64): 23.09-s013: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
+Recompiling... reason: file '../hw/xlrs/slrx/linear/linear.sv' is newer than expected.
+	expected: Tue Jun 30 14:42:01 2026
+	actual:   Tue Jun 30 14:55:23 2026
+file: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/linear/linear.sv
+	module worklib.linear:sv
+		errors: 0, warnings: 0
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+	Top level design units:
+		xbox_def_pkg
+		mem_intf_pkg
+		slrx_def_pkg
+		k5_pkg
+		seg7_art_pkg
+		k5_smart_uart_pkg
+		sock
+		k5_tb_tasks_pkg
+		$unit_0x1ed5773f
+		k5_tb
+    $fatal("NUM_MEMS other than 2 not supported by mannix_mem_farm_lite.sv");
+                                                                          |
+xmelab: *W,STRINT (/project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mannix_mem_farm_lite.sv,157|74): String literal argument supplied to integer parameter.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.linear:sv <0x5556fd9e>
+			streams:  18, words: 28736
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                 55      34
+		Interfaces:              13       5
+		Verilog packages:         8       8
+		Registers:             1001     833
+		Scalar wires:           382       -
+		Vectored wires:         530       -
+		Always blocks:          121      96
+		Initial blocks:           7       7
+		Cont. assignments:      462     407
+		Pseudo assignments:     188       -
+		Compilation units:        1       1
+		Process Clocks:          67       4
+		Simulation timescale:   1ps
+	Writing initial simulation snapshot: worklib.k5_tb:sv
+xmsim: *W,RNMBF: Failed to re-read the args file:  $K5_XBOX_ENV/tb/k5_xbox_tb_irun.f.  This could result in the loss of user defined plus options.
+Loading snapshot worklib.k5_tb:sv .................... Done
+xcelium> source /tools/cadence/XCELIUM/23.09.013/tools/xcelium/files/xmsimrc
+xcelium> run
+
+
+ uart_tb.sv: UART TB INFO: DFLT_BAUDRATE = 115200     , CLK_DIV_CNTR =867       
+User Name is mentcy hashed to unique port number 23596
+Assigned port localhost:23596
+Waiting for server connection
+uart_tb.sv: PY: Hello from Python, got your message: Hello from System-Verilog!
+uart_tb.sv: Remote Python changed UART clk_div_cntr value to     4 (decimal)
+uart_tb.sv: Remote Python changed UART ns_per_bit_actual from 8680.000000 to 50.000000 
+
+
+ 339866695ns uart_tb.sv: Detected remote quit command. Quitting 
+
+
+Simulation complete via $finish(1) at time 339866695 NS + 1
+/project/tsmc65/shared/k5_share/kuntz5/src/tb/k5_uart_tb.sv:305                                     $finish ;
+xcelium> exit
+TOOL:	xrun(64)	23.09-s013: Exiting on Jun 30, 2026 at 14:57:55 UTC  (total: 00:01:34)

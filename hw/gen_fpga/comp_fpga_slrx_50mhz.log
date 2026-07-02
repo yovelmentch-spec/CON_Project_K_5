@@ -1,0 +1,38 @@
+Synthesis mapping...
+Done Synthesis ...
+
+
+Total FPGA Logic Elements (out of about 50K available):   27,045
+Total FPGA memory registers:     6,199
+Total FPGA memory bits (out of about 1.6 Mbit available): 1,327,608
+Info: Quartus Prime Analysis & Synthesis was successful. 0  errors, 22 non-justified warnings
+Please Check Report for following non-justified Warnning IDs
+[272007, 12158, 10027, 10030, 12020, 12161]
+
+For more details see output_files/k5_xbox_rc3.map.rpt
+
+
+Checking Fit ...
+
+
+Info: Quartus Prime Fitter was successful. 0  errors, 0 non-justified warnings
+
+For more details see output_files/k5_xbox_rc3.fit.rpt
+
+
+Checking Timing (STA) ...
+
+
+Info: Quartus Prime Timing Analyzer was successful. 0  errors, 1 non-justified warnings
+Please Check Report for following non-justified Warnning IDs
+[332148]
+
+Max FPGA Frequency 49.82 MHz
+
+
+For more details see output_files/k5_xbox_rc3.sta.rpt
+
+
+FPGA programming file successfully generated and linked to your Desktop k5_xbox_links/k5_xbox_slrx.sof
+Download to FPGA board connected machine for execution
+NOTICE: you should also download to the FPGA hosting machine your accelerator app C sources in case changed

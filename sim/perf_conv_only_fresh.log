@@ -1,0 +1,49 @@
+Compiling Application slrx
+/data/project/tsmc65/users/mentcy/ws/my_k5_proj/sim
+User Name is mentcy , hashed to unique port number 23596
+
+PY: starting up on localhost port 23596
+PY: waiting for a simulation session connection
+PY connection from ('127.0.0.1', 42102)
+PY: received Hello from System-Verilog!
+
+PY: sending data back to the client
+k5_server.py: Detected system clock speed 100 MHz
+Currently Baudrate can be updated only in FPGA , keeping simulation default baudrate 20000000
+PY: Changing UART baudrate  to 20000000
+PY: Changing UART interface clk_div_cntr to 4 (decimal)
+Configuring TB Uart clk_div_cntr to 4
+Server in app_mode, launching slrx
+Loading app slrx for thread 0
+Loading app by sim-fast-back-door mode /data/project/tsmc65/users/mentcy/ws/my_k5_proj/sw/apps/slrx/build/instr_loadmem.txt
+Loading app by sim-fast-back-door mode /data/project/tsmc65/users/mentcy/ws/my_k5_proj/sw/apps/slrx/build/data_loadmem.txt
+Running in Single Thread Mode (STM)
+Enabled thread 0
+DONE launch_app slrx, launch_type = spmt for thread 0
+
+
+HELLO K5X SLR : Sign Language Recognition
+
+Loading 1964 model parameters from $SLR_SHARED/pt/workspace/slr_tmw_mnx_params.txt
+pyshell: Opening file /project/tsmc65/shared/k5_share/slrx_ref/sw/apps/slr_shared/pt/workspace/slr_tmw_mnx_params.txt of type r , file Index is 0
+Loading from $SLR_SHARED/pt/workspace/slr_tmw_mnx_params.txt to address 0x40000000 , byte length : 1964
+Loaded 1964 bytes
+pyshell: Closing file /project/tsmc65/shared/k5_share/slrx_ref/sw/apps/slr_shared/pt/workspace/slr_tmw_mnx_params.txt, file Index is 0
+Allocated total 1389 bytes of for intermediate feature -maps
+
+
+pyshell: Opening file /project/tsmc65/shared/k5_share/slrx_ref/sw/apps/slr_shared/pt/workspace/slr_ds_mnx.txt of type r , file Index is 0
+
+
+DETECTED TEXT: "we aru nhe chemriows"
+
+
+***** Tested 20 images,  Passed: 15, Fail: 5, Success: 75.0% *****
+
+
+pyshell: Closing file /project/tsmc65/shared/k5_share/slrx_ref/sw/apps/slr_shared/pt/workspace/slr_ds_mnx.txt, file Index is 0
+
+ pyshell: Quitting Application upon sim_finish()/bm_quit_app() message received over UART
+Thread 0 DONE quit_app detected
+No active thread
+Server is Quitting

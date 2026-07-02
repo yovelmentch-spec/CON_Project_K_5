@@ -1,0 +1,18 @@
+Fitter Status : Successful - Thu Jun 11 10:13:43 2026
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+Revision Name : pool
+Top-level Entity Name : qsyn_dummy_xlr_wrap
+Family : MAX 10
+Device : 10M50DAF484C7G
+Timing Models : Final
+Total logic elements : 1,240 / 49,760 ( 2 % )
+    Total combinational functions : 1,225 / 49,760 ( 2 % )
+    Dedicated logic registers : 925 / 49,760 ( 2 % )
+Total registers : 925
+Total pins : 120 / 360 ( 33 % )
+Total virtual pins : 0
+Total memory bits : 0 / 1,677,312 ( 0 % )
+Embedded Multiplier 9-bit elements : 2 / 288 ( < 1 % )
+Total PLLs : 0 / 4 ( 0 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )
