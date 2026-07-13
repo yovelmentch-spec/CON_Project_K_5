@@ -1,7 +1,7 @@
 # K5-XBOX FFT Config - 32-byte aligned
 
-40 2a 00 40  # c_addr = 40002a40
-40 2b 00 40  # x_addr = 40002b40
-40 2c 00 40  # y_addr = 40002c40
+e0 e6 00 40  # c_addr = 4000e6e0
+e0 e7 00 40  # x_addr = 4000e7e0
+e0 e8 00 40  # y_addr = 4000e8e0
 00 01 00 00  # n = 00000100 (256 decimal)
 01 00 00 00  # mode = 00000001 (1 decimal)

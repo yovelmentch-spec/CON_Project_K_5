@@ -1,0 +1,305 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Wed Jul  8 12:20:55 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FFT_conv -c FFT_conv
+Info (12021): Found 1 design units, including 0 entities, in source file /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_def_pkg.sv
+    Info (12022): Found design unit 1: xbox_def_pkg (SystemVerilog) File: /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_def_pkg.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_intf_read.sv
+    Info (12023): Found entity 1: mem_intf_read File: /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_intf_read.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_intf_write.sv
+    Info (12023): Found entity 1: mem_intf_write File: /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_intf_write.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv
+    Info (12023): Found entity 1: qsyn_dummy_xlr_wrap File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv
+    Info (12023): Found entity 1: FFT_conv File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv Line: 35
+Info (12021): Found 1 design units, including 1 entities, in source file /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/div.sv
+    Info (12023): Found entity 1: divu_int File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/div.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv
+    Info (12023): Found entity 1: fft_engine File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 28
+Info (12127): Elaborating entity "qsyn_dummy_xlr_wrap" for the top level hierarchy
+Info (12128): Elaborating entity "mem_intf_read" for hierarchy "mem_intf_read:mem_intf_read" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 33
+Warning (12158): Entity "mem_intf_read" contains only dangling pins File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 33
+Info (12128): Elaborating entity "mem_intf_write" for hierarchy "mem_intf_write:mem_intf_write" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 34
+Warning (12158): Entity "mem_intf_write" contains only dangling pins File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 34
+Info (12128): Elaborating entity "FFT_conv" for hierarchy "FFT_conv:FFT_conv" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 62
+Warning (10036): Verilog HDL or VHDL warning at FFT_conv.sv(109): object "mode" assigned a value but never read File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv Line: 109
+Warning (10230): Verilog HDL assignment warning at FFT_conv.sv(957): truncated value with size 64 to match size of target (32) File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv Line: 957
+Info (10264): Verilog HDL Case Statement information at FFT_conv.sv(336): all case item expressions in this case statement are onehot File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv Line: 336
+Info (10264): Verilog HDL Case Statement information at FFT_conv.sv(692): all case item expressions in this case statement are onehot File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv Line: 692
+Info (12128): Elaborating entity "fft_engine" for hierarchy "FFT_conv:FFT_conv|fft_engine:u_fft" File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv Line: 322
+Info (10264): Verilog HDL Case Statement information at fft_engine.sv(163): all case item expressions in this case statement are onehot File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 163
+Warning (10762): Verilog HDL Case Statement warning at fft_engine.sv(203): can't check case statement for completeness because the case expression has too many possible states File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 203
+Info (10264): Verilog HDL Case Statement information at fft_engine.sv(203): all case item expressions in this case statement are onehot File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 203
+Warning (10230): Verilog HDL assignment warning at fft_engine.sv(557): truncated value with size 64 to match size of target (32) File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 557
+Warning (10030): Net "tw_rom_re.data_a" at fft_engine.sv(218) has no driver or initial value, using a default initial value '0' File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 218
+Warning (10030): Net "tw_rom_re.waddr_a" at fft_engine.sv(218) has no driver or initial value, using a default initial value '0' File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 218
+Warning (10030): Net "tw_rom_im.data_a" at fft_engine.sv(219) has no driver or initial value, using a default initial value '0' File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 219
+Warning (10030): Net "tw_rom_im.waddr_a" at fft_engine.sv(219) has no driver or initial value, using a default initial value '0' File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 219
+Warning (10030): Net "tw_rom_re.we_a" at fft_engine.sv(218) has no driver or initial value, using a default initial value '0' File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 218
+Warning (10030): Net "tw_rom_im.we_a" at fft_engine.sv(219) has no driver or initial value, using a default initial value '0' File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 219
+Info (12128): Elaborating entity "divu_int" for hierarchy "FFT_conv:FFT_conv|divu_int:u_div" File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv Line: 388
+Info (276014): Found 2 instances of uninferred RAM logic
+    Info (276013): RAM logic "FFT_conv:FFT_conv|fft_engine:u_fft|tw_rom_im" is uninferred because MIF is not supported for the selected family File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 219
+    Info (276013): RAM logic "FFT_conv:FFT_conv|fft_engine:u_fft|tw_rom_re" is uninferred because MIF is not supported for the selected family File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 218
+Info (19000): Inferred 8 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "FFT_conv:FFT_conv|yraw_mem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 256
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 8
+        Info (286033): Parameter NUMWORDS_B set to 256
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "FFT_conv:FFT_conv|y_mem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 256
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 8
+        Info (286033): Parameter NUMWORDS_B set to 256
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "FFT_conv:FFT_conv|fft_engine:u_fft|buf_re_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 256
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 8
+        Info (286033): Parameter NUMWORDS_B set to 256
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "FFT_conv:FFT_conv|mul_re_mem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 256
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 8
+        Info (286033): Parameter NUMWORDS_B set to 256
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "FFT_conv:FFT_conv|fft_engine:u_fft|buf_im_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 256
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 8
+        Info (286033): Parameter NUMWORDS_B set to 256
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "FFT_conv:FFT_conv|cfft_im_mem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 256
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 8
+        Info (286033): Parameter NUMWORDS_B set to 256
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "FFT_conv:FFT_conv|cfft_re_mem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 256
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 8
+        Info (286033): Parameter NUMWORDS_B set to 256
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "FFT_conv:FFT_conv|mul_im_mem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 256
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 8
+        Info (286033): Parameter NUMWORDS_B set to 256
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+Info (278001): Inferred 8 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "FFT_conv:FFT_conv|Mult0" File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv Line: 780
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "FFT_conv:FFT_conv|Mult3" File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv Line: 783
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "FFT_conv:FFT_conv|Mult2" File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv Line: 782
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "FFT_conv:FFT_conv|fft_engine:u_fft|Mult0" File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 435
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "FFT_conv:FFT_conv|Mult1" File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv Line: 781
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "FFT_conv:FFT_conv|fft_engine:u_fft|Mult3" File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 438
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "FFT_conv:FFT_conv|fft_engine:u_fft|Mult2" File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 437
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "FFT_conv:FFT_conv|fft_engine:u_fft|Mult1" File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 436
+Info (12130): Elaborated megafunction instantiation "FFT_conv:FFT_conv|altsyncram:yraw_mem_rtl_0"
+Info (12133): Instantiated megafunction "FFT_conv:FFT_conv|altsyncram:yraw_mem_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "8"
+    Info (12134): Parameter "NUMWORDS_A" = "256"
+    Info (12134): Parameter "WIDTH_B" = "32"
+    Info (12134): Parameter "WIDTHAD_B" = "8"
+    Info (12134): Parameter "NUMWORDS_B" = "256"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "M9K"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_n6i1.tdf
+    Info (12023): Found entity 1: altsyncram_n6i1 File: /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/db/altsyncram_n6i1.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "FFT_conv:FFT_conv|altsyncram:y_mem_rtl_0"
+Info (12133): Instantiated megafunction "FFT_conv:FFT_conv|altsyncram:y_mem_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTHAD_A" = "8"
+    Info (12134): Parameter "NUMWORDS_A" = "256"
+    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTHAD_B" = "8"
+    Info (12134): Parameter "NUMWORDS_B" = "256"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "M9K"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_t3i1.tdf
+    Info (12023): Found entity 1: altsyncram_t3i1 File: /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/db/altsyncram_t3i1.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "FFT_conv:FFT_conv|lpm_mult:Mult0" File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv Line: 780
+Info (12133): Instantiated megafunction "FFT_conv:FFT_conv|lpm_mult:Mult0" with the following parameter: File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv Line: 780
+    Info (12134): Parameter "LPM_WIDTHA" = "32"
+    Info (12134): Parameter "LPM_WIDTHB" = "32"
+    Info (12134): Parameter "LPM_WIDTHP" = "64"
+    Info (12134): Parameter "LPM_WIDTHR" = "64"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_qgs.tdf
+    Info (12023): Found entity 1: mult_qgs File: /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/db/mult_qgs.tdf Line: 31
+Info (12130): Elaborated megafunction instantiation "FFT_conv:FFT_conv|fft_engine:u_fft|lpm_mult:Mult0" File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 435
+Info (12133): Instantiated megafunction "FFT_conv:FFT_conv|fft_engine:u_fft|lpm_mult:Mult0" with the following parameter: File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv Line: 435
+    Info (12134): Parameter "LPM_WIDTHA" = "32"
+    Info (12134): Parameter "LPM_WIDTHB" = "17"
+    Info (12134): Parameter "LPM_WIDTHP" = "49"
+    Info (12134): Parameter "LPM_WIDTHR" = "49"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_0hs.tdf
+    Info (12023): Found entity 1: mult_0hs File: /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/db/mult_0hs.tdf Line: 31
+Info (13014): Ignored 868 buffer(s)
+    Info (13019): Ignored 868 SOFT buffer(s)
+Info (13000): Registers with preset signals will power-up high File: /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv Line: 692
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 167 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 15 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "host_regs_read_pulse[0]" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 26
+    Warning (15610): No output dependent on input pin "host_regs_read_pulse[1]" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 26
+    Warning (15610): No output dependent on input pin "host_regs_read_pulse[2]" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 26
+    Warning (15610): No output dependent on input pin "host_regs_read_pulse[3]" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 26
+    Warning (15610): No output dependent on input pin "host_regs_read_pulse[4]" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 26
+    Warning (15610): No output dependent on input pin "host_regs_read_pulse[5]" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 26
+    Warning (15610): No output dependent on input pin "host_regs_read_pulse[7]" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 26
+    Warning (15610): No output dependent on input pin "host_regs_read_pulse[8]" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 26
+    Warning (15610): No output dependent on input pin "host_regs_read_pulse[9]" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 26
+    Warning (15610): No output dependent on input pin "host_regs_read_pulse[10]" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 26
+    Warning (15610): No output dependent on input pin "host_regs_read_pulse[11]" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 26
+    Warning (15610): No output dependent on input pin "host_regs_read_pulse[12]" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 26
+    Warning (15610): No output dependent on input pin "host_regs_read_pulse[13]" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 26
+    Warning (15610): No output dependent on input pin "host_regs_read_pulse[14]" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 26
+    Warning (15610): No output dependent on input pin "host_regs_read_pulse[15]" File: /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv Line: 26
+Info (21057): Implemented 4586 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 63 input pins
+    Info (21059): Implemented 57 output pins
+    Info (21061): Implemented 4186 logic cells
+    Info (21064): Implemented 232 RAM segments
+    Info (21062): Implemented 48 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 28 warnings
+    Info: Peak virtual memory: 684 megabytes
+    Info: Processing ended: Wed Jul  8 12:21:37 2026
+    Info: Elapsed time: 00:00:42
+    Info: Total CPU time (on all processors): 00:00:00

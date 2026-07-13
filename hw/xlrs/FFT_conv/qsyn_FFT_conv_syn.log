@@ -1,0 +1,21 @@
+Checking Synthesis ...
+Done Synthesis ...
+
+
+Total FPGA Logic Elements:       5,330
+Total FPGA memory registers:     1,495
+Total FPGA memory bits:         59,392
+Total FPGA memory bits:         59,392
+Info: Quartus Prime Analysis & Synthesis was successful. 0  errors, 12 non-justified warnings
+Please Check Report for following non-justified Warnning IDs
+[12158, 10036, 10230, 10762, 10030]
+
+NOTICE! Your design include some possible justified warnings as:
+"No output dependent on input pin"
+"input pin(s) that do not drive logic"
+Please Carefully review the report and make sure the specific reported unused inputs are justified
+
+
+For more details see qsyn_output_files/FFT_conv.map.rpt
+
+

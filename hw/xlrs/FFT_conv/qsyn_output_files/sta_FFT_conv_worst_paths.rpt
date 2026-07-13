@@ -1,0 +1,2135 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Wed Jul  8 12:23:23 2026
+Info: Command: quartus_sta -t /data/project/tsmc65/shared/qsyn/util/report_worst.tcl FFT_conv
+Info: Quartus(args): FFT_conv
+Info (21076): High junction temperature operating condition is not set. Assuming a default value of '85'.
+Info (21076): Low junction temperature operating condition is not set. Assuming a default value of '0'.
+Critical Warning (332012): Synopsys Design Constraints File file not found: '/data/project/tsmc65/shared/qsyn/basic.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name clk clk
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info (332115): Report Timing: Found 20 setup paths (20 violated).  Worst case slack is -13.006
+    Info (332115): -setup
+    Info (332115): -npaths 20
+    Info (332115): -detail full_path
+    Info (332115): -stdout
+Info (332115): Path #1: Setup slack is -13.006 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[8]
+    Info (332115):      8.730      1.890 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[8]
+    Info (332115):     12.574      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.574      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.701      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.701      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.178      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.178      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.237      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.237      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.296      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.296      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.355      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.355      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.414      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.414      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.473      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.473      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.532      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.532      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.591      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.591      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     14.650      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|cout
+    Info (332115):     14.650      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~18|cin
+    Info (332115):     14.709      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~18|cout
+    Info (332115):     14.709      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~20|cin
+    Info (332115):     14.768      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~20|cout
+    Info (332115):     14.768      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~22|cin
+    Info (332115):     14.827      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~22|cout
+    Info (332115):     14.827      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~24|cin
+    Info (332115):     14.886      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~24|cout
+    Info (332115):     14.886      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~26|cin
+    Info (332115):     14.945      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~26|cout
+    Info (332115):     14.945      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~28|cin
+    Info (332115):     15.004      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~28|cout
+    Info (332115):     15.004      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~30|cin
+    Info (332115):     15.063      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~30|cout
+    Info (332115):     15.063      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~32|cin
+    Info (332115):     15.122      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~32|cout
+    Info (332115):     15.122      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~34|cin
+    Info (332115):     15.181      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~34|cout
+    Info (332115):     15.181      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~36|cin
+    Info (332115):     15.240      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~36|cout
+    Info (332115):     15.240      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~38|cin
+    Info (332115):     15.299      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~38|cout
+    Info (332115):     15.299      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~40|cin
+    Info (332115):     15.904      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~40|combout
+    Info (332115):     16.356      0.452 FF    IC  FFT_conv|pp_ri[38]~69|dataa
+    Info (332115):     16.833      0.477 FF  CELL  FFT_conv|pp_ri[38]~69|cout
+    Info (332115):     16.833      0.000 FF    IC  FFT_conv|pp_ri[39]~71|cin
+    Info (332115):     16.892      0.059 FR  CELL  FFT_conv|pp_ri[39]~71|cout
+    Info (332115):     16.892      0.000 RR    IC  FFT_conv|pp_ri[40]~73|cin
+    Info (332115):     16.951      0.059 RF  CELL  FFT_conv|pp_ri[40]~73|cout
+    Info (332115):     16.951      0.000 FF    IC  FFT_conv|pp_ri[41]~75|cin
+    Info (332115):     17.010      0.059 FR  CELL  FFT_conv|pp_ri[41]~75|cout
+    Info (332115):     17.010      0.000 RR    IC  FFT_conv|pp_ri[42]~77|cin
+    Info (332115):     17.069      0.059 RF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.069      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.128      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.128      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.187      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.187      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.246      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.246      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.883      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.883      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.972      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.972
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -13.006 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #2: Setup slack is -13.006 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[8]
+    Info (332115):      8.730      1.890 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[8]
+    Info (332115):     12.574      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.574      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.701      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.701      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.178      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.178      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.237      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.237      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.296      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.296      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.355      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.355      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.960      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|combout
+    Info (332115):     15.412      0.452 FF    IC  FFT_conv|pp_ri[22]~37|dataa
+    Info (332115):     15.889      0.477 FF  CELL  FFT_conv|pp_ri[22]~37|cout
+    Info (332115):     15.889      0.000 FF    IC  FFT_conv|pp_ri[23]~39|cin
+    Info (332115):     15.948      0.059 FR  CELL  FFT_conv|pp_ri[23]~39|cout
+    Info (332115):     15.948      0.000 RR    IC  FFT_conv|pp_ri[24]~41|cin
+    Info (332115):     16.007      0.059 RF  CELL  FFT_conv|pp_ri[24]~41|cout
+    Info (332115):     16.007      0.000 FF    IC  FFT_conv|pp_ri[25]~43|cin
+    Info (332115):     16.066      0.059 FR  CELL  FFT_conv|pp_ri[25]~43|cout
+    Info (332115):     16.066      0.000 RR    IC  FFT_conv|pp_ri[26]~45|cin
+    Info (332115):     16.125      0.059 RF  CELL  FFT_conv|pp_ri[26]~45|cout
+    Info (332115):     16.125      0.000 FF    IC  FFT_conv|pp_ri[27]~47|cin
+    Info (332115):     16.184      0.059 FR  CELL  FFT_conv|pp_ri[27]~47|cout
+    Info (332115):     16.184      0.000 RR    IC  FFT_conv|pp_ri[28]~49|cin
+    Info (332115):     16.243      0.059 RF  CELL  FFT_conv|pp_ri[28]~49|cout
+    Info (332115):     16.243      0.000 FF    IC  FFT_conv|pp_ri[29]~51|cin
+    Info (332115):     16.302      0.059 FR  CELL  FFT_conv|pp_ri[29]~51|cout
+    Info (332115):     16.302      0.000 RR    IC  FFT_conv|pp_ri[30]~53|cin
+    Info (332115):     16.361      0.059 RF  CELL  FFT_conv|pp_ri[30]~53|cout
+    Info (332115):     16.361      0.000 FF    IC  FFT_conv|pp_ri[31]~55|cin
+    Info (332115):     16.420      0.059 FR  CELL  FFT_conv|pp_ri[31]~55|cout
+    Info (332115):     16.420      0.000 RR    IC  FFT_conv|pp_ri[32]~57|cin
+    Info (332115):     16.479      0.059 RF  CELL  FFT_conv|pp_ri[32]~57|cout
+    Info (332115):     16.479      0.000 FF    IC  FFT_conv|pp_ri[33]~59|cin
+    Info (332115):     16.538      0.059 FR  CELL  FFT_conv|pp_ri[33]~59|cout
+    Info (332115):     16.538      0.000 RR    IC  FFT_conv|pp_ri[34]~61|cin
+    Info (332115):     16.597      0.059 RF  CELL  FFT_conv|pp_ri[34]~61|cout
+    Info (332115):     16.597      0.000 FF    IC  FFT_conv|pp_ri[35]~63|cin
+    Info (332115):     16.656      0.059 FR  CELL  FFT_conv|pp_ri[35]~63|cout
+    Info (332115):     16.656      0.000 RR    IC  FFT_conv|pp_ri[36]~65|cin
+    Info (332115):     16.715      0.059 RF  CELL  FFT_conv|pp_ri[36]~65|cout
+    Info (332115):     16.715      0.000 FF    IC  FFT_conv|pp_ri[37]~67|cin
+    Info (332115):     16.774      0.059 FR  CELL  FFT_conv|pp_ri[37]~67|cout
+    Info (332115):     16.774      0.000 RR    IC  FFT_conv|pp_ri[38]~69|cin
+    Info (332115):     16.833      0.059 RF  CELL  FFT_conv|pp_ri[38]~69|cout
+    Info (332115):     16.833      0.000 FF    IC  FFT_conv|pp_ri[39]~71|cin
+    Info (332115):     16.892      0.059 FR  CELL  FFT_conv|pp_ri[39]~71|cout
+    Info (332115):     16.892      0.000 RR    IC  FFT_conv|pp_ri[40]~73|cin
+    Info (332115):     16.951      0.059 RF  CELL  FFT_conv|pp_ri[40]~73|cout
+    Info (332115):     16.951      0.000 FF    IC  FFT_conv|pp_ri[41]~75|cin
+    Info (332115):     17.010      0.059 FR  CELL  FFT_conv|pp_ri[41]~75|cout
+    Info (332115):     17.010      0.000 RR    IC  FFT_conv|pp_ri[42]~77|cin
+    Info (332115):     17.069      0.059 RF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.069      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.128      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.128      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.187      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.187      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.246      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.246      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.883      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.883      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.972      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.972
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -13.006 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #3: Setup slack is -13.004 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[8]
+    Info (332115):      8.730      1.890 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[8]
+    Info (332115):     12.574      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.574      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.701      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.701      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.178      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.178      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.237      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.237      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.296      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.296      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.355      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.355      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.414      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.414      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.473      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.473      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.532      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.532      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.591      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.591      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     14.650      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|cout
+    Info (332115):     14.650      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~18|cin
+    Info (332115):     14.709      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~18|cout
+    Info (332115):     14.709      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~20|cin
+    Info (332115):     14.768      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~20|cout
+    Info (332115):     14.768      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~22|cin
+    Info (332115):     14.827      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~22|cout
+    Info (332115):     14.827      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~24|cin
+    Info (332115):     14.886      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~24|cout
+    Info (332115):     14.886      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~26|cin
+    Info (332115):     14.945      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~26|cout
+    Info (332115):     14.945      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~28|cin
+    Info (332115):     15.004      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~28|cout
+    Info (332115):     15.004      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~30|cin
+    Info (332115):     15.063      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~30|cout
+    Info (332115):     15.063      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~32|cin
+    Info (332115):     15.122      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~32|cout
+    Info (332115):     15.122      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~34|cin
+    Info (332115):     15.181      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~34|cout
+    Info (332115):     15.181      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~36|cin
+    Info (332115):     15.240      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~36|cout
+    Info (332115):     15.240      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~38|cin
+    Info (332115):     15.299      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~38|cout
+    Info (332115):     15.299      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~40|cin
+    Info (332115):     15.358      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~40|cout
+    Info (332115):     15.358      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~42|cin
+    Info (332115):     15.417      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~42|cout
+    Info (332115):     15.417      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~44|cin
+    Info (332115):     15.476      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~44|cout
+    Info (332115):     15.476      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~46|cin
+    Info (332115):     15.535      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~46|cout
+    Info (332115):     15.535      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~48|cin
+    Info (332115):     15.594      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~48|cout
+    Info (332115):     15.594      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~50|cin
+    Info (332115):     15.653      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~50|cout
+    Info (332115):     15.653      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~52|cin
+    Info (332115):     16.258      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~52|combout
+    Info (332115):     16.704      0.446 FF    IC  FFT_conv|pp_ri[44]~81|datab
+    Info (332115):     17.185      0.481 FF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.185      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.244      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.244      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.881      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.881      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.970      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.970
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -13.004 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #4: Setup slack is -13.004 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[8]
+    Info (332115):      8.730      1.890 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[8]
+    Info (332115):     12.574      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.574      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.701      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.701      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.178      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.178      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.237      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.237      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.296      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.296      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.355      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.355      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.414      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.414      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.473      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.473      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.532      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.532      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.591      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.591      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     14.650      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|cout
+    Info (332115):     14.650      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~18|cin
+    Info (332115):     14.709      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~18|cout
+    Info (332115):     14.709      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~20|cin
+    Info (332115):     14.768      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~20|cout
+    Info (332115):     14.768      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~22|cin
+    Info (332115):     14.827      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~22|cout
+    Info (332115):     14.827      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~24|cin
+    Info (332115):     14.886      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~24|cout
+    Info (332115):     14.886      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~26|cin
+    Info (332115):     14.945      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~26|cout
+    Info (332115):     14.945      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~28|cin
+    Info (332115):     15.004      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~28|cout
+    Info (332115):     15.004      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~30|cin
+    Info (332115):     15.063      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~30|cout
+    Info (332115):     15.063      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~32|cin
+    Info (332115):     15.122      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~32|cout
+    Info (332115):     15.122      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~34|cin
+    Info (332115):     15.181      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~34|cout
+    Info (332115):     15.181      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~36|cin
+    Info (332115):     15.240      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~36|cout
+    Info (332115):     15.240      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~38|cin
+    Info (332115):     15.299      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~38|cout
+    Info (332115):     15.299      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~40|cin
+    Info (332115):     15.358      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~40|cout
+    Info (332115):     15.358      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~42|cin
+    Info (332115):     15.417      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~42|cout
+    Info (332115):     15.417      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~44|cin
+    Info (332115):     15.476      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~44|cout
+    Info (332115):     15.476      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~46|cin
+    Info (332115):     15.535      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~46|cout
+    Info (332115):     15.535      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~48|cin
+    Info (332115):     16.140      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~48|combout
+    Info (332115):     16.586      0.446 FF    IC  FFT_conv|pp_ri[42]~77|datab
+    Info (332115):     17.067      0.481 FF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.067      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.126      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.126      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.185      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.185      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.244      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.244      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.881      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.881      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.970      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.970
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -13.004 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #5: Setup slack is -13.004 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[8]
+    Info (332115):      8.730      1.890 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[8]
+    Info (332115):     12.574      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.574      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.701      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.701      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.178      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.178      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.237      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.237      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.296      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.296      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.355      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.355      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.414      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.414      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.473      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.473      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.532      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.532      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.591      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.591      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     14.650      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|cout
+    Info (332115):     14.650      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~18|cin
+    Info (332115):     14.709      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~18|cout
+    Info (332115):     14.709      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~20|cin
+    Info (332115):     15.314      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~20|combout
+    Info (332115):     15.760      0.446 FF    IC  FFT_conv|pp_ri[28]~49|datab
+    Info (332115):     16.241      0.481 FF  CELL  FFT_conv|pp_ri[28]~49|cout
+    Info (332115):     16.241      0.000 FF    IC  FFT_conv|pp_ri[29]~51|cin
+    Info (332115):     16.300      0.059 FR  CELL  FFT_conv|pp_ri[29]~51|cout
+    Info (332115):     16.300      0.000 RR    IC  FFT_conv|pp_ri[30]~53|cin
+    Info (332115):     16.359      0.059 RF  CELL  FFT_conv|pp_ri[30]~53|cout
+    Info (332115):     16.359      0.000 FF    IC  FFT_conv|pp_ri[31]~55|cin
+    Info (332115):     16.418      0.059 FR  CELL  FFT_conv|pp_ri[31]~55|cout
+    Info (332115):     16.418      0.000 RR    IC  FFT_conv|pp_ri[32]~57|cin
+    Info (332115):     16.477      0.059 RF  CELL  FFT_conv|pp_ri[32]~57|cout
+    Info (332115):     16.477      0.000 FF    IC  FFT_conv|pp_ri[33]~59|cin
+    Info (332115):     16.536      0.059 FR  CELL  FFT_conv|pp_ri[33]~59|cout
+    Info (332115):     16.536      0.000 RR    IC  FFT_conv|pp_ri[34]~61|cin
+    Info (332115):     16.595      0.059 RF  CELL  FFT_conv|pp_ri[34]~61|cout
+    Info (332115):     16.595      0.000 FF    IC  FFT_conv|pp_ri[35]~63|cin
+    Info (332115):     16.654      0.059 FR  CELL  FFT_conv|pp_ri[35]~63|cout
+    Info (332115):     16.654      0.000 RR    IC  FFT_conv|pp_ri[36]~65|cin
+    Info (332115):     16.713      0.059 RF  CELL  FFT_conv|pp_ri[36]~65|cout
+    Info (332115):     16.713      0.000 FF    IC  FFT_conv|pp_ri[37]~67|cin
+    Info (332115):     16.772      0.059 FR  CELL  FFT_conv|pp_ri[37]~67|cout
+    Info (332115):     16.772      0.000 RR    IC  FFT_conv|pp_ri[38]~69|cin
+    Info (332115):     16.831      0.059 RF  CELL  FFT_conv|pp_ri[38]~69|cout
+    Info (332115):     16.831      0.000 FF    IC  FFT_conv|pp_ri[39]~71|cin
+    Info (332115):     16.890      0.059 FR  CELL  FFT_conv|pp_ri[39]~71|cout
+    Info (332115):     16.890      0.000 RR    IC  FFT_conv|pp_ri[40]~73|cin
+    Info (332115):     16.949      0.059 RF  CELL  FFT_conv|pp_ri[40]~73|cout
+    Info (332115):     16.949      0.000 FF    IC  FFT_conv|pp_ri[41]~75|cin
+    Info (332115):     17.008      0.059 FR  CELL  FFT_conv|pp_ri[41]~75|cout
+    Info (332115):     17.008      0.000 RR    IC  FFT_conv|pp_ri[42]~77|cin
+    Info (332115):     17.067      0.059 RF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.067      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.126      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.126      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.185      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.185      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.244      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.244      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.881      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.881      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.970      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.970
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -13.004 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #6: Setup slack is -13.004 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[8]
+    Info (332115):      8.730      1.890 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[8]
+    Info (332115):     12.574      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.574      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.701      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.701      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.178      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.178      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.237      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.237      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.296      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.296      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.355      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.355      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.414      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.414      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.473      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.473      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.532      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.532      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.591      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.591      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     15.196      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|combout
+    Info (332115):     15.642      0.446 FF    IC  FFT_conv|pp_ri[26]~45|datab
+    Info (332115):     16.123      0.481 FF  CELL  FFT_conv|pp_ri[26]~45|cout
+    Info (332115):     16.123      0.000 FF    IC  FFT_conv|pp_ri[27]~47|cin
+    Info (332115):     16.182      0.059 FR  CELL  FFT_conv|pp_ri[27]~47|cout
+    Info (332115):     16.182      0.000 RR    IC  FFT_conv|pp_ri[28]~49|cin
+    Info (332115):     16.241      0.059 RF  CELL  FFT_conv|pp_ri[28]~49|cout
+    Info (332115):     16.241      0.000 FF    IC  FFT_conv|pp_ri[29]~51|cin
+    Info (332115):     16.300      0.059 FR  CELL  FFT_conv|pp_ri[29]~51|cout
+    Info (332115):     16.300      0.000 RR    IC  FFT_conv|pp_ri[30]~53|cin
+    Info (332115):     16.359      0.059 RF  CELL  FFT_conv|pp_ri[30]~53|cout
+    Info (332115):     16.359      0.000 FF    IC  FFT_conv|pp_ri[31]~55|cin
+    Info (332115):     16.418      0.059 FR  CELL  FFT_conv|pp_ri[31]~55|cout
+    Info (332115):     16.418      0.000 RR    IC  FFT_conv|pp_ri[32]~57|cin
+    Info (332115):     16.477      0.059 RF  CELL  FFT_conv|pp_ri[32]~57|cout
+    Info (332115):     16.477      0.000 FF    IC  FFT_conv|pp_ri[33]~59|cin
+    Info (332115):     16.536      0.059 FR  CELL  FFT_conv|pp_ri[33]~59|cout
+    Info (332115):     16.536      0.000 RR    IC  FFT_conv|pp_ri[34]~61|cin
+    Info (332115):     16.595      0.059 RF  CELL  FFT_conv|pp_ri[34]~61|cout
+    Info (332115):     16.595      0.000 FF    IC  FFT_conv|pp_ri[35]~63|cin
+    Info (332115):     16.654      0.059 FR  CELL  FFT_conv|pp_ri[35]~63|cout
+    Info (332115):     16.654      0.000 RR    IC  FFT_conv|pp_ri[36]~65|cin
+    Info (332115):     16.713      0.059 RF  CELL  FFT_conv|pp_ri[36]~65|cout
+    Info (332115):     16.713      0.000 FF    IC  FFT_conv|pp_ri[37]~67|cin
+    Info (332115):     16.772      0.059 FR  CELL  FFT_conv|pp_ri[37]~67|cout
+    Info (332115):     16.772      0.000 RR    IC  FFT_conv|pp_ri[38]~69|cin
+    Info (332115):     16.831      0.059 RF  CELL  FFT_conv|pp_ri[38]~69|cout
+    Info (332115):     16.831      0.000 FF    IC  FFT_conv|pp_ri[39]~71|cin
+    Info (332115):     16.890      0.059 FR  CELL  FFT_conv|pp_ri[39]~71|cout
+    Info (332115):     16.890      0.000 RR    IC  FFT_conv|pp_ri[40]~73|cin
+    Info (332115):     16.949      0.059 RF  CELL  FFT_conv|pp_ri[40]~73|cout
+    Info (332115):     16.949      0.000 FF    IC  FFT_conv|pp_ri[41]~75|cin
+    Info (332115):     17.008      0.059 FR  CELL  FFT_conv|pp_ri[41]~75|cout
+    Info (332115):     17.008      0.000 RR    IC  FFT_conv|pp_ri[42]~77|cin
+    Info (332115):     17.067      0.059 RF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.067      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.126      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.126      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.185      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.185      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.244      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.244      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.881      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.881      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.970      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.970
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -13.004 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #7: Setup slack is -13.003 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[8]
+    Info (332115):      8.730      1.890 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[8]
+    Info (332115):     12.574      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.574      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.701      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.701      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.178      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.178      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.237      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.237      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.296      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.296      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.355      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.355      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.414      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.414      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.473      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.473      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.532      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.532      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.591      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.591      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     14.650      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|cout
+    Info (332115):     14.650      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~18|cin
+    Info (332115):     14.709      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~18|cout
+    Info (332115):     14.709      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~20|cin
+    Info (332115):     14.768      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~20|cout
+    Info (332115):     14.768      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~22|cin
+    Info (332115):     14.827      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~22|cout
+    Info (332115):     14.827      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~24|cin
+    Info (332115):     15.432      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~24|combout
+    Info (332115):     15.877      0.445 FF    IC  FFT_conv|pp_ri[30]~53|datab
+    Info (332115):     16.358      0.481 FF  CELL  FFT_conv|pp_ri[30]~53|cout
+    Info (332115):     16.358      0.000 FF    IC  FFT_conv|pp_ri[31]~55|cin
+    Info (332115):     16.417      0.059 FR  CELL  FFT_conv|pp_ri[31]~55|cout
+    Info (332115):     16.417      0.000 RR    IC  FFT_conv|pp_ri[32]~57|cin
+    Info (332115):     16.476      0.059 RF  CELL  FFT_conv|pp_ri[32]~57|cout
+    Info (332115):     16.476      0.000 FF    IC  FFT_conv|pp_ri[33]~59|cin
+    Info (332115):     16.535      0.059 FR  CELL  FFT_conv|pp_ri[33]~59|cout
+    Info (332115):     16.535      0.000 RR    IC  FFT_conv|pp_ri[34]~61|cin
+    Info (332115):     16.594      0.059 RF  CELL  FFT_conv|pp_ri[34]~61|cout
+    Info (332115):     16.594      0.000 FF    IC  FFT_conv|pp_ri[35]~63|cin
+    Info (332115):     16.653      0.059 FR  CELL  FFT_conv|pp_ri[35]~63|cout
+    Info (332115):     16.653      0.000 RR    IC  FFT_conv|pp_ri[36]~65|cin
+    Info (332115):     16.712      0.059 RF  CELL  FFT_conv|pp_ri[36]~65|cout
+    Info (332115):     16.712      0.000 FF    IC  FFT_conv|pp_ri[37]~67|cin
+    Info (332115):     16.771      0.059 FR  CELL  FFT_conv|pp_ri[37]~67|cout
+    Info (332115):     16.771      0.000 RR    IC  FFT_conv|pp_ri[38]~69|cin
+    Info (332115):     16.830      0.059 RF  CELL  FFT_conv|pp_ri[38]~69|cout
+    Info (332115):     16.830      0.000 FF    IC  FFT_conv|pp_ri[39]~71|cin
+    Info (332115):     16.889      0.059 FR  CELL  FFT_conv|pp_ri[39]~71|cout
+    Info (332115):     16.889      0.000 RR    IC  FFT_conv|pp_ri[40]~73|cin
+    Info (332115):     16.948      0.059 RF  CELL  FFT_conv|pp_ri[40]~73|cout
+    Info (332115):     16.948      0.000 FF    IC  FFT_conv|pp_ri[41]~75|cin
+    Info (332115):     17.007      0.059 FR  CELL  FFT_conv|pp_ri[41]~75|cout
+    Info (332115):     17.007      0.000 RR    IC  FFT_conv|pp_ri[42]~77|cin
+    Info (332115):     17.066      0.059 RF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.066      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.125      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.125      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.184      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.184      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.243      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.243      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.880      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.880      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.969      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.969
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -13.003 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #8: Setup slack is -13.002 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[15]
+    Info (332115):      8.726      1.886 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[15]
+    Info (332115):     12.570      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.570      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.697      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.697      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.174      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.174      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.233      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.233      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.292      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.292      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.351      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.351      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.410      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.410      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.469      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.469      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.528      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.528      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.587      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.587      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     14.646      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|cout
+    Info (332115):     14.646      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~18|cin
+    Info (332115):     14.705      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~18|cout
+    Info (332115):     14.705      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~20|cin
+    Info (332115):     14.764      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~20|cout
+    Info (332115):     14.764      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~22|cin
+    Info (332115):     14.823      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~22|cout
+    Info (332115):     14.823      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~24|cin
+    Info (332115):     14.882      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~24|cout
+    Info (332115):     14.882      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~26|cin
+    Info (332115):     14.941      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~26|cout
+    Info (332115):     14.941      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~28|cin
+    Info (332115):     15.000      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~28|cout
+    Info (332115):     15.000      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~30|cin
+    Info (332115):     15.059      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~30|cout
+    Info (332115):     15.059      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~32|cin
+    Info (332115):     15.118      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~32|cout
+    Info (332115):     15.118      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~34|cin
+    Info (332115):     15.177      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~34|cout
+    Info (332115):     15.177      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~36|cin
+    Info (332115):     15.236      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~36|cout
+    Info (332115):     15.236      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~38|cin
+    Info (332115):     15.295      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~38|cout
+    Info (332115):     15.295      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~40|cin
+    Info (332115):     15.900      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~40|combout
+    Info (332115):     16.352      0.452 FF    IC  FFT_conv|pp_ri[38]~69|dataa
+    Info (332115):     16.829      0.477 FF  CELL  FFT_conv|pp_ri[38]~69|cout
+    Info (332115):     16.829      0.000 FF    IC  FFT_conv|pp_ri[39]~71|cin
+    Info (332115):     16.888      0.059 FR  CELL  FFT_conv|pp_ri[39]~71|cout
+    Info (332115):     16.888      0.000 RR    IC  FFT_conv|pp_ri[40]~73|cin
+    Info (332115):     16.947      0.059 RF  CELL  FFT_conv|pp_ri[40]~73|cout
+    Info (332115):     16.947      0.000 FF    IC  FFT_conv|pp_ri[41]~75|cin
+    Info (332115):     17.006      0.059 FR  CELL  FFT_conv|pp_ri[41]~75|cout
+    Info (332115):     17.006      0.000 RR    IC  FFT_conv|pp_ri[42]~77|cin
+    Info (332115):     17.065      0.059 RF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.065      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.124      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.124      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.183      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.183      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.242      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.242      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.879      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.879      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.968      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.968
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -13.002 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #9: Setup slack is -13.002 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[8]
+    Info (332115):      8.730      1.890 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[8]
+    Info (332115):     12.574      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.574      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.701      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.701      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.178      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.178      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.237      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.237      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.296      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.296      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.355      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.355      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.414      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.414      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.473      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.473      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.532      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.532      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.591      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.591      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     14.650      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|cout
+    Info (332115):     14.650      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~18|cin
+    Info (332115):     14.709      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~18|cout
+    Info (332115):     14.709      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~20|cin
+    Info (332115):     14.768      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~20|cout
+    Info (332115):     14.768      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~22|cin
+    Info (332115):     14.827      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~22|cout
+    Info (332115):     14.827      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~24|cin
+    Info (332115):     14.886      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~24|cout
+    Info (332115):     14.886      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~26|cin
+    Info (332115):     14.945      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~26|cout
+    Info (332115):     14.945      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~28|cin
+    Info (332115):     15.550      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~28|combout
+    Info (332115):     15.998      0.448 FF    IC  FFT_conv|pp_ri[32]~57|dataa
+    Info (332115):     16.475      0.477 FF  CELL  FFT_conv|pp_ri[32]~57|cout
+    Info (332115):     16.475      0.000 FF    IC  FFT_conv|pp_ri[33]~59|cin
+    Info (332115):     16.534      0.059 FR  CELL  FFT_conv|pp_ri[33]~59|cout
+    Info (332115):     16.534      0.000 RR    IC  FFT_conv|pp_ri[34]~61|cin
+    Info (332115):     16.593      0.059 RF  CELL  FFT_conv|pp_ri[34]~61|cout
+    Info (332115):     16.593      0.000 FF    IC  FFT_conv|pp_ri[35]~63|cin
+    Info (332115):     16.652      0.059 FR  CELL  FFT_conv|pp_ri[35]~63|cout
+    Info (332115):     16.652      0.000 RR    IC  FFT_conv|pp_ri[36]~65|cin
+    Info (332115):     16.711      0.059 RF  CELL  FFT_conv|pp_ri[36]~65|cout
+    Info (332115):     16.711      0.000 FF    IC  FFT_conv|pp_ri[37]~67|cin
+    Info (332115):     16.770      0.059 FR  CELL  FFT_conv|pp_ri[37]~67|cout
+    Info (332115):     16.770      0.000 RR    IC  FFT_conv|pp_ri[38]~69|cin
+    Info (332115):     16.829      0.059 RF  CELL  FFT_conv|pp_ri[38]~69|cout
+    Info (332115):     16.829      0.000 FF    IC  FFT_conv|pp_ri[39]~71|cin
+    Info (332115):     16.888      0.059 FR  CELL  FFT_conv|pp_ri[39]~71|cout
+    Info (332115):     16.888      0.000 RR    IC  FFT_conv|pp_ri[40]~73|cin
+    Info (332115):     16.947      0.059 RF  CELL  FFT_conv|pp_ri[40]~73|cout
+    Info (332115):     16.947      0.000 FF    IC  FFT_conv|pp_ri[41]~75|cin
+    Info (332115):     17.006      0.059 FR  CELL  FFT_conv|pp_ri[41]~75|cout
+    Info (332115):     17.006      0.000 RR    IC  FFT_conv|pp_ri[42]~77|cin
+    Info (332115):     17.065      0.059 RF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.065      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.124      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.124      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.183      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.183      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.242      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.242      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.879      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.879      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.968      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.968
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -13.002 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #10: Setup slack is -13.002 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[15]
+    Info (332115):      8.726      1.886 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[15]
+    Info (332115):     12.570      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.570      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.697      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.697      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.174      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.174      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.233      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.233      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.292      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.292      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.351      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.351      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.956      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|combout
+    Info (332115):     15.408      0.452 FF    IC  FFT_conv|pp_ri[22]~37|dataa
+    Info (332115):     15.885      0.477 FF  CELL  FFT_conv|pp_ri[22]~37|cout
+    Info (332115):     15.885      0.000 FF    IC  FFT_conv|pp_ri[23]~39|cin
+    Info (332115):     15.944      0.059 FR  CELL  FFT_conv|pp_ri[23]~39|cout
+    Info (332115):     15.944      0.000 RR    IC  FFT_conv|pp_ri[24]~41|cin
+    Info (332115):     16.003      0.059 RF  CELL  FFT_conv|pp_ri[24]~41|cout
+    Info (332115):     16.003      0.000 FF    IC  FFT_conv|pp_ri[25]~43|cin
+    Info (332115):     16.062      0.059 FR  CELL  FFT_conv|pp_ri[25]~43|cout
+    Info (332115):     16.062      0.000 RR    IC  FFT_conv|pp_ri[26]~45|cin
+    Info (332115):     16.121      0.059 RF  CELL  FFT_conv|pp_ri[26]~45|cout
+    Info (332115):     16.121      0.000 FF    IC  FFT_conv|pp_ri[27]~47|cin
+    Info (332115):     16.180      0.059 FR  CELL  FFT_conv|pp_ri[27]~47|cout
+    Info (332115):     16.180      0.000 RR    IC  FFT_conv|pp_ri[28]~49|cin
+    Info (332115):     16.239      0.059 RF  CELL  FFT_conv|pp_ri[28]~49|cout
+    Info (332115):     16.239      0.000 FF    IC  FFT_conv|pp_ri[29]~51|cin
+    Info (332115):     16.298      0.059 FR  CELL  FFT_conv|pp_ri[29]~51|cout
+    Info (332115):     16.298      0.000 RR    IC  FFT_conv|pp_ri[30]~53|cin
+    Info (332115):     16.357      0.059 RF  CELL  FFT_conv|pp_ri[30]~53|cout
+    Info (332115):     16.357      0.000 FF    IC  FFT_conv|pp_ri[31]~55|cin
+    Info (332115):     16.416      0.059 FR  CELL  FFT_conv|pp_ri[31]~55|cout
+    Info (332115):     16.416      0.000 RR    IC  FFT_conv|pp_ri[32]~57|cin
+    Info (332115):     16.475      0.059 RF  CELL  FFT_conv|pp_ri[32]~57|cout
+    Info (332115):     16.475      0.000 FF    IC  FFT_conv|pp_ri[33]~59|cin
+    Info (332115):     16.534      0.059 FR  CELL  FFT_conv|pp_ri[33]~59|cout
+    Info (332115):     16.534      0.000 RR    IC  FFT_conv|pp_ri[34]~61|cin
+    Info (332115):     16.593      0.059 RF  CELL  FFT_conv|pp_ri[34]~61|cout
+    Info (332115):     16.593      0.000 FF    IC  FFT_conv|pp_ri[35]~63|cin
+    Info (332115):     16.652      0.059 FR  CELL  FFT_conv|pp_ri[35]~63|cout
+    Info (332115):     16.652      0.000 RR    IC  FFT_conv|pp_ri[36]~65|cin
+    Info (332115):     16.711      0.059 RF  CELL  FFT_conv|pp_ri[36]~65|cout
+    Info (332115):     16.711      0.000 FF    IC  FFT_conv|pp_ri[37]~67|cin
+    Info (332115):     16.770      0.059 FR  CELL  FFT_conv|pp_ri[37]~67|cout
+    Info (332115):     16.770      0.000 RR    IC  FFT_conv|pp_ri[38]~69|cin
+    Info (332115):     16.829      0.059 RF  CELL  FFT_conv|pp_ri[38]~69|cout
+    Info (332115):     16.829      0.000 FF    IC  FFT_conv|pp_ri[39]~71|cin
+    Info (332115):     16.888      0.059 FR  CELL  FFT_conv|pp_ri[39]~71|cout
+    Info (332115):     16.888      0.000 RR    IC  FFT_conv|pp_ri[40]~73|cin
+    Info (332115):     16.947      0.059 RF  CELL  FFT_conv|pp_ri[40]~73|cout
+    Info (332115):     16.947      0.000 FF    IC  FFT_conv|pp_ri[41]~75|cin
+    Info (332115):     17.006      0.059 FR  CELL  FFT_conv|pp_ri[41]~75|cout
+    Info (332115):     17.006      0.000 RR    IC  FFT_conv|pp_ri[42]~77|cin
+    Info (332115):     17.065      0.059 RF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.065      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.124      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.124      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.183      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.183      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.242      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.242      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.879      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.879      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.968      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.968
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -13.002 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #11: Setup slack is -13.000 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[45]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[8]
+    Info (332115):      8.730      1.890 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[8]
+    Info (332115):     12.574      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.574      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[5]
+    Info (332115):     12.694      0.120 RR  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[5]
+    Info (332115):     13.704      1.010 RR    IC  FFT_conv|Mult2|auto_generated|op_2~2|datab
+    Info (332115):     14.228      0.524 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.228      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.287      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.287      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.346      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.346      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.405      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.405      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.464      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.464      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.523      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.523      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.582      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.582      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     14.641      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~16|cout
+    Info (332115):     14.641      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~18|cin
+    Info (332115):     14.700      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~18|cout
+    Info (332115):     14.700      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~20|cin
+    Info (332115):     14.759      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~20|cout
+    Info (332115):     14.759      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~22|cin
+    Info (332115):     15.396      0.637 RR  CELL  FFT_conv|Mult2|auto_generated|op_2~22|combout
+    Info (332115):     15.849      0.453 RR    IC  FFT_conv|pp_ri[29]~51|dataa
+    Info (332115):     16.355      0.506 RF  CELL  FFT_conv|pp_ri[29]~51|cout
+    Info (332115):     16.355      0.000 FF    IC  FFT_conv|pp_ri[30]~53|cin
+    Info (332115):     16.414      0.059 FR  CELL  FFT_conv|pp_ri[30]~53|cout
+    Info (332115):     16.414      0.000 RR    IC  FFT_conv|pp_ri[31]~55|cin
+    Info (332115):     16.473      0.059 RF  CELL  FFT_conv|pp_ri[31]~55|cout
+    Info (332115):     16.473      0.000 FF    IC  FFT_conv|pp_ri[32]~57|cin
+    Info (332115):     16.532      0.059 FR  CELL  FFT_conv|pp_ri[32]~57|cout
+    Info (332115):     16.532      0.000 RR    IC  FFT_conv|pp_ri[33]~59|cin
+    Info (332115):     16.591      0.059 RF  CELL  FFT_conv|pp_ri[33]~59|cout
+    Info (332115):     16.591      0.000 FF    IC  FFT_conv|pp_ri[34]~61|cin
+    Info (332115):     16.650      0.059 FR  CELL  FFT_conv|pp_ri[34]~61|cout
+    Info (332115):     16.650      0.000 RR    IC  FFT_conv|pp_ri[35]~63|cin
+    Info (332115):     16.709      0.059 RF  CELL  FFT_conv|pp_ri[35]~63|cout
+    Info (332115):     16.709      0.000 FF    IC  FFT_conv|pp_ri[36]~65|cin
+    Info (332115):     16.768      0.059 FR  CELL  FFT_conv|pp_ri[36]~65|cout
+    Info (332115):     16.768      0.000 RR    IC  FFT_conv|pp_ri[37]~67|cin
+    Info (332115):     16.827      0.059 RF  CELL  FFT_conv|pp_ri[37]~67|cout
+    Info (332115):     16.827      0.000 FF    IC  FFT_conv|pp_ri[38]~69|cin
+    Info (332115):     16.886      0.059 FR  CELL  FFT_conv|pp_ri[38]~69|cout
+    Info (332115):     16.886      0.000 RR    IC  FFT_conv|pp_ri[39]~71|cin
+    Info (332115):     16.945      0.059 RF  CELL  FFT_conv|pp_ri[39]~71|cout
+    Info (332115):     16.945      0.000 FF    IC  FFT_conv|pp_ri[40]~73|cin
+    Info (332115):     17.004      0.059 FR  CELL  FFT_conv|pp_ri[40]~73|cout
+    Info (332115):     17.004      0.000 RR    IC  FFT_conv|pp_ri[41]~75|cin
+    Info (332115):     17.063      0.059 RF  CELL  FFT_conv|pp_ri[41]~75|cout
+    Info (332115):     17.063      0.000 FF    IC  FFT_conv|pp_ri[42]~77|cin
+    Info (332115):     17.122      0.059 FR  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.122      0.000 RR    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.181      0.059 RF  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.181      0.000 FF    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.240      0.059 FR  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.240      0.000 RR    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.877      0.637 RR  CELL  FFT_conv|pp_ri[45]~83|combout
+    Info (332115):     17.877      0.000 RR    IC  FFT_conv|pp_ri[45]|d
+    Info (332115):     17.966      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[45]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[45]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[45]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[45]
+    Info (332115): Data Arrival Time  :    17.966
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -13.000 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #12: Setup slack is -13.000 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[15]
+    Info (332115):      8.726      1.886 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[15]
+    Info (332115):     12.570      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.570      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.697      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.697      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.174      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.174      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.233      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.233      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.292      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.292      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.351      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.351      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.410      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.410      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.469      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.469      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.528      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.528      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.587      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.587      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     14.646      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|cout
+    Info (332115):     14.646      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~18|cin
+    Info (332115):     14.705      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~18|cout
+    Info (332115):     14.705      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~20|cin
+    Info (332115):     14.764      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~20|cout
+    Info (332115):     14.764      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~22|cin
+    Info (332115):     14.823      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~22|cout
+    Info (332115):     14.823      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~24|cin
+    Info (332115):     14.882      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~24|cout
+    Info (332115):     14.882      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~26|cin
+    Info (332115):     14.941      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~26|cout
+    Info (332115):     14.941      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~28|cin
+    Info (332115):     15.000      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~28|cout
+    Info (332115):     15.000      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~30|cin
+    Info (332115):     15.059      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~30|cout
+    Info (332115):     15.059      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~32|cin
+    Info (332115):     15.118      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~32|cout
+    Info (332115):     15.118      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~34|cin
+    Info (332115):     15.177      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~34|cout
+    Info (332115):     15.177      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~36|cin
+    Info (332115):     15.236      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~36|cout
+    Info (332115):     15.236      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~38|cin
+    Info (332115):     15.295      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~38|cout
+    Info (332115):     15.295      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~40|cin
+    Info (332115):     15.354      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~40|cout
+    Info (332115):     15.354      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~42|cin
+    Info (332115):     15.413      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~42|cout
+    Info (332115):     15.413      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~44|cin
+    Info (332115):     15.472      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~44|cout
+    Info (332115):     15.472      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~46|cin
+    Info (332115):     15.531      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~46|cout
+    Info (332115):     15.531      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~48|cin
+    Info (332115):     15.590      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~48|cout
+    Info (332115):     15.590      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~50|cin
+    Info (332115):     15.649      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~50|cout
+    Info (332115):     15.649      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~52|cin
+    Info (332115):     16.254      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~52|combout
+    Info (332115):     16.700      0.446 FF    IC  FFT_conv|pp_ri[44]~81|datab
+    Info (332115):     17.181      0.481 FF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.181      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.240      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.240      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.877      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.877      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.966      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.966
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -13.000 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #13: Setup slack is -13.000 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[15]
+    Info (332115):      8.726      1.886 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[15]
+    Info (332115):     12.570      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.570      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.697      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.697      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.174      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.174      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.233      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.233      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.292      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.292      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.351      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.351      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.410      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.410      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.469      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.469      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.528      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.528      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.587      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.587      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     14.646      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|cout
+    Info (332115):     14.646      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~18|cin
+    Info (332115):     14.705      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~18|cout
+    Info (332115):     14.705      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~20|cin
+    Info (332115):     14.764      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~20|cout
+    Info (332115):     14.764      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~22|cin
+    Info (332115):     14.823      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~22|cout
+    Info (332115):     14.823      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~24|cin
+    Info (332115):     14.882      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~24|cout
+    Info (332115):     14.882      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~26|cin
+    Info (332115):     14.941      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~26|cout
+    Info (332115):     14.941      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~28|cin
+    Info (332115):     15.000      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~28|cout
+    Info (332115):     15.000      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~30|cin
+    Info (332115):     15.059      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~30|cout
+    Info (332115):     15.059      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~32|cin
+    Info (332115):     15.118      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~32|cout
+    Info (332115):     15.118      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~34|cin
+    Info (332115):     15.177      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~34|cout
+    Info (332115):     15.177      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~36|cin
+    Info (332115):     15.236      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~36|cout
+    Info (332115):     15.236      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~38|cin
+    Info (332115):     15.295      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~38|cout
+    Info (332115):     15.295      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~40|cin
+    Info (332115):     15.354      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~40|cout
+    Info (332115):     15.354      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~42|cin
+    Info (332115):     15.413      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~42|cout
+    Info (332115):     15.413      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~44|cin
+    Info (332115):     15.472      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~44|cout
+    Info (332115):     15.472      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~46|cin
+    Info (332115):     15.531      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~46|cout
+    Info (332115):     15.531      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~48|cin
+    Info (332115):     16.136      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~48|combout
+    Info (332115):     16.582      0.446 FF    IC  FFT_conv|pp_ri[42]~77|datab
+    Info (332115):     17.063      0.481 FF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.063      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.122      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.122      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.181      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.181      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.240      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.240      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.877      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.877      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.966      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.966
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -13.000 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #14: Setup slack is -13.000 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[15]
+    Info (332115):      8.726      1.886 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[15]
+    Info (332115):     12.570      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.570      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.697      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.697      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.174      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.174      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.233      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.233      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.292      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.292      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.351      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.351      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.410      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.410      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.469      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.469      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.528      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.528      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.587      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.587      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     14.646      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|cout
+    Info (332115):     14.646      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~18|cin
+    Info (332115):     14.705      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~18|cout
+    Info (332115):     14.705      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~20|cin
+    Info (332115):     15.310      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~20|combout
+    Info (332115):     15.756      0.446 FF    IC  FFT_conv|pp_ri[28]~49|datab
+    Info (332115):     16.237      0.481 FF  CELL  FFT_conv|pp_ri[28]~49|cout
+    Info (332115):     16.237      0.000 FF    IC  FFT_conv|pp_ri[29]~51|cin
+    Info (332115):     16.296      0.059 FR  CELL  FFT_conv|pp_ri[29]~51|cout
+    Info (332115):     16.296      0.000 RR    IC  FFT_conv|pp_ri[30]~53|cin
+    Info (332115):     16.355      0.059 RF  CELL  FFT_conv|pp_ri[30]~53|cout
+    Info (332115):     16.355      0.000 FF    IC  FFT_conv|pp_ri[31]~55|cin
+    Info (332115):     16.414      0.059 FR  CELL  FFT_conv|pp_ri[31]~55|cout
+    Info (332115):     16.414      0.000 RR    IC  FFT_conv|pp_ri[32]~57|cin
+    Info (332115):     16.473      0.059 RF  CELL  FFT_conv|pp_ri[32]~57|cout
+    Info (332115):     16.473      0.000 FF    IC  FFT_conv|pp_ri[33]~59|cin
+    Info (332115):     16.532      0.059 FR  CELL  FFT_conv|pp_ri[33]~59|cout
+    Info (332115):     16.532      0.000 RR    IC  FFT_conv|pp_ri[34]~61|cin
+    Info (332115):     16.591      0.059 RF  CELL  FFT_conv|pp_ri[34]~61|cout
+    Info (332115):     16.591      0.000 FF    IC  FFT_conv|pp_ri[35]~63|cin
+    Info (332115):     16.650      0.059 FR  CELL  FFT_conv|pp_ri[35]~63|cout
+    Info (332115):     16.650      0.000 RR    IC  FFT_conv|pp_ri[36]~65|cin
+    Info (332115):     16.709      0.059 RF  CELL  FFT_conv|pp_ri[36]~65|cout
+    Info (332115):     16.709      0.000 FF    IC  FFT_conv|pp_ri[37]~67|cin
+    Info (332115):     16.768      0.059 FR  CELL  FFT_conv|pp_ri[37]~67|cout
+    Info (332115):     16.768      0.000 RR    IC  FFT_conv|pp_ri[38]~69|cin
+    Info (332115):     16.827      0.059 RF  CELL  FFT_conv|pp_ri[38]~69|cout
+    Info (332115):     16.827      0.000 FF    IC  FFT_conv|pp_ri[39]~71|cin
+    Info (332115):     16.886      0.059 FR  CELL  FFT_conv|pp_ri[39]~71|cout
+    Info (332115):     16.886      0.000 RR    IC  FFT_conv|pp_ri[40]~73|cin
+    Info (332115):     16.945      0.059 RF  CELL  FFT_conv|pp_ri[40]~73|cout
+    Info (332115):     16.945      0.000 FF    IC  FFT_conv|pp_ri[41]~75|cin
+    Info (332115):     17.004      0.059 FR  CELL  FFT_conv|pp_ri[41]~75|cout
+    Info (332115):     17.004      0.000 RR    IC  FFT_conv|pp_ri[42]~77|cin
+    Info (332115):     17.063      0.059 RF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.063      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.122      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.122      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.181      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.181      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.240      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.240      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.877      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.877      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.966      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.966
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -13.000 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #15: Setup slack is -13.000 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[15]
+    Info (332115):      8.726      1.886 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[15]
+    Info (332115):     12.570      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.570      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.697      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.697      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.174      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.174      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.233      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.233      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.292      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.292      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.351      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.351      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.410      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.410      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.469      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.469      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.528      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.528      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.587      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.587      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     15.192      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|combout
+    Info (332115):     15.638      0.446 FF    IC  FFT_conv|pp_ri[26]~45|datab
+    Info (332115):     16.119      0.481 FF  CELL  FFT_conv|pp_ri[26]~45|cout
+    Info (332115):     16.119      0.000 FF    IC  FFT_conv|pp_ri[27]~47|cin
+    Info (332115):     16.178      0.059 FR  CELL  FFT_conv|pp_ri[27]~47|cout
+    Info (332115):     16.178      0.000 RR    IC  FFT_conv|pp_ri[28]~49|cin
+    Info (332115):     16.237      0.059 RF  CELL  FFT_conv|pp_ri[28]~49|cout
+    Info (332115):     16.237      0.000 FF    IC  FFT_conv|pp_ri[29]~51|cin
+    Info (332115):     16.296      0.059 FR  CELL  FFT_conv|pp_ri[29]~51|cout
+    Info (332115):     16.296      0.000 RR    IC  FFT_conv|pp_ri[30]~53|cin
+    Info (332115):     16.355      0.059 RF  CELL  FFT_conv|pp_ri[30]~53|cout
+    Info (332115):     16.355      0.000 FF    IC  FFT_conv|pp_ri[31]~55|cin
+    Info (332115):     16.414      0.059 FR  CELL  FFT_conv|pp_ri[31]~55|cout
+    Info (332115):     16.414      0.000 RR    IC  FFT_conv|pp_ri[32]~57|cin
+    Info (332115):     16.473      0.059 RF  CELL  FFT_conv|pp_ri[32]~57|cout
+    Info (332115):     16.473      0.000 FF    IC  FFT_conv|pp_ri[33]~59|cin
+    Info (332115):     16.532      0.059 FR  CELL  FFT_conv|pp_ri[33]~59|cout
+    Info (332115):     16.532      0.000 RR    IC  FFT_conv|pp_ri[34]~61|cin
+    Info (332115):     16.591      0.059 RF  CELL  FFT_conv|pp_ri[34]~61|cout
+    Info (332115):     16.591      0.000 FF    IC  FFT_conv|pp_ri[35]~63|cin
+    Info (332115):     16.650      0.059 FR  CELL  FFT_conv|pp_ri[35]~63|cout
+    Info (332115):     16.650      0.000 RR    IC  FFT_conv|pp_ri[36]~65|cin
+    Info (332115):     16.709      0.059 RF  CELL  FFT_conv|pp_ri[36]~65|cout
+    Info (332115):     16.709      0.000 FF    IC  FFT_conv|pp_ri[37]~67|cin
+    Info (332115):     16.768      0.059 FR  CELL  FFT_conv|pp_ri[37]~67|cout
+    Info (332115):     16.768      0.000 RR    IC  FFT_conv|pp_ri[38]~69|cin
+    Info (332115):     16.827      0.059 RF  CELL  FFT_conv|pp_ri[38]~69|cout
+    Info (332115):     16.827      0.000 FF    IC  FFT_conv|pp_ri[39]~71|cin
+    Info (332115):     16.886      0.059 FR  CELL  FFT_conv|pp_ri[39]~71|cout
+    Info (332115):     16.886      0.000 RR    IC  FFT_conv|pp_ri[40]~73|cin
+    Info (332115):     16.945      0.059 RF  CELL  FFT_conv|pp_ri[40]~73|cout
+    Info (332115):     16.945      0.000 FF    IC  FFT_conv|pp_ri[41]~75|cin
+    Info (332115):     17.004      0.059 FR  CELL  FFT_conv|pp_ri[41]~75|cout
+    Info (332115):     17.004      0.000 RR    IC  FFT_conv|pp_ri[42]~77|cin
+    Info (332115):     17.063      0.059 RF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.063      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.122      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.122      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.181      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.181      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.240      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.240      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.877      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.877      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.966      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.966
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -13.000 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #16: Setup slack is -12.999 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[15]
+    Info (332115):      8.726      1.886 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[15]
+    Info (332115):     12.570      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.570      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.697      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.697      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.174      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.174      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.233      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.233      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.292      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.292      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.351      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.351      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.410      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.410      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.469      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.469      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.528      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.528      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.587      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.587      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     14.646      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|cout
+    Info (332115):     14.646      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~18|cin
+    Info (332115):     14.705      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~18|cout
+    Info (332115):     14.705      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~20|cin
+    Info (332115):     14.764      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~20|cout
+    Info (332115):     14.764      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~22|cin
+    Info (332115):     14.823      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~22|cout
+    Info (332115):     14.823      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~24|cin
+    Info (332115):     15.428      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~24|combout
+    Info (332115):     15.873      0.445 FF    IC  FFT_conv|pp_ri[30]~53|datab
+    Info (332115):     16.354      0.481 FF  CELL  FFT_conv|pp_ri[30]~53|cout
+    Info (332115):     16.354      0.000 FF    IC  FFT_conv|pp_ri[31]~55|cin
+    Info (332115):     16.413      0.059 FR  CELL  FFT_conv|pp_ri[31]~55|cout
+    Info (332115):     16.413      0.000 RR    IC  FFT_conv|pp_ri[32]~57|cin
+    Info (332115):     16.472      0.059 RF  CELL  FFT_conv|pp_ri[32]~57|cout
+    Info (332115):     16.472      0.000 FF    IC  FFT_conv|pp_ri[33]~59|cin
+    Info (332115):     16.531      0.059 FR  CELL  FFT_conv|pp_ri[33]~59|cout
+    Info (332115):     16.531      0.000 RR    IC  FFT_conv|pp_ri[34]~61|cin
+    Info (332115):     16.590      0.059 RF  CELL  FFT_conv|pp_ri[34]~61|cout
+    Info (332115):     16.590      0.000 FF    IC  FFT_conv|pp_ri[35]~63|cin
+    Info (332115):     16.649      0.059 FR  CELL  FFT_conv|pp_ri[35]~63|cout
+    Info (332115):     16.649      0.000 RR    IC  FFT_conv|pp_ri[36]~65|cin
+    Info (332115):     16.708      0.059 RF  CELL  FFT_conv|pp_ri[36]~65|cout
+    Info (332115):     16.708      0.000 FF    IC  FFT_conv|pp_ri[37]~67|cin
+    Info (332115):     16.767      0.059 FR  CELL  FFT_conv|pp_ri[37]~67|cout
+    Info (332115):     16.767      0.000 RR    IC  FFT_conv|pp_ri[38]~69|cin
+    Info (332115):     16.826      0.059 RF  CELL  FFT_conv|pp_ri[38]~69|cout
+    Info (332115):     16.826      0.000 FF    IC  FFT_conv|pp_ri[39]~71|cin
+    Info (332115):     16.885      0.059 FR  CELL  FFT_conv|pp_ri[39]~71|cout
+    Info (332115):     16.885      0.000 RR    IC  FFT_conv|pp_ri[40]~73|cin
+    Info (332115):     16.944      0.059 RF  CELL  FFT_conv|pp_ri[40]~73|cout
+    Info (332115):     16.944      0.000 FF    IC  FFT_conv|pp_ri[41]~75|cin
+    Info (332115):     17.003      0.059 FR  CELL  FFT_conv|pp_ri[41]~75|cout
+    Info (332115):     17.003      0.000 RR    IC  FFT_conv|pp_ri[42]~77|cin
+    Info (332115):     17.062      0.059 RF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.062      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.121      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.121      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.180      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.180      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.239      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.239      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.876      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.876      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.965      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.965
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -12.999 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #17: Setup slack is -12.998 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[11]
+    Info (332115):      8.722      1.882 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[11]
+    Info (332115):     12.566      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.566      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.693      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.693      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.170      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.170      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.229      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.229      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.288      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.288      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.347      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.347      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.406      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.406      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.465      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.465      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.524      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.524      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.583      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.583      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     14.642      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|cout
+    Info (332115):     14.642      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~18|cin
+    Info (332115):     14.701      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~18|cout
+    Info (332115):     14.701      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~20|cin
+    Info (332115):     14.760      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~20|cout
+    Info (332115):     14.760      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~22|cin
+    Info (332115):     14.819      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~22|cout
+    Info (332115):     14.819      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~24|cin
+    Info (332115):     14.878      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~24|cout
+    Info (332115):     14.878      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~26|cin
+    Info (332115):     14.937      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~26|cout
+    Info (332115):     14.937      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~28|cin
+    Info (332115):     14.996      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~28|cout
+    Info (332115):     14.996      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~30|cin
+    Info (332115):     15.055      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~30|cout
+    Info (332115):     15.055      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~32|cin
+    Info (332115):     15.114      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~32|cout
+    Info (332115):     15.114      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~34|cin
+    Info (332115):     15.173      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~34|cout
+    Info (332115):     15.173      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~36|cin
+    Info (332115):     15.232      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~36|cout
+    Info (332115):     15.232      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~38|cin
+    Info (332115):     15.291      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~38|cout
+    Info (332115):     15.291      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~40|cin
+    Info (332115):     15.896      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~40|combout
+    Info (332115):     16.348      0.452 FF    IC  FFT_conv|pp_ri[38]~69|dataa
+    Info (332115):     16.825      0.477 FF  CELL  FFT_conv|pp_ri[38]~69|cout
+    Info (332115):     16.825      0.000 FF    IC  FFT_conv|pp_ri[39]~71|cin
+    Info (332115):     16.884      0.059 FR  CELL  FFT_conv|pp_ri[39]~71|cout
+    Info (332115):     16.884      0.000 RR    IC  FFT_conv|pp_ri[40]~73|cin
+    Info (332115):     16.943      0.059 RF  CELL  FFT_conv|pp_ri[40]~73|cout
+    Info (332115):     16.943      0.000 FF    IC  FFT_conv|pp_ri[41]~75|cin
+    Info (332115):     17.002      0.059 FR  CELL  FFT_conv|pp_ri[41]~75|cout
+    Info (332115):     17.002      0.000 RR    IC  FFT_conv|pp_ri[42]~77|cin
+    Info (332115):     17.061      0.059 RF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.061      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.120      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.120      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.179      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.179      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.238      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.238      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.875      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.875      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.964      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.964
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -12.998 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #18: Setup slack is -12.998 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[11]
+    Info (332115):      8.722      1.882 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[11]
+    Info (332115):     12.566      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.566      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.693      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.693      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.170      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.170      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.229      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.229      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.288      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.288      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.347      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.347      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.952      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|combout
+    Info (332115):     15.404      0.452 FF    IC  FFT_conv|pp_ri[22]~37|dataa
+    Info (332115):     15.881      0.477 FF  CELL  FFT_conv|pp_ri[22]~37|cout
+    Info (332115):     15.881      0.000 FF    IC  FFT_conv|pp_ri[23]~39|cin
+    Info (332115):     15.940      0.059 FR  CELL  FFT_conv|pp_ri[23]~39|cout
+    Info (332115):     15.940      0.000 RR    IC  FFT_conv|pp_ri[24]~41|cin
+    Info (332115):     15.999      0.059 RF  CELL  FFT_conv|pp_ri[24]~41|cout
+    Info (332115):     15.999      0.000 FF    IC  FFT_conv|pp_ri[25]~43|cin
+    Info (332115):     16.058      0.059 FR  CELL  FFT_conv|pp_ri[25]~43|cout
+    Info (332115):     16.058      0.000 RR    IC  FFT_conv|pp_ri[26]~45|cin
+    Info (332115):     16.117      0.059 RF  CELL  FFT_conv|pp_ri[26]~45|cout
+    Info (332115):     16.117      0.000 FF    IC  FFT_conv|pp_ri[27]~47|cin
+    Info (332115):     16.176      0.059 FR  CELL  FFT_conv|pp_ri[27]~47|cout
+    Info (332115):     16.176      0.000 RR    IC  FFT_conv|pp_ri[28]~49|cin
+    Info (332115):     16.235      0.059 RF  CELL  FFT_conv|pp_ri[28]~49|cout
+    Info (332115):     16.235      0.000 FF    IC  FFT_conv|pp_ri[29]~51|cin
+    Info (332115):     16.294      0.059 FR  CELL  FFT_conv|pp_ri[29]~51|cout
+    Info (332115):     16.294      0.000 RR    IC  FFT_conv|pp_ri[30]~53|cin
+    Info (332115):     16.353      0.059 RF  CELL  FFT_conv|pp_ri[30]~53|cout
+    Info (332115):     16.353      0.000 FF    IC  FFT_conv|pp_ri[31]~55|cin
+    Info (332115):     16.412      0.059 FR  CELL  FFT_conv|pp_ri[31]~55|cout
+    Info (332115):     16.412      0.000 RR    IC  FFT_conv|pp_ri[32]~57|cin
+    Info (332115):     16.471      0.059 RF  CELL  FFT_conv|pp_ri[32]~57|cout
+    Info (332115):     16.471      0.000 FF    IC  FFT_conv|pp_ri[33]~59|cin
+    Info (332115):     16.530      0.059 FR  CELL  FFT_conv|pp_ri[33]~59|cout
+    Info (332115):     16.530      0.000 RR    IC  FFT_conv|pp_ri[34]~61|cin
+    Info (332115):     16.589      0.059 RF  CELL  FFT_conv|pp_ri[34]~61|cout
+    Info (332115):     16.589      0.000 FF    IC  FFT_conv|pp_ri[35]~63|cin
+    Info (332115):     16.648      0.059 FR  CELL  FFT_conv|pp_ri[35]~63|cout
+    Info (332115):     16.648      0.000 RR    IC  FFT_conv|pp_ri[36]~65|cin
+    Info (332115):     16.707      0.059 RF  CELL  FFT_conv|pp_ri[36]~65|cout
+    Info (332115):     16.707      0.000 FF    IC  FFT_conv|pp_ri[37]~67|cin
+    Info (332115):     16.766      0.059 FR  CELL  FFT_conv|pp_ri[37]~67|cout
+    Info (332115):     16.766      0.000 RR    IC  FFT_conv|pp_ri[38]~69|cin
+    Info (332115):     16.825      0.059 RF  CELL  FFT_conv|pp_ri[38]~69|cout
+    Info (332115):     16.825      0.000 FF    IC  FFT_conv|pp_ri[39]~71|cin
+    Info (332115):     16.884      0.059 FR  CELL  FFT_conv|pp_ri[39]~71|cout
+    Info (332115):     16.884      0.000 RR    IC  FFT_conv|pp_ri[40]~73|cin
+    Info (332115):     16.943      0.059 RF  CELL  FFT_conv|pp_ri[40]~73|cout
+    Info (332115):     16.943      0.000 FF    IC  FFT_conv|pp_ri[41]~75|cin
+    Info (332115):     17.002      0.059 FR  CELL  FFT_conv|pp_ri[41]~75|cout
+    Info (332115):     17.002      0.000 RR    IC  FFT_conv|pp_ri[42]~77|cin
+    Info (332115):     17.061      0.059 RF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.061      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.120      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.120      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.179      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.179      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.238      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.238      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.875      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.875      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.964      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.964
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -12.998 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #19: Setup slack is -12.998 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[15]
+    Info (332115):      8.726      1.886 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[15]
+    Info (332115):     12.570      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.570      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.697      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.697      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.174      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.174      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.233      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.233      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.292      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.292      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.351      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.351      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.410      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.410      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.469      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.469      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.528      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.528      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.587      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.587      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     14.646      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|cout
+    Info (332115):     14.646      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~18|cin
+    Info (332115):     14.705      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~18|cout
+    Info (332115):     14.705      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~20|cin
+    Info (332115):     14.764      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~20|cout
+    Info (332115):     14.764      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~22|cin
+    Info (332115):     14.823      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~22|cout
+    Info (332115):     14.823      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~24|cin
+    Info (332115):     14.882      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~24|cout
+    Info (332115):     14.882      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~26|cin
+    Info (332115):     14.941      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~26|cout
+    Info (332115):     14.941      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~28|cin
+    Info (332115):     15.546      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~28|combout
+    Info (332115):     15.994      0.448 FF    IC  FFT_conv|pp_ri[32]~57|dataa
+    Info (332115):     16.471      0.477 FF  CELL  FFT_conv|pp_ri[32]~57|cout
+    Info (332115):     16.471      0.000 FF    IC  FFT_conv|pp_ri[33]~59|cin
+    Info (332115):     16.530      0.059 FR  CELL  FFT_conv|pp_ri[33]~59|cout
+    Info (332115):     16.530      0.000 RR    IC  FFT_conv|pp_ri[34]~61|cin
+    Info (332115):     16.589      0.059 RF  CELL  FFT_conv|pp_ri[34]~61|cout
+    Info (332115):     16.589      0.000 FF    IC  FFT_conv|pp_ri[35]~63|cin
+    Info (332115):     16.648      0.059 FR  CELL  FFT_conv|pp_ri[35]~63|cout
+    Info (332115):     16.648      0.000 RR    IC  FFT_conv|pp_ri[36]~65|cin
+    Info (332115):     16.707      0.059 RF  CELL  FFT_conv|pp_ri[36]~65|cout
+    Info (332115):     16.707      0.000 FF    IC  FFT_conv|pp_ri[37]~67|cin
+    Info (332115):     16.766      0.059 FR  CELL  FFT_conv|pp_ri[37]~67|cout
+    Info (332115):     16.766      0.000 RR    IC  FFT_conv|pp_ri[38]~69|cin
+    Info (332115):     16.825      0.059 RF  CELL  FFT_conv|pp_ri[38]~69|cout
+    Info (332115):     16.825      0.000 FF    IC  FFT_conv|pp_ri[39]~71|cin
+    Info (332115):     16.884      0.059 FR  CELL  FFT_conv|pp_ri[39]~71|cout
+    Info (332115):     16.884      0.000 RR    IC  FFT_conv|pp_ri[40]~73|cin
+    Info (332115):     16.943      0.059 RF  CELL  FFT_conv|pp_ri[40]~73|cout
+    Info (332115):     16.943      0.000 FF    IC  FFT_conv|pp_ri[41]~75|cin
+    Info (332115):     17.002      0.059 FR  CELL  FFT_conv|pp_ri[41]~75|cout
+    Info (332115):     17.002      0.000 RR    IC  FFT_conv|pp_ri[42]~77|cin
+    Info (332115):     17.061      0.059 RF  CELL  FFT_conv|pp_ri[42]~77|cout
+    Info (332115):     17.061      0.000 FF    IC  FFT_conv|pp_ri[43]~79|cin
+    Info (332115):     17.120      0.059 FR  CELL  FFT_conv|pp_ri[43]~79|cout
+    Info (332115):     17.120      0.000 RR    IC  FFT_conv|pp_ri[44]~81|cin
+    Info (332115):     17.179      0.059 RF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.179      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.238      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.238      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.875      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.875      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.964      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.964
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -12.998 (VIOLATED)
+    Info (332115): ===================================================================
+Info (332115): Path #20: Setup slack is -12.996 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115): To Node      : FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Launch Clock : clk
+    Info (332115): Latch Clock  : clk
+    Info (332115): Data Arrival Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      0.000      0.000           source latency
+    Info (332115):      0.000      0.000           clk
+    Info (332115):      0.000      0.000 RR    IC  clk~input|i
+    Info (332115):      0.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      1.602      0.894 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      1.602      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      3.085      1.483 RR    IC  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|clk0
+    Info (332115):      4.091      1.006 RR  CELL  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      4.380      0.289     uTco  FFT_conv:FFT_conv|fft_engine:u_fft|altsyncram:buf_im_rtl_0|altsyncram_n6i1:auto_generated|ram_block1a0~portb_address_reg0
+    Info (332115):      6.840      2.460 RR  CELL  FFT_conv|u_fft|buf_im_rtl_0|auto_generated|ram_block1a0|portbdataout[11]
+    Info (332115):      8.722      1.882 RR    IC  FFT_conv|Mult2|auto_generated|mac_mult5|dataa[11]
+    Info (332115):     12.566      3.844 RR  CELL  FFT_conv|Mult2|auto_generated|mac_mult5|dataout[35]
+    Info (332115):     12.566      0.000 RR    IC  FFT_conv|Mult2|auto_generated|mac_out6|dataa[4]
+    Info (332115):     12.693      0.127 RF  CELL  FFT_conv|Mult2|auto_generated|mac_out6|dataout[4]
+    Info (332115):     13.693      1.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~0|dataa
+    Info (332115):     14.170      0.477 FF  CELL  FFT_conv|Mult2|auto_generated|op_2~0|cout
+    Info (332115):     14.170      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~2|cin
+    Info (332115):     14.229      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~2|cout
+    Info (332115):     14.229      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~4|cin
+    Info (332115):     14.288      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~4|cout
+    Info (332115):     14.288      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~6|cin
+    Info (332115):     14.347      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~6|cout
+    Info (332115):     14.347      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~8|cin
+    Info (332115):     14.406      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~8|cout
+    Info (332115):     14.406      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~10|cin
+    Info (332115):     14.465      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~10|cout
+    Info (332115):     14.465      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~12|cin
+    Info (332115):     14.524      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~12|cout
+    Info (332115):     14.524      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~14|cin
+    Info (332115):     14.583      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~14|cout
+    Info (332115):     14.583      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~16|cin
+    Info (332115):     14.642      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~16|cout
+    Info (332115):     14.642      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~18|cin
+    Info (332115):     14.701      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~18|cout
+    Info (332115):     14.701      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~20|cin
+    Info (332115):     14.760      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~20|cout
+    Info (332115):     14.760      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~22|cin
+    Info (332115):     14.819      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~22|cout
+    Info (332115):     14.819      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~24|cin
+    Info (332115):     14.878      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~24|cout
+    Info (332115):     14.878      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~26|cin
+    Info (332115):     14.937      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~26|cout
+    Info (332115):     14.937      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~28|cin
+    Info (332115):     14.996      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~28|cout
+    Info (332115):     14.996      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~30|cin
+    Info (332115):     15.055      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~30|cout
+    Info (332115):     15.055      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~32|cin
+    Info (332115):     15.114      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~32|cout
+    Info (332115):     15.114      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~34|cin
+    Info (332115):     15.173      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~34|cout
+    Info (332115):     15.173      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~36|cin
+    Info (332115):     15.232      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~36|cout
+    Info (332115):     15.232      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~38|cin
+    Info (332115):     15.291      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~38|cout
+    Info (332115):     15.291      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~40|cin
+    Info (332115):     15.350      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~40|cout
+    Info (332115):     15.350      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~42|cin
+    Info (332115):     15.409      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~42|cout
+    Info (332115):     15.409      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~44|cin
+    Info (332115):     15.468      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~44|cout
+    Info (332115):     15.468      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~46|cin
+    Info (332115):     15.527      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~46|cout
+    Info (332115):     15.527      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~48|cin
+    Info (332115):     15.586      0.059 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~48|cout
+    Info (332115):     15.586      0.000 FF    IC  FFT_conv|Mult2|auto_generated|op_2~50|cin
+    Info (332115):     15.645      0.059 FR  CELL  FFT_conv|Mult2|auto_generated|op_2~50|cout
+    Info (332115):     15.645      0.000 RR    IC  FFT_conv|Mult2|auto_generated|op_2~52|cin
+    Info (332115):     16.250      0.605 RF  CELL  FFT_conv|Mult2|auto_generated|op_2~52|combout
+    Info (332115):     16.696      0.446 FF    IC  FFT_conv|pp_ri[44]~81|datab
+    Info (332115):     17.177      0.481 FF  CELL  FFT_conv|pp_ri[44]~81|cout
+    Info (332115):     17.177      0.000 FF    IC  FFT_conv|pp_ri[45]~83|cin
+    Info (332115):     17.236      0.059 FR  CELL  FFT_conv|pp_ri[45]~83|cout
+    Info (332115):     17.236      0.000 RR    IC  FFT_conv|pp_ri[46]~85|cin
+    Info (332115):     17.873      0.637 RR  CELL  FFT_conv|pp_ri[46]~85|combout
+    Info (332115):     17.873      0.000 RR    IC  FFT_conv|pp_ri[46]|d
+    Info (332115):     17.962      0.089 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Required Path:
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      1.000      0.000           source latency
+    Info (332115):      1.000      0.000           clk
+    Info (332115):      1.000      0.000 RR    IC  clk~input|i
+    Info (332115):      1.708      0.708 RR  CELL  clk~input|o
+    Info (332115):      2.566      0.858 RR    IC  clk~inputclkctrl|inclk[0]
+    Info (332115):      2.566      0.000 RR  CELL  clk~inputclkctrl|outclk
+    Info (332115):      4.461      1.895 RR    IC  FFT_conv|pp_ri[46]|clk
+    Info (332115):      4.936      0.475 RR  CELL  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115):      4.973      0.037           clock pessimism removed
+    Info (332115):      4.953     -0.020           clock uncertainty
+    Info (332115):      4.966      0.013     uTsu  FFT_conv:FFT_conv|pp_ri[46]
+    Info (332115): Data Arrival Time  :    17.962
+    Info (332115): Data Required Time :     4.966
+    Info (332115): Slack              :   -12.996 (VIOLATED)
+    Info (332115): ===================================================================
+Info (23030): Evaluation of Tcl script /data/project/tsmc65/shared/qsyn/util/report_worst.tcl was successful
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 710 megabytes
+    Info: Processing ended: Wed Jul  8 12:23:24 2026
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00

@@ -58,3 +58,7 @@
 1777825653 /project/tsmc65/shared/k5_share/kuntz5/src/tb/k5_tracer.sv
 1778621342 /project/tsmc65/shared/k5_share/kuntz5/src/tb/k5_tb.sv
 1777825828 /project/tsmc65/shared/k5_share/k5_xbox/hw/k5_xbox_sys.sv
+1767551962 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/xmemcpy_ref/xmemcpy_ref.sv
+1783508997 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv
+1780823342 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/div.sv
+1783513080 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv

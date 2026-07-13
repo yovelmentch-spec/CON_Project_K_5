@@ -1,4 +1,44 @@
 
+State Machine - |de10lite_wrap|k5_xbox_sys:k5_xbox_sys|xbox:xbox|xbox_xlr_wrap:xbox_xlr_wrap|FFT_conv:FFT_conv|state
+Name state.DONE state.WRITE_Y state.WRITE_Y_FILL state.INIT_WRITE_Y state.NORMALIZE_WAIT_DIV state.NORMALIZE_START_DIV state.NORMALIZE_READ state.FIND_MAX state.SAVE_IFFT state.WAIT_IFFT state.START_IFFT state.LOAD_ENGINE_MUL state.POINTWISE_MUL state.WAIT_FFT_X state.START_FFT_X state.LOAD_X_FEED state.LOAD_X_READ state.INIT_LOAD_X state.SAVE_FFT_C state.WAIT_FFT_C state.START_FFT_C state.LOAD_C_FEED state.LOAD_C_READ state.INIT_LOAD_C state.IDLE 
+state.IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.INIT_LOAD_C 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.LOAD_C_READ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.LOAD_C_FEED 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.START_FFT_C 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.WAIT_FFT_C 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.SAVE_FFT_C 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.INIT_LOAD_X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.LOAD_X_READ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.LOAD_X_FEED 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.START_FFT_X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.WAIT_FFT_X 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.POINTWISE_MUL 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.LOAD_ENGINE_MUL 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.START_IFFT 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.WAIT_IFFT 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.SAVE_IFFT 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.FIND_MAX 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.NORMALIZE_READ 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.NORMALIZE_START_DIV 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.NORMALIZE_WAIT_DIV 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.INIT_WRITE_Y 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.WRITE_Y_FILL 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.WRITE_Y 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.DONE 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |de10lite_wrap|k5_xbox_sys:k5_xbox_sys|xbox:xbox|xbox_xlr_wrap:xbox_xlr_wrap|FFT_conv:FFT_conv|fft_engine:u_fft|state
+Name state.S_WR_ODD state.S_WR_EVEN state.S_MUL2 state.S_MUL1 state.S_RD_ODD state.S_RD_EVEN state.S_STAGE_INIT state.S_IDLE state.S_DONE 
+state.S_IDLE 0 0 0 0 0 0 0 0 0 
+state.S_STAGE_INIT 0 0 0 0 0 0 1 1 0 
+state.S_RD_EVEN 0 0 0 0 0 1 0 1 0 
+state.S_RD_ODD 0 0 0 0 1 0 0 1 0 
+state.S_MUL1 0 0 0 1 0 0 0 1 0 
+state.S_MUL2 0 0 1 0 0 0 0 1 0 
+state.S_WR_EVEN 0 1 0 0 0 0 0 1 0 
+state.S_WR_ODD 1 0 0 0 0 0 0 1 0 
+state.S_DONE 0 0 0 0 0 0 0 1 1 
+
 State Machine - |de10lite_wrap|k5_xbox_sys:k5_xbox_sys|k5_sys:k5_sys|k5_sys_access:k5_sys_access|k5_uart_access:k5_uart_access|uart_tx:uart_tx_i|CS
 Name CS.STOP_BIT_LAST CS.STOP_BIT_FIRST CS.PARITY CS.DATA CS.START_BIT CS.IDLE 
 CS.IDLE 0 0 0 0 0 0 

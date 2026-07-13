@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Wed Jul  8 12:21:37 2026
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+Revision Name : FFT_conv
+Top-level Entity Name : qsyn_dummy_xlr_wrap
+Family : MAX 10
+Total logic elements : 4,145
+    Total combinational functions : 3,887
+    Dedicated logic registers : 1,499
+Total registers : 1499
+Total pins : 120
+Total virtual pins : 0
+Total memory bits : 59,392
+Embedded Multiplier 9-bit elements : 48
+Total PLLs : 0
+UFM blocks : 0
+ADC blocks : 0

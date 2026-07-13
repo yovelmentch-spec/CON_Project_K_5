@@ -1,0 +1,118 @@
+Compiling Application FFT_conv
+/data/project/tsmc65/users/mentcy/ws/my_k5_proj/sim
+User Name is mentcy , hashed to unique port number 23596
+
+PY: starting up on localhost port 23596
+PY: waiting for a simulation session connection
+PY connection from ('127.0.0.1', 50464)
+PY: received Hello from System-Verilog!
+
+PY: sending data back to the client
+k5_server.py: Detected system clock speed 100 MHz
+Currently Baudrate can be updated only in FPGA , keeping simulation default baudrate 20000000
+PY: Changing UART baudrate  to 20000000
+PY: Changing UART interface clk_div_cntr to 4 (decimal)
+Configuring TB Uart clk_div_cntr to 4
+Server in app_mode, launching FFT_conv
+Loading app FFT_conv for thread 0
+Loading app by sim-fast-back-door mode /data/project/tsmc65/users/mentcy/ws/my_k5_proj/sw/apps/FFT_conv/build/instr_loadmem.txt
+Loading app by sim-fast-back-door mode /data/project/tsmc65/users/mentcy/ws/my_k5_proj/sw/apps/FFT_conv/build/data_loadmem.txt
+Enabled thread 0
+DONE launch_app FFT_conv, launch_type = spmt for thread 0
+
+FFT_CONV FIXED POINT STARTED
+pyshell: Opening file /project/tsmc65/users/mentcy/ws/my_k5_proj/sim/t0/fft_test_in.txt of type r , file Index is 0
+pyshell: Opening file /project/tsmc65/users/mentcy/ws/my_k5_proj/sim/t0/fft_test_config.txt of type r , file Index is 1
+pyshell: Opening file /project/tsmc65/users/mentcy/ws/my_k5_proj/sim/t0/fft_test_out.txt of type w , file Index is 2
+
+Loading Configuration file
+
+Original config addresses:
+c_addr : 0x40002a40
+x_addr : 0x40002b40
+y_addr : 0x40002c40
+n      : 256
+mode   : 1
+
+Loading input test data DIRECTLY to xmem, byte length : 512
+Direct xmem layout:
+c_addr : 0x40002a40
+x_addr : 0x40002b40
+y_addr : 0x40002c40
+
+===== C APP LOADED VECTOR CHECK =====
+SUM_C = -1319
+SUM_X = 776
+----- C/X FIRST 16 -----
+APP_BUF[0] c=38 x=-57
+APP_BUF[1] c=-29 x=-67
+APP_BUF[2] c=5 x=24
+APP_BUF[3] c=47 x=-26
+APP_BUF[4] c=-73 x=-98
+APP_BUF[5] c=111 x=-113
+APP_BUF[6] c=80 x=-92
+APP_BUF[7] c=45 x=8
+APP_BUF[8] c=-127 x=-25
+APP_BUF[9] c=48 x=94
+APP_BUF[10] c=-94 x=-86
+APP_BUF[11] c=-33 x=20
+APP_BUF[12] c=-62 x=41
+APP_BUF[13] c=102 x=22
+APP_BUF[14] c=-70 x=126
+APP_BUF[15] c=73 x=-29
+----- C/X AROUND 64 -----
+APP_BUF[64] c=-41 x=-122
+APP_BUF[65] c=-37 x=-4
+APP_BUF[66] c=-46 x=-47
+APP_BUF[67] c=57 x=-94
+APP_BUF[68] c=29 x=-72
+APP_BUF[69] c=-1 x=57
+APP_BUF[70] c=-66 x=-106
+APP_BUF[71] c=-83 x=-77
+----- C/X AROUND 128 -----
+APP_BUF[128] c=-73 x=-114
+APP_BUF[129] c=-69 x=79
+APP_BUF[130] c=-8 x=-59
+APP_BUF[131] c=23 x=-79
+APP_BUF[132] c=115 x=91
+APP_BUF[133] c=2 x=28
+APP_BUF[134] c=-13 x=83
+APP_BUF[135] c=99 x=113
+----- C/X AROUND 192 -----
+APP_BUF[192] c=-91 x=20
+APP_BUF[193] c=-126 x=127
+APP_BUF[194] c=-21 x=-90
+APP_BUF[195] c=90 x=35
+APP_BUF[196] c=5 x=-22
+APP_BUF[197] c=-126 x=-56
+APP_BUF[198] c=102 x=-121
+APP_BUF[199] c=4 x=127
+----- C/X LAST 8 -----
+APP_BUF[248] c=-56 x=-44
+APP_BUF[249] c=11 x=85
+APP_BUF[250] c=107 x=85
+APP_BUF[251] c=21 x=-100
+APP_BUF[252] c=100 x=114
+APP_BUF[253] c=13 x=93
+APP_BUF[254] c=-92 x=18
+APP_BUF[255] c=-31 x=51
+
+
+Accelerator Enabled
+Writing XLR registers:
+FFT_C_ADDR = 0x40002a40
+FFT_X_ADDR = 0x40002b40
+FFT_Y_ADDR = 0x40002c40
+FFT_N      = 256
+FFT_MODE   = 1
+
+
+*** Measured execution time: 674595 cycles ***
+
+Dumping xmem data at address: 0x40002c40 , byte length 256
+Dumped 256 bytes
+
+ pyshell: Quitting Application upon sim_finish()/bm_quit_app() message received over UART
+Thread 0 DONE quit_app detected
+No active thread
+Server is Quitting

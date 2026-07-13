@@ -1,3 +1,35 @@
+// ============================================================================
+// FFT_conv.sv — BRAM version, rev 2 (byte-array elimination)
+//
+// Changes vs. BRAM rev 1 (which reached 104K ALUTs / 7.1K regs / 57Kb mem):
+//  Synthesis showed 96K of the remaining ALUTs were the top module's own
+//  logic: the write decoders and barrel shifters of the c_buf/x_buf/y_buf
+//  byte arrays (line-wide access with a variable offset, 32 lanes x 256
+//  targets). This revision removes them:
+//
+//  1. c_buf/x_buf are DELETED. Input data is streamed: each memory line is
+//     captured into a single line register (line_buf), then fed byte-by-byte
+//     straight into the engine load port (LOAD_C_FEED / LOAD_X_FEED).
+//     Consequence: X is now read from memory AFTER FFT(C) completes; the
+//     total number of memory transactions is unchanged.
+//  2. y_buf is now block RAM (y_mem): written one byte per division in
+//     NORMALIZE_WAIT_DIV, and read back one byte per cycle in the new
+//     WRITE_Y_FILL state, which assembles line_buf before each memory write.
+//     write_data uses only static lane indexing (no barrel shifter).
+//  3. line_buf is the only remaining byte storage: BYTES_PER_XMEM_LINE
+//     registers, shared by the load and store paths.
+//
+// FSM sequence:
+//   IDLE -> INIT_LOAD_C -> (LOAD_C_READ <-> LOAD_C_FEED)*
+//        -> START/WAIT_FFT_C -> SAVE_FFT_C                  (c_fft = FFT(C))
+//        -> INIT_LOAD_X -> (LOAD_X_READ <-> LOAD_X_FEED)*
+//        -> START/WAIT_FFT_X                                (FFT(X) in engine)
+//        -> POINTWISE_MUL -> LOAD_ENGINE_MUL
+//        -> START/WAIT_IFFT -> SAVE_IFFT -> FIND_MAX
+//        -> (NORMALIZE_READ/START/WAIT)*                    (y_mem[i] written)
+//        -> INIT_WRITE_Y -> (WRITE_Y_FILL <-> WRITE_Y)* -> DONE
+// ============================================================================
+
 import xbox_def_pkg::*;
 
 module FFT_conv (
@@ -16,6 +48,7 @@ module FFT_conv (
 
   localparam int MAX_N      = 256;
   localparam int DATA_WIDTH = 32;
+  localparam int AW         = $clog2(MAX_N);
 
   enum {
      C_ADDR_REG_IDX     = 0,
@@ -32,28 +65,34 @@ module FFT_conv (
 
     INIT_LOAD_C,
     LOAD_C_READ,
-    LOAD_C_ADVANCE,
+    LOAD_C_FEED,
+
+    START_FFT_C,
+    WAIT_FFT_C,
+    SAVE_FFT_C,
 
     INIT_LOAD_X,
     LOAD_X_READ,
-    LOAD_X_ADVANCE,
+    LOAD_X_FEED,
 
-    PREPARE_INPUTS,
-
-    START_FFT_CX,
-    WAIT_FFT_CX,
+    START_FFT_X,
+    WAIT_FFT_X,
 
     POINTWISE_MUL,
 
+    LOAD_ENGINE_MUL,
     START_IFFT,
     WAIT_IFFT,
+    SAVE_IFFT,
 
     FIND_MAX,
 
+    NORMALIZE_READ,
     NORMALIZE_START_DIV,
     NORMALIZE_WAIT_DIV,
 
     INIT_WRITE_Y,
+    WRITE_Y_FILL,
     WRITE_Y,
 
     DONE
@@ -85,100 +124,241 @@ module FFT_conv (
 
   assign clear_done_on_read = host_regs_read_pulse[DONE_REG_IDX];
 
-  logic signed [7:0] c_buf [0:MAX_N-1];
-  logic signed [7:0] x_buf [0:MAX_N-1];
-  logic signed [7:0] y_buf [0:MAX_N-1];
+  // --------------------------------------------------------------------
+  // The only remaining byte storage: one memory line, statically indexed
+  // on the memory-interface side, single-byte dynamic access on the
+  // engine/RAM side.
+  // --------------------------------------------------------------------
+  logic [BYTES_PER_XMEM_LINE-1:0][7:0] line_buf;
+  logic [5:0]                          line_size;   // bytes captured in line_buf
+  logic [5:0]                          byte_idx;
 
-  logic signed [DATA_WIDTH-1:0] c_in_re [0:MAX_N-1];
-  logic signed [DATA_WIDTH-1:0] c_in_im [0:MAX_N-1];
+  // --------------------------------------------------------------------
+  // Loop index and helpers
+  // --------------------------------------------------------------------
+  logic [31:0] remaining_size;
+  logic [5:0]  crnt_size;
 
-  logic signed [DATA_WIDTH-1:0] x_in_re [0:MAX_N-1];
-  logic signed [DATA_WIDTH-1:0] x_in_im [0:MAX_N-1];
+  logic [31:0] index;
+  logic [31:0] idx_m1;
+  logic [31:0] idx_m2;    // for the 2-cycle-latency pointwise multiply pipeline
+  logic        in_body;   // pipelined-loop body: a write lands this cycle
 
-  logic signed [DATA_WIDTH-1:0] c_fft_re [0:MAX_N-1];
-  logic signed [DATA_WIDTH-1:0] c_fft_im [0:MAX_N-1];
+  logic [XMEM_ADDR_WIDTH-1:0] crnt_rd_addr;
+  logic [XMEM_ADDR_WIDTH-1:0] crnt_wr_addr;
 
-  logic signed [DATA_WIDTH-1:0] x_fft_re [0:MAX_N-1];
-  logic signed [DATA_WIDTH-1:0] x_fft_im [0:MAX_N-1];
+  logic [BYTES_PER_XMEM_LINE-1:0][7:0] write_data;
 
-  logic signed [DATA_WIDTH-1:0] mul_re [0:MAX_N-1];
-  logic signed [DATA_WIDTH-1:0] mul_im [0:MAX_N-1];
+  logic [31:0] max_abs;
+  logic [31:0] current_abs;
+  logic [31:0] norm_num;
+  logic        norm_negative;
+  logic signed [31:0] norm_signed_result;
 
-  logic signed [DATA_WIDTH-1:0] ifft_re [0:MAX_N-1];
-  logic signed [DATA_WIDTH-1:0] ifft_im [0:MAX_N-1];
+  assign idx_m1  = index - 32'd1;
+  assign idx_m2  = index - 32'd2;
+  assign in_body = (index >= 32'd1) && (index <= n);
 
-  logic signed [31:0] y_raw_buf [0:MAX_N-1];
+  // --------------------------------------------------------------------
+  // Shared FFT engine signals (declared before the RAM blocks that use them)
+  // --------------------------------------------------------------------
+  logic fft_start;
+  logic fft_inverse;
+  logic fft_busy;
+  logic fft_done;
 
-  logic fft_c_start;
-  logic fft_x_start;
-  logic ifft_start;
+  logic                         eng_load_valid;
+  logic [31:0]                  eng_load_addr;
+  logic signed [DATA_WIDTH-1:0] eng_load_re;
+  logic signed [DATA_WIDTH-1:0] eng_load_im;
 
-  logic fft_c_busy;
-  logic fft_x_busy;
-  logic ifft_busy;
+  logic [31:0]                  eng_read_addr;
+  logic signed [DATA_WIDTH-1:0] eng_read_re;
+  logic signed [DATA_WIDTH-1:0] eng_read_im;
 
-  logic fft_c_done;
-  logic fft_x_done;
-  logic ifft_done;
+  // --------------------------------------------------------------------
+  // Block RAM: c_fft (FFT(C) spectrum). Written in SAVE_FFT_C,
+  // read in POINTWISE_MUL. No reset, registered read -> M9K inference.
+  // --------------------------------------------------------------------
+  (* ramstyle = "M9K" *) logic signed [DATA_WIDTH-1:0] cfft_re_mem [0:MAX_N-1];
+  (* ramstyle = "M9K" *) logic signed [DATA_WIDTH-1:0] cfft_im_mem [0:MAX_N-1];
 
-  logic fft_c_done_seen;
-  logic fft_x_done_seen;
+  logic                         cfft_we;
+  logic [AW-1:0]                cfft_waddr;
+  logic [AW-1:0]                cfft_raddr;
+  logic signed [DATA_WIDTH-1:0] cfft_rre;
+  logic signed [DATA_WIDTH-1:0] cfft_rim;
 
-  assign fft_c_start = (state == START_FFT_CX);
-  assign fft_x_start = (state == START_FFT_CX);
-  assign ifft_start  = (state == START_IFFT);
+  always_ff @(posedge clk) begin
+    if (cfft_we) begin
+      cfft_re_mem[cfft_waddr] <= eng_read_re;
+      cfft_im_mem[cfft_waddr] <= eng_read_im;
+    end
+    cfft_rre <= cfft_re_mem[cfft_raddr];
+    cfft_rim <= cfft_im_mem[cfft_raddr];
+  end
+
+  assign cfft_we    = (state == SAVE_FFT_C) && in_body;
+  assign cfft_waddr = idx_m1[AW-1:0];
+  assign cfft_raddr = index[AW-1:0];
+
+  // --------------------------------------------------------------------
+  // Block RAM: mul (pointwise product). Written in POINTWISE_MUL,
+  // read in LOAD_ENGINE_MUL.
+  // --------------------------------------------------------------------
+  (* ramstyle = "M9K" *) logic signed [DATA_WIDTH-1:0] mul_re_mem [0:MAX_N-1];
+  (* ramstyle = "M9K" *) logic signed [DATA_WIDTH-1:0] mul_im_mem [0:MAX_N-1];
+
+  logic                         mul_we;
+  logic [AW-1:0]                mul_waddr;
+  logic [AW-1:0]                mul_raddr;
+  logic signed [DATA_WIDTH-1:0] mul_wre;
+  logic signed [DATA_WIDTH-1:0] mul_wim;
+  logic signed [DATA_WIDTH-1:0] mul_rre;
+  logic signed [DATA_WIDTH-1:0] mul_rim;
+
+  // pointwise-multiply pipeline: raw 32x32 products registered one cycle,
+  // rounded/combined and written the next. Write therefore lags the RAM
+  // read by 2 cycles (idx_m2).
+  logic signed [2*DATA_WIDTH-1:0] pp_rr;   // cfft_re * xfft_re
+  logic signed [2*DATA_WIDTH-1:0] pp_ii;   // cfft_im * xfft_im
+  logic signed [2*DATA_WIDTH-1:0] pp_ri;   // cfft_re * xfft_im
+  logic signed [2*DATA_WIDTH-1:0] pp_ir;   // cfft_im * xfft_re
+
+  always_ff @(posedge clk) begin
+    if (mul_we) begin
+      mul_re_mem[mul_waddr] <= mul_wre;
+      mul_im_mem[mul_waddr] <= mul_wim;
+    end
+    mul_rre <= mul_re_mem[mul_raddr];
+    mul_rim <= mul_im_mem[mul_raddr];
+  end
+
+  // stage 2 valid: pp_* hold element (index-2), written to address index-2
+  assign mul_we    = (state == POINTWISE_MUL) && (index >= 32'd2) && (index <= n + 32'd1);
+  assign mul_waddr = idx_m2[AW-1:0];
+  assign mul_raddr = index[AW-1:0];
+  assign mul_wre   = q15_round_top(pp_rr) - q15_round_top(pp_ii);
+  assign mul_wim   = q15_round_top(pp_ri) + q15_round_top(pp_ir);
+
+  // --------------------------------------------------------------------
+  // Block RAM: y_raw (IFFT real output). Written in SAVE_IFFT,
+  // read in FIND_MAX and NORMALIZE_READ.
+  // --------------------------------------------------------------------
+  (* ramstyle = "M9K" *) logic signed [31:0] yraw_mem [0:MAX_N-1];
+
+  logic               yraw_we;
+  logic [AW-1:0]      yraw_waddr;
+  logic [AW-1:0]      yraw_raddr;
+  logic signed [31:0] yraw_r;
+
+  always_ff @(posedge clk) begin
+    if (yraw_we) begin
+      yraw_mem[yraw_waddr] <= eng_read_re;
+    end
+    yraw_r <= yraw_mem[yraw_raddr];
+  end
+
+  assign yraw_we    = (state == SAVE_IFFT) && in_body;
+  assign yraw_waddr = idx_m1[AW-1:0];
+  // FIND_MAX streams index 0..n; during NORMALIZE_* index is frozen, so the
+  // RAM output register holds y_raw[index] stable for the whole division.
+  assign yraw_raddr = index[AW-1:0];
+
+  // --------------------------------------------------------------------
+  // Block RAM: y (normalized 8-bit output). Written one byte per division
+  // in NORMALIZE_WAIT_DIV, read back one byte per cycle in WRITE_Y_FILL.
+  // --------------------------------------------------------------------
+  (* ramstyle = "M9K" *) logic [7:0] y_mem [0:MAX_N-1];
+
+  logic          y_we;
+  logic [AW-1:0] y_waddr;
+  logic [AW-1:0] y_raddr;
+  logic [7:0]    y_rq;
+  logic [31:0]   y_fill_addr;
+
+  always_ff @(posedge clk) begin
+    if (y_we) begin
+      y_mem[y_waddr] <= norm_signed_result[7:0];
+    end
+    y_rq <= y_mem[y_raddr];
+  end
+
+  // (y_we is assigned after the divider instantiation — it depends on div_done)
+  assign y_waddr     = index[AW-1:0];
+  assign y_fill_addr = index + {26'd0, byte_idx};
+  assign y_raddr     = y_fill_addr[AW-1:0];
+
+  // --------------------------------------------------------------------
+  // Single shared FFT engine (BRAM-based, read latency 1 cycle)
+  // --------------------------------------------------------------------
+  assign fft_start   = (state == START_FFT_C) ||
+                       (state == START_FFT_X) ||
+                       (state == START_IFFT);
+
+  assign fft_inverse = (state == START_IFFT);
+
+  // reads are consumed one cycle after the address is applied
+  assign eng_read_addr = index;
 
   fft_engine #(
     .MAX_N(MAX_N),
     .DATA_WIDTH(DATA_WIDTH)
-  ) u_fft_c (
+  ) u_fft (
     .clk(clk),
     .rst_n(rst_n),
-    .start(fft_c_start),
-    .inverse(1'b0),
+    .start(fft_start),
+    .inverse(fft_inverse),
     .n(n),
-    .in_re(c_in_re),
-    .in_im(c_in_im),
-    .out_re(c_fft_re),
-    .out_im(c_fft_im),
-    .busy(fft_c_busy),
-    .done(fft_c_done)
+    .load_valid(eng_load_valid),
+    .load_addr(eng_load_addr),
+    .load_re(eng_load_re),
+    .load_im(eng_load_im),
+    .read_addr(eng_read_addr),
+    .read_re(eng_read_re),
+    .read_im(eng_read_im),
+    .busy(fft_busy),
+    .done(fft_done)
   );
 
-  fft_engine #(
-    .MAX_N(MAX_N),
-    .DATA_WIDTH(DATA_WIDTH)
-  ) u_fft_x (
-    .clk(clk),
-    .rst_n(rst_n),
-    .start(fft_x_start),
-    .inverse(1'b0),
-    .n(n),
-    .in_re(x_in_re),
-    .in_im(x_in_im),
-    .out_re(x_fft_re),
-    .out_im(x_fft_im),
-    .busy(fft_x_busy),
-    .done(fft_x_done)
-  );
+  // --------------------------------------------------------------------
+  // Engine load port driver.
+  // LOAD_C_FEED / LOAD_X_FEED: one byte per cycle from line_buf, converted
+  // to Q15 on the fly (single 32:1 byte mux — no barrel shifter).
+  // LOAD_ENGINE_MUL: pipelined feed from the mul RAM (1-cycle latency).
+  // --------------------------------------------------------------------
+  always_comb begin
+    eng_load_valid = 1'b0;
+    eng_load_addr  = index;
+    eng_load_re    = '0;
+    eng_load_im    = '0;
 
-  fft_engine #(
-    .MAX_N(MAX_N),
-    .DATA_WIDTH(DATA_WIDTH)
-  ) u_ifft (
-    .clk(clk),
-    .rst_n(rst_n),
-    .start(ifft_start),
-    .inverse(1'b1),
-    .n(n),
-    .in_re(mul_re),
-    .in_im(mul_im),
-    .out_re(ifft_re),
-    .out_im(ifft_im),
-    .busy(ifft_busy),
-    .done(ifft_done)
-  );
+    case (state)
+      LOAD_C_FEED,
+      LOAD_X_FEED: begin
+        if ((byte_idx < line_size) && (index < n)) begin
+          eng_load_valid = 1'b1;
+          eng_load_re    = $signed(line_buf[byte_idx]) <<< 12;
+          eng_load_im    = '0;
+        end
+      end
 
+      LOAD_ENGINE_MUL: begin
+        if (in_body) begin
+          eng_load_valid = 1'b1;
+          eng_load_addr  = idx_m1;
+          eng_load_re    = mul_rre;
+          eng_load_im    = mul_rim;
+        end
+      end
+
+      default: ;
+    endcase
+  end
+
+  // --------------------------------------------------------------------
+  // Divider
+  // --------------------------------------------------------------------
   logic        div_start;
   logic        div_busy;
   logic        div_done;
@@ -207,36 +387,24 @@ module FFT_conv (
     .rem(div_rem)
   );
 
-  logic [31:0] remaining_size;
-  logic [5:0]  crnt_size;
+  assign y_we = (state == NORMALIZE_WAIT_DIV) && div_done;
 
-  logic [31:0] index;
-
-  logic [XMEM_ADDR_WIDTH-1:0] crnt_rd_addr;
-  logic [XMEM_ADDR_WIDTH-1:0] crnt_wr_addr;
-
-  logic [BYTES_PER_XMEM_LINE-1:0][7:0] read_data_latched;
-  logic [BYTES_PER_XMEM_LINE-1:0][7:0] write_data;
-
-  logic [31:0] max_abs;
-  logic [31:0] current_abs;
-  logic [31:0] norm_abs;
-  logic [31:0] norm_num;
-  logic        norm_negative;
-  logic signed [31:0] norm_signed_result;
-
+  // Normalization operands come from the y_raw RAM output register (yraw_r),
+  // which is stable during NORMALIZE_START_DIV / NORMALIZE_WAIT_DIV.
   always_comb begin
-    current_abs = abs_s32(y_raw_buf[index]);
-    norm_abs    = abs_s32(y_raw_buf[index]);
-    norm_num    = norm_abs * 32'd127;
+    current_abs = abs_s32(yraw_r);
+    norm_num    = abs_s32(yraw_r) * 32'd127;
 
     div_a = norm_num;
     div_b = max_abs;
 
-    norm_negative = (y_raw_buf[index] < 0);
+    norm_negative = (yraw_r < 0);
     norm_signed_result = apply_sign_floor(norm_negative, div_val, div_rem);
   end
 
+  // --------------------------------------------------------------------
+  // Host DONE register handling (unchanged)
+  // --------------------------------------------------------------------
   logic [XBOX_NUM_REGS-1:0][31:0] host_regs_data_out_ps;
 
   always_comb begin
@@ -268,16 +436,20 @@ module FFT_conv (
                      BYTES_PER_XMEM_LINE[$clog2(BYTES_PER_XMEM_LINE):0] :
                      remaining_size[$clog2(BYTES_PER_XMEM_LINE):0];
 
+  // Static lane indexing only — line_buf was filled by WRITE_Y_FILL
   always_comb begin
     write_data = '0;
 
     for (int b = 0; b < BYTES_PER_XMEM_LINE; b++) begin
       if (b < crnt_size) begin
-        write_data[b] = y_buf[index + b];
+        write_data[b] = line_buf[b];
       end
     end
   end
 
+  // --------------------------------------------------------------------
+  // Next-state logic
+  // --------------------------------------------------------------------
   always_comb begin
     next_state = state;
 
@@ -311,16 +483,36 @@ module FFT_conv (
 
         if (mem_intf_read.mem_valid) begin
           mem_intf_read.mem_req = 1'b0;
-          next_state = LOAD_C_ADVANCE;
+          next_state = LOAD_C_FEED;
         end
       end
 
-      LOAD_C_ADVANCE: begin
-        if (remaining_size == 0) begin
-          next_state = INIT_LOAD_X;
+      // feed the captured line into the engine, one byte per cycle
+      LOAD_C_FEED: begin
+        if (byte_idx >= line_size) begin
+          if (remaining_size == 0) begin
+            next_state = START_FFT_C;
+          end
+          else begin
+            next_state = LOAD_C_READ;
+          end
         end
-        else begin
-          next_state = LOAD_C_READ;
+      end
+
+      START_FFT_C: begin
+        next_state = WAIT_FFT_C;
+      end
+
+      WAIT_FFT_C: begin
+        if (fft_done) begin
+          next_state = SAVE_FFT_C;
+        end
+      end
+
+      // pipelined: runs index 0..n, write of element n-1 lands at index==n
+      SAVE_FFT_C: begin
+        if (index >= n) begin
+          next_state = INIT_LOAD_X;
         end
       end
 
@@ -335,37 +527,41 @@ module FFT_conv (
 
         if (mem_intf_read.mem_valid) begin
           mem_intf_read.mem_req = 1'b0;
-          next_state = LOAD_X_ADVANCE;
+          next_state = LOAD_X_FEED;
         end
       end
 
-      LOAD_X_ADVANCE: begin
-        if (remaining_size == 0) begin
-          next_state = PREPARE_INPUTS;
-        end
-        else begin
-          next_state = LOAD_X_READ;
-        end
-      end
-
-      PREPARE_INPUTS: begin
-        if (index >= n) begin
-          next_state = START_FFT_CX;
+      LOAD_X_FEED: begin
+        if (byte_idx >= line_size) begin
+          if (remaining_size == 0) begin
+            next_state = START_FFT_X;
+          end
+          else begin
+            next_state = LOAD_X_READ;
+          end
         end
       end
 
-      START_FFT_CX: begin
-        next_state = WAIT_FFT_CX;
+      START_FFT_X: begin
+        next_state = WAIT_FFT_X;
       end
 
-      WAIT_FFT_CX: begin
-        if ((fft_c_done || fft_c_done_seen) &&
-            (fft_x_done || fft_x_done_seen)) begin
+      WAIT_FFT_X: begin
+        if (fft_done) begin
           next_state = POINTWISE_MUL;
         end
       end
 
+      // pipelined (2-cycle mult): products of element i-2 written at index==i.
+      // Loop runs to n+1 so the last element (n-1) is written; exit at n+2.
       POINTWISE_MUL: begin
+        if (index >= n + 32'd2) begin
+          next_state = LOAD_ENGINE_MUL;
+        end
+      end
+
+      // pipelined: engine element i-1 loaded from mul RAM at index==i
+      LOAD_ENGINE_MUL: begin
         if (index >= n) begin
           next_state = START_IFFT;
         end
@@ -376,15 +572,29 @@ module FFT_conv (
       end
 
       WAIT_IFFT: begin
-        if (ifft_done) begin
+        if (fft_done) begin
+          next_state = SAVE_IFFT;
+        end
+      end
+
+      // pipelined: y_raw[i-1] <= engine.read (real part)
+      SAVE_IFFT: begin
+        if (index >= n) begin
           next_state = FIND_MAX;
         end
       end
 
+      // pipelined: compares element i-1 while issuing read of element i
       FIND_MAX: begin
         if (index >= n) begin
-          next_state = NORMALIZE_START_DIV;
+          next_state = NORMALIZE_READ;
         end
+      end
+
+      // issue y_raw RAM read; data valid next cycle and held by the RAM
+      // output register through the division
+      NORMALIZE_READ: begin
+        next_state = NORMALIZE_START_DIV;
       end
 
       NORMALIZE_START_DIV: begin
@@ -397,13 +607,21 @@ module FFT_conv (
             next_state = INIT_WRITE_Y;
           end
           else begin
-            next_state = NORMALIZE_START_DIV;
+            next_state = NORMALIZE_READ;
           end
         end
       end
 
       INIT_WRITE_Y: begin
-        next_state = WRITE_Y;
+        next_state = WRITE_Y_FILL;
+      end
+
+      // pipelined y_mem read: byte_idx runs 0..crnt_size, line_buf[k-1]
+      // captures y_mem[index+k-1] at byte_idx==k
+      WRITE_Y_FILL: begin
+        if (byte_idx >= crnt_size) begin
+          next_state = WRITE_Y;
+        end
       end
 
       WRITE_Y: begin
@@ -417,6 +635,9 @@ module FFT_conv (
 
           if (remaining_size <= crnt_size) begin
             next_state = DONE;
+          end
+          else begin
+            next_state = WRITE_Y_FILL;
           end
         end
       end
@@ -445,254 +666,221 @@ module FFT_conv (
     end
   end
 
+  // --------------------------------------------------------------------
+  // Datapath registers. NOTE: no reset loops over any RAM array —
+  // their contents are fully overwritten before every use.
+  // --------------------------------------------------------------------
   always_ff @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
 
-      remaining_size <= 0;
-      index          <= 0;
-      crnt_rd_addr   <= 0;
-      crnt_wr_addr   <= 0;
-      max_abs        <= 1;
+      remaining_size <= 32'd0;
+      index          <= 32'd0;
+      byte_idx       <= 6'd0;
+      line_size      <= 6'd0;
+      line_buf       <= '0;
+      crnt_rd_addr   <= '0;
+      crnt_wr_addr   <= '0;
+      max_abs        <= 32'd1;
 
-      fft_c_done_seen <= 1'b0;
-      fft_x_done_seen <= 1'b0;
-
-      read_data_latched <= '0;
-
-      for (int i = 0; i < MAX_N; i++) begin
-        c_buf[i]     <= '0;
-        x_buf[i]     <= '0;
-        y_buf[i]     <= '0;
-
-        c_in_re[i]   <= '0;
-        c_in_im[i]   <= '0;
-        x_in_re[i]   <= '0;
-        x_in_im[i]   <= '0;
-
-        mul_re[i]    <= '0;
-        mul_im[i]    <= '0;
-
-        y_raw_buf[i] <= '0;
-      end
+      pp_rr <= '0;
+      pp_ii <= '0;
+      pp_ri <= '0;
+      pp_ir <= '0;
     end
     else begin
 
       case (state)
 
         INIT_LOAD_C: begin
-          crnt_rd_addr      <= c_addr;
-          remaining_size    <= n;
-          index             <= 0;
-          max_abs           <= 1;
-          fft_c_done_seen   <= 1'b0;
-          fft_x_done_seen   <= 1'b0;
+          crnt_rd_addr   <= c_addr;
+          remaining_size <= n;
+          index          <= 32'd0;
+          byte_idx       <= 6'd0;
+          max_abs        <= 32'd1;
         end
 
         LOAD_C_READ: begin
           if (mem_intf_read.mem_valid) begin
-            read_data_latched <= mem_intf_read.mem_data;
-
-            for (int b = 0; b < BYTES_PER_XMEM_LINE; b++) begin
-              if (b < crnt_size) begin
-                c_buf[index + b] <= mem_intf_read.mem_data[b];
-              end
-            end
+            line_buf       <= mem_intf_read.mem_data;
+            line_size      <= crnt_size;
+            byte_idx       <= 6'd0;
 
             crnt_rd_addr   <= crnt_rd_addr + crnt_size;
             remaining_size <= remaining_size - crnt_size;
-            index          <= index + crnt_size;
           end
         end
 
-        LOAD_C_ADVANCE: begin
-          if (remaining_size == 0) begin
-            index <= 0;
+        // engine load driven combinationally; advance both counters
+        LOAD_C_FEED: begin
+          if (byte_idx < line_size) begin
+            byte_idx <= byte_idx + 6'd1;
+            index    <= index + 32'd1;
+          end
+        end
+
+        START_FFT_C: begin
+          index <= 32'd0;
+        end
+
+        WAIT_FFT_C: begin
+          if (fft_done) begin
+            index <= 32'd0;
+          end
+        end
+
+        // c_fft RAM write happens via cfft_we (combinational above)
+        SAVE_FFT_C: begin
+          if (index >= n) begin
+            index <= 32'd0;
+          end
+          else begin
+            index <= index + 32'd1;
           end
         end
 
         INIT_LOAD_X: begin
           crnt_rd_addr   <= x_addr;
           remaining_size <= n;
-          index          <= 0;
+          index          <= 32'd0;
+          byte_idx       <= 6'd0;
         end
 
         LOAD_X_READ: begin
           if (mem_intf_read.mem_valid) begin
-            read_data_latched <= mem_intf_read.mem_data;
-
-            for (int b = 0; b < BYTES_PER_XMEM_LINE; b++) begin
-              if (b < crnt_size) begin
-                x_buf[index + b] <= mem_intf_read.mem_data[b];
-              end
-            end
+            line_buf       <= mem_intf_read.mem_data;
+            line_size      <= crnt_size;
+            byte_idx       <= 6'd0;
 
             crnt_rd_addr   <= crnt_rd_addr + crnt_size;
             remaining_size <= remaining_size - crnt_size;
-            index          <= index + crnt_size;
           end
         end
 
-        LOAD_X_ADVANCE: begin
-          if (remaining_size == 0) begin
-            index <= 0;
+        LOAD_X_FEED: begin
+          if (byte_idx < line_size) begin
+            byte_idx <= byte_idx + 6'd1;
+            index    <= index + 32'd1;
           end
         end
 
-        PREPARE_INPUTS: begin
-          if (index == 0) begin
-            debug_print_loaded_vectors();
-          end
+        START_FFT_X: begin
+          index <= 32'd0;
+        end
 
-          if (index < n) begin
-            c_in_re[index] <= $signed(c_buf[index]) <<< 12;
-            c_in_im[index] <= 32'sd0;
-
-            x_in_re[index] <= $signed(x_buf[index]) <<< 12;
-            x_in_im[index] <= 32'sd0;
-
-            index <= index + 1;
-          end
-          else begin
-            index <= 0;
+        WAIT_FFT_X: begin
+          if (fft_done) begin
+            index <= 32'd0;
           end
         end
 
-        START_FFT_CX: begin
-          fft_c_done_seen <= 1'b0;
-          fft_x_done_seen <= 1'b0;
-          index           <= 0;
-        end
-
-        WAIT_FFT_CX: begin
-          if (fft_c_done) begin
-            fft_c_done_seen <= 1'b1;
-          end
-
-          if (fft_x_done) begin
-            fft_x_done_seen <= 1'b1;
-          end
-
-          if ((fft_c_done || fft_c_done_seen) &&
-              (fft_x_done || fft_x_done_seen)) begin
-
-            $display("===== DEBUG FFT_C FIRST 16 =====");
-            for (int d = 0; d < 16; d++) begin
-              $display("CFFT[%0d] = %0d , %0d", d, c_fft_re[d], c_fft_im[d]);
-            end
-
-            $display("===== DEBUG FFT_X FIRST 16 =====");
-            for (int d = 0; d < 16; d++) begin
-              $display("XFFT[%0d] = %0d , %0d", d, x_fft_re[d], x_fft_im[d]);
-            end
-
-            index <= 0;
-          end
-        end
-
+        // stage 1: register the raw products for element index-1 (the RAM
+        // outputs cfft_r* / eng_read_* are valid when index is in 1..n).
+        // stage 2 (round/combine/write) happens combinationally via mul_we.
         POINTWISE_MUL: begin
-          if (index < n) begin
-            mul_re[index] <= q15_mul(c_fft_re[index], x_fft_re[index]) -
-                             q15_mul(c_fft_im[index], x_fft_im[index]);
+          pp_rr <= $signed(cfft_rre) * $signed(eng_read_re);
+          pp_ii <= $signed(cfft_rim) * $signed(eng_read_im);
+          pp_ri <= $signed(cfft_rre) * $signed(eng_read_im);
+          pp_ir <= $signed(cfft_rim) * $signed(eng_read_re);
 
-            mul_im[index] <= q15_mul(c_fft_re[index], x_fft_im[index]) +
-                             q15_mul(c_fft_im[index], x_fft_re[index]);
-
-            if (index < 16) begin
-              $display("MUL[%0d] = %0d , %0d",
-                       index,
-                       q15_mul(c_fft_re[index], x_fft_re[index]) -
-                       q15_mul(c_fft_im[index], x_fft_im[index]),
-                       q15_mul(c_fft_re[index], x_fft_im[index]) +
-                       q15_mul(c_fft_im[index], x_fft_re[index]));
-            end
-
-            index <= index + 1;
+          if (index >= n + 32'd2) begin
+            index <= 32'd0;
           end
           else begin
-            index <= 0;
+            index <= index + 32'd1;
+          end
+        end
+
+        LOAD_ENGINE_MUL: begin
+          if (index >= n) begin
+            index <= 32'd0;
+          end
+          else begin
+            index <= index + 32'd1;
           end
         end
 
         START_IFFT: begin
-          index <= 0;
+          index <= 32'd0;
         end
 
         WAIT_IFFT: begin
-          if (ifft_done) begin
-            $display("===== DEBUG IFFT FIRST 16 =====");
-            for (int d = 0; d < 16; d++) begin
-              $display("IFFT[%0d] = %0d , %0d", d, ifft_re[d], ifft_im[d]);
-            end
-
-            for (int i = 0; i < MAX_N; i++) begin
-              y_raw_buf[i] <= ifft_re[i];
-            end
-
-            max_abs <= 1;
-            index   <= 0;
+          if (fft_done) begin
+            max_abs <= 32'd1;
+            index   <= 32'd0;
           end
         end
 
+        // y_raw RAM write happens via yraw_we (combinational above)
+        SAVE_IFFT: begin
+          if (index >= n) begin
+            index <= 32'd0;
+          end
+          else begin
+            index <= index + 32'd1;
+          end
+        end
+
+        // pipelined max scan: yraw_r holds element index-1
         FIND_MAX: begin
-          if (index < n) begin
+          if (in_body) begin
             if (current_abs > max_abs) begin
               max_abs <= current_abs;
             end
+          end
 
-            if (index < 16) begin
-              $display("FIND_MAX[%0d] y_raw=%0d abs=%0d max_before=%0d",
-                       index, y_raw_buf[index], current_abs, max_abs);
-            end
-
-            index <= index + 1;
+          if (index >= n) begin
+            index <= 32'd0;
           end
           else begin
-            $display("===== DEBUG MAX_ABS FINAL = %0d =====", max_abs);
-            index <= 0;
+            index <= index + 32'd1;
           end
+        end
+
+        NORMALIZE_READ: begin
+          // y_raw RAM read issued (yraw_raddr = index); data next cycle
         end
 
         NORMALIZE_START_DIV: begin
-          if (index < 16) begin
-            $display("DIV_START[%0d] y_raw=%0d abs=%0d num=%0d max_abs=%0d neg=%0d",
-                     index,
-                     y_raw_buf[index],
-                     norm_abs,
-                     norm_num,
-                     max_abs,
-                     norm_negative);
-          end
+          // div_start asserted combinationally; operands from yraw_r
         end
 
+        // y_mem write happens via y_we (combinational above)
         NORMALIZE_WAIT_DIV: begin
           if (div_done) begin
-            y_buf[index] <= norm_signed_result[7:0];
-
-            if (index < 16) begin
-              $display("DIV_DONE[%0d] q=%0d rem=%0d y=%0d",
-                       index,
-                       div_val,
-                       div_rem,
-                       norm_signed_result);
-            end
-
-            index <= index + 1;
+            index <= index + 32'd1;
           end
         end
 
         INIT_WRITE_Y: begin
           crnt_wr_addr   <= y_addr;
           remaining_size <= n;
-          index          <= 0;
+          index          <= 32'd0;
+          byte_idx       <= 6'd0;
+        end
+
+        // pipelined y_mem read into line_buf:
+        // at byte_idx==k (k>=1), y_rq holds y_mem[index+k-1]
+        WRITE_Y_FILL: begin
+          if ((byte_idx >= 6'd1) && (byte_idx <= crnt_size)) begin
+            line_buf[byte_idx - 6'd1] <= y_rq;
+          end
+
+          if (byte_idx >= crnt_size) begin
+            byte_idx <= 6'd0;
+          end
+          else begin
+            byte_idx <= byte_idx + 6'd1;
+          end
         end
 
         WRITE_Y: begin
           if (mem_intf_write.mem_ack) begin
             crnt_wr_addr   <= crnt_wr_addr + crnt_size;
             remaining_size <= remaining_size - crnt_size;
+            byte_idx       <= 6'd0;
 
             if (remaining_size <= crnt_size) begin
-              index <= 0;
+              index <= 32'd0;
             end
             else begin
               index <= index + crnt_size;
@@ -701,8 +889,9 @@ module FFT_conv (
         end
 
         DONE: begin
-          index          <= 0;
-          remaining_size <= 0;
+          index          <= 32'd0;
+          remaining_size <= 32'd0;
+          byte_idx       <= 6'd0;
         end
 
         default: begin
@@ -757,80 +946,16 @@ module FFT_conv (
     end
   endfunction
 
-  task automatic debug_print_loaded_vectors;
-    longint signed sum_c;
-    longint signed sum_x;
-
+  // Q15 rounding of an already-computed raw product (multiply done and
+  // registered in pp_*). Bit-exact to q15_mul(a,b) for t = a*b.
+  function automatic logic signed [31:0] q15_round_top(
+    input logic signed [63:0] t
+  );
+    logic signed [63:0] tr;
     begin
-      sum_c = 0;
-      sum_x = 0;
-
-      for (int d = 0; d < MAX_N; d++) begin
-        sum_c = sum_c + c_buf[d];
-        sum_x = sum_x + x_buf[d];
-      end
-
-      $display("===== DEBUG LOADED VECTOR CHECK =====");
-      $display("SUM_C = %0d", sum_c);
-      $display("SUM_X = %0d", sum_x);
-
-      $display("----- C/X FIRST 16 -----");
-      for (int d = 0; d < 16; d++) begin
-        $display("BUF[%0d] c=%0d x=%0d", d, c_buf[d], x_buf[d]);
-      end
-
-      $display("----- C/X AROUND 64 -----");
-      for (int d = 64; d < 72; d++) begin
-        $display("BUF[%0d] c=%0d x=%0d", d, c_buf[d], x_buf[d]);
-      end
-
-      $display("----- C/X AROUND 128 -----");
-      for (int d = 128; d < 136; d++) begin
-        $display("BUF[%0d] c=%0d x=%0d", d, c_buf[d], x_buf[d]);
-      end
-
-      $display("----- C/X AROUND 192 -----");
-      for (int d = 192; d < 200; d++) begin
-        $display("BUF[%0d] c=%0d x=%0d", d, c_buf[d], x_buf[d]);
-      end
-
-      $display("----- C/X LAST 8 -----");
-      for (int d = 248; d < 256; d++) begin
-        $display("BUF[%0d] c=%0d x=%0d", d, c_buf[d], x_buf[d]);
-      end
+      tr = t + 64'sd16384;
+      q15_round_top = tr >>> 15;
     end
-  endtask
-
-  function string state_name(input state_t s);
-    case (s)
-      IDLE:                 state_name = "IDLE";
-      INIT_LOAD_C:          state_name = "INIT_LOAD_C";
-      LOAD_C_READ:          state_name = "LOAD_C_READ";
-      LOAD_C_ADVANCE:       state_name = "LOAD_C_ADVANCE";
-      INIT_LOAD_X:          state_name = "INIT_LOAD_X";
-      LOAD_X_READ:          state_name = "LOAD_X_READ";
-      LOAD_X_ADVANCE:       state_name = "LOAD_X_ADVANCE";
-      PREPARE_INPUTS:       state_name = "PREPARE_INPUTS";
-      START_FFT_CX:         state_name = "START_FFT_CX";
-      WAIT_FFT_CX:          state_name = "WAIT_FFT_CX";
-      POINTWISE_MUL:        state_name = "POINTWISE_MUL";
-      START_IFFT:           state_name = "START_IFFT";
-      WAIT_IFFT:            state_name = "WAIT_IFFT";
-      FIND_MAX:             state_name = "FIND_MAX";
-      NORMALIZE_START_DIV:  state_name = "NORMALIZE_START_DIV";
-      NORMALIZE_WAIT_DIV:   state_name = "NORMALIZE_WAIT_DIV";
-      INIT_WRITE_Y:         state_name = "INIT_WRITE_Y";
-      WRITE_Y:              state_name = "WRITE_Y";
-      DONE:                 state_name = "DONE";
-      default:              state_name = "UNKNOWN";
-    endcase
   endfunction
-
-  always_ff @(posedge clk) begin
-    if (state != next_state) begin
-      $display("[%0t] FFT_conv state: %s -> %s",
-               $time, state_name(state), state_name(next_state));
-    end
-  end
 
 endmodule

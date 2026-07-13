@@ -7,9 +7,11 @@ set_global_assignment -name SYSTEMVERILOG_FILE /project/tsmc65/shared/k5_share/k
 set_global_assignment -name SYSTEMVERILOG_FILE /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_intf_read.sv
 set_global_assignment -name SYSTEMVERILOG_FILE /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_intf_write.sv
 set_global_assignment -name SYSTEMVERILOG_FILE /data/project/tsmc65/shared/qsyn/qsyn_dummy_xlr_wrap/qsyn_dummy_xlr_wrap.sv
-set_global_assignment -name SYSTEMVERILOG_FILE /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv_sint.sv
+set_global_assignment -name SYSTEMVERILOG_FILE /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv
 
 set_global_assignment -name SYSTEMVERILOG_FILE /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/div.sv
 
 set_global_assignment -name SYSTEMVERILOG_FILE /data/project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv
 
+
+set_global_assignment -name LAST_QUARTUS_VERSION "24.1std.0 Lite Edition"

@@ -6,6 +6,7 @@
 1777825652 /project/tsmc65/shared/k5_share/kuntz5/mems/sim_pseudo_mems/dp_ram_simple.sv
 1777825828 /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mannix_mem_farm_lite.sv
 1777825653 /project/tsmc65/shared/k5_share/kuntz5/src/tb/k5_uart_tb.sv
+1783508997 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/FFT_conv.sv
 1777825653 /project/tsmc65/shared/k5_share/kuntz5/src/tb/sock.sv
 1781172743 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/top/slrx.sv
 1777825653 /project/tsmc65/shared/k5_share/kuntz5/src/mul/rtl/mul_base.sv
@@ -22,11 +23,13 @@
 1777825653 /project/tsmc65/shared/k5_share/kuntz5/src/sys/k5_sys_access.sv
 1781172743 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/top/slrx_regs_intrf.sv
 1777825829 /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_fabric.sv
+1780823342 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/div.sv
 1777825653 /project/tsmc65/shared/k5_share/kuntz5/src/sys/k5_sch.sv
 1777825828 /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_mfarm.sv
 1777825653 /project/tsmc65/shared/k5_share/kuntz5/src/sys/k5_sys_regs_mem_access.sv
 1777825653 /project/tsmc65/shared/k5_share/kuntz5/src/sys/k5_dpram.sv
 1777825653 /project/tsmc65/shared/k5_share/kuntz5/src/uart_access/k5_smart_uart_pkg.sv
+1783513080 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/FFT_conv/fft_engine.sv
 1777825653 /project/tsmc65/shared/k5_share/kuntz5/src/tb/k5_tracer.sv
 1777825828 /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox.sv
 1777825828 /project/tsmc65/shared/k5_share/k5_xbox/hw/k5_xbox_sys.sv
@@ -40,6 +43,7 @@
 1777825829 /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mem_sram.sv
 1777825828 /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlrs/mem/mannix_mem_ifc.sv
 1777825829 /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xmem_spram.sv
+1767551962 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/xmemcpy_ref/xmemcpy_ref.sv
 1777825828 /project/tsmc65/shared/k5_share/k5_xbox/hw/xbox/xbox_xlr_wrap.sv
 1777825652 /project/tsmc65/shared/k5_share/kuntz5/src/core/k5_dx.sv
 1781172743 /project/tsmc65/users/mentcy/ws/my_k5_proj/hw/xlrs/slrx/top/slrx_def_pkg.sv
