@@ -491,7 +491,339 @@ Future extensions could include:
 │
 └── README.md
 ```
+## 🚀 Running, Verification and FPGA Build Instructions
 
+This section describes the complete flow for:
+
+* Selecting between the naive and FFT implementations
+* Generating new test inputs
+* Verifying the Python reference results
+* Running the hardware simulation
+* Running the bare-metal application
+* Synthesizing the FFT accelerator
+* Analyzing resource utilization and timing
+* Generating the FPGA `.sof` programming file
+
+---
+
+## ⚙️ 1. Select the Execution Mode
+
+The execution mode is selected inside:
+
+```text
+sw/apps/FFT_conv/gen_FFT_test2.py
+```
+
+Open `gen_FFT_test2.py` and modify the `MODE` variable:
+
+```python
+MODE = 0
+```
+
+or:
+
+```python
+MODE = 1
+```
+
+The available modes are:
+
+| Mode | Implementation           |
+| ---: | ------------------------ |
+|  `0` | Naive direct computation |
+|  `1` | FFT-based computation    |
+
+The selected mode determines which reference inputs and outputs are generated.
+
+---
+
+## 🐍 2. Generate New Test Inputs
+
+Move to the simulation test directory:
+
+```bash
+cd $MY_K5_PROJ/sim/t0
+```
+
+Run the Python input-generation script:
+
+```bash
+python3 $MY_K5_PROJ/sw/apps/FFT_conv/gen_FFT_test2.py
+```
+
+The script generates the input, configuration and expected-output files used by the application and simulation.
+
+---
+
+## ✅ 3. Verify the Python Results
+
+Before running the hardware accelerator, compare the naive and FFT-based Python results:
+
+```bash
+cd $MY_K5_PROJ/sim/t0
+python3 $MY_K5_PROJ/sw/apps/FFT_conv/check_FFT2.py
+```
+
+This script checks whether there is a numerical difference between the direct implementation and the FFT-based implementation.
+
+---
+
+## 🧪 4. Run the K5 Simulation
+
+The simulation requires two terminals.
+
+### Terminal 1 — Start the Hardware Simulation
+
+```bash
+set_k5_terminal
+cd $MY_K5_PROJ/sim
+launch_k5_sim FFT_conv | tee sim_FFT_conv_debug.log
+```
+
+Keep this terminal running while launching the application from the second terminal.
+
+The complete simulation output is saved in:
+
+```text
+sim_FFT_conv_debug.log
+```
+
+### Terminal 2 — Run the Bare-Metal Application
+
+Open a second terminal and run:
+
+```bash
+set_k5_terminal
+cd $MY_K5_PROJ/sim
+launch_k5_app FFT_conv -ccd1 XON -itr 1 | tee app_FFT_conv_debug.log
+```
+
+The options used are:
+
+* `-ccd1 XON` — enables the FFT hardware accelerator.
+* `-itr 1` — runs one application iteration.
+* `tee` — displays the output and saves it to a log file.
+
+The application output is saved in:
+
+```text
+app_FFT_conv_debug.log
+```
+
+---
+
+## 🔨 5. Run Synthesis
+
+Move to the FFT accelerator hardware directory:
+
+```bash
+cd $MY_K5_XLRS/FFT_conv
+```
+
+Run synthesis:
+
+```bash
+qsyn_xlr FFT_conv -syn | tee qsyn_FFT_conv_syn.log
+```
+
+The synthesis terminal output is also saved in:
+
+```text
+qsyn_FFT_conv_syn.log
+```
+
+---
+
+## 🏗️ 6. Run the Complete Synthesis, Fit and STA Flow
+
+The `-all` option runs:
+
+```text
+Synthesis → Fitter → Static Timing Analysis
+```
+
+Run:
+
+```bash
+set_k5_terminal
+cd $MY_K5_XLRS/FFT_conv
+qsyn_xlr FFT_conv -all | tee qsyn_FFT_conv_all.log
+```
+
+The complete flow log is saved in:
+
+```text
+qsyn_FFT_conv_all.log
+```
+
+The generated reports are located under:
+
+```text
+$MY_K5_XLRS/FFT_conv/qsyn_output_files/
+```
+
+---
+
+## 📊 7. Analyze Hardware Resource Utilization
+
+### Resource Utilization by Entity
+
+Display the resource-utilization table from the Quartus mapping report:
+
+```bash
+cd $MY_K5_XLRS/FFT_conv
+sed -n '/Analysis & Synthesis Resource Utilization by Entity/,+40p' \
+qsyn_output_files/FFT_conv.map.rpt
+```
+
+This report can be used to inspect the logic and register utilization of the complete design and its submodules.
+
+### Hierarchical Resource Breakdown
+
+Display the main entities in the accelerator hierarchy:
+
+```bash
+grep -E "FFT_conv:|fft_engine:|divu_int:|Entity" \
+qsyn_output_files/FFT_conv.map.rpt | head -20
+```
+
+The command focuses on the following entities:
+
+* `FFT_conv`
+* `fft_engine`
+* `divu_int`
+
+---
+
+## ⏱️ 8. Analyze Static Timing
+
+### Worst Timing Paths
+
+Display the beginning of the worst-path timing report:
+
+```bash
+cd $MY_K5_XLRS/FFT_conv
+sed -n '1,80p' qsyn_output_files/sta_FFT_conv_worst_paths.rpt
+```
+
+### Critical-Path Details
+
+Extract the main timing information associated with the critical paths:
+
+```bash
+grep -A 40 -iE "Slow Model|Worst-Case|Critical Path|Data Arrival" \
+qsyn_output_files/sta_FFT_conv_worst_paths.rpt | head -70
+```
+
+The report can be used to inspect:
+
+* The worst-case timing model
+* Data-arrival time
+* Critical combinational logic
+* Timing slack
+* Launch and capture registers
+* The modules participating in the critical path
+
+---
+
+## 💾 9. Generate the FPGA `.sof` File
+
+Run the complete FPGA compilation flow:
+
+```bash
+set_k5_terminal
+cd $MY_K5_PROJ/hw/gen_fpga
+comp_fpga FFT_conv 2>&1 | tee comp_fpga_FFT_conv.log
+```
+
+The command redirects both standard output and error output into:
+
+```text
+comp_fpga_FFT_conv.log
+```
+
+After a successful FPGA compilation, the generated `.sof` file should be available under the FPGA programming-files directory.
+
+---
+
+## 📦 10. Package the FPGA Reports
+
+Move to the FPGA generation directory:
+
+```bash
+cd $MY_K5_PROJ/hw/gen_fpga
+```
+
+Compress the generated FPGA reports:
+
+```bash
+tar -czvf qsyn_fpga_reported_FFT_conv.tgz output_files
+```
+
+Verify that the archive was created:
+
+```bash
+ls -lh qsyn_fpga_reported_FFT_conv.tgz
+```
+
+The resulting archive is:
+
+```text
+qsyn_fpga_reported_FFT_conv.tgz
+```
+
+---
+
+## 🪟 11. Prepare the Windows FPGA Environment
+
+The following commands must be executed in the local Windows Git Bash or MINGW64 terminal, not on the cloud server.
+
+Move to the local K5 installation directory:
+
+```bash
+cd /c/k5x_win
+```
+
+Load the K5 Windows build environment:
+
+```bash
+source k5_xbox_fpga_win/setup/build_env.sh
+```
+
+Initialize the K5 terminal environment:
+
+```bash
+set_k5_terminal
+```
+
+The local Windows environment is now ready for FPGA programming and local K5 commands.
+
+---
+
+## 🔄 Complete Execution Flow
+
+```text
+Select MODE
+    ↓
+Generate Python Test Files
+    ↓
+Verify Naive and FFT Results
+    ↓
+Launch Hardware Simulation
+    ↓
+Run Bare-Metal Application
+    ↓
+Run Synthesis
+    ↓
+Run Fit and STA
+    ↓
+Analyze Resources and Critical Paths
+    ↓
+Generate FPGA .sof File
+    ↓
+Package FPGA Reports
+    ↓
+Prepare the Windows FPGA Environment
 ---
 
 ## ✅ Summary
