@@ -661,8 +661,31 @@ The generated reports are located under:
 ```text
 $MY_K5_XLRS/FFT_conv/qsyn_output_files/
 ```
-
+Run All System FPGA:
+```bash
+set_k5_terminal
+cd $MY_K5_PROJ/hw/gen_fpga
+comp_fpga FFT_conv 2>&1 | tee comp_fpga_FFT_conv.log
+```
 ---
+## Two different area measurements
+
+This project reports two sets of numbers. They are both correct and
+they measure different scopes.
+
+| Command                   | Scope                  | Logic elements | Memory bits |
+|---------------------------|------------------------|----------------|-------------|
+| `qsyn_xlr FFT_conv -all`  | the accelerator alone  | 4,145          | 59,392      |
+| `comp_fpga FFT_conv`      | accelerator + platform | 16,691         | 1,391,608   |
+
+The project book reports the accelerator figures, since that is the part
+this work designed. The platform, meaning the processor, the memory
+interface and the serial link, accounts for the difference.
+
+The same distinction applies to frequency:
+`qsyn_xlr` reports 71.40 MHz for the accelerator alone, while
+`comp_fpga` reports 54.28 MHz for the complete system against a
+50 MHz platform clock. The book reports 54.28 MHz.
 
 ## 📊 7. Analyze Hardware Resource Utilization
 
